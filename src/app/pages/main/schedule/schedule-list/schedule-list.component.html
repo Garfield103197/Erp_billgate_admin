@@ -1,0 +1,26 @@
+<div class="member-home">
+    <h4>Lớp 6A1</h4>
+    <br><br>
+    <div class="table">
+        <table class="data-table">
+            <thead>
+                <tr >
+                    <th>Tiết</th>
+                    <th *ngFor="let item of dataTable">
+                        {{item.Day}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 'B']">
+                    <td >
+                        {{i}}
+                    </td>
+                    <td *ngFor="let i of [1, 2, 3, 4, 5, 6]">
+                        {{i}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

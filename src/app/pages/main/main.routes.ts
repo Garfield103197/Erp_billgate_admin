@@ -10,10 +10,10 @@ export const mainRoutes: Routes = [
         loadChildren: () =>
           import('./member/member.module').then((m) => m.MemberModule),
       },
-      // {
-      //   path: 'product',
-      //   loadChildren: () => import('./product/product.module').then(m => m.ProductModule),
-      // },
+      {
+        path: 'schedule',
+        loadChildren: () => import('./schedule/schedule.module').then(m => m.ScheduleModule),
+      },
       // {
       //   path: 'enterprise',
       //   loadChildren: () =>
