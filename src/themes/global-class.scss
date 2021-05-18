@@ -32,12 +32,12 @@
 }
 
 //2.========== card==========
-.base-card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 1rem;
-  border: 1px solid rebeccapurple;
-}
+// .base-card {
+//   background-color: #ffffff;
+//   border-radius: 10px;
+//   padding: 1rem;
+//   border: 1px solid rebeccapurple;
+// }
 
 .text-card-header {
   font-style: normal;
@@ -155,8 +155,7 @@
 
 .nav-menu-active-icon {
   img {
-    filter: invert(25%) sepia(39%) saturate(5259%) hue-rotate(231deg)
-      brightness(79%) contrast(108%);
+    filter: invert(99%) sepia(18%) saturate(4618%) hue-rotate(305deg) brightness(94%) contrast(102%);
   }
 }
 

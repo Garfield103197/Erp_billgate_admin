@@ -1,20 +1,34 @@
-<div [style.width]="dataCard.width" [style.height]="dataCard.height" [class]="dataCard.cssClass">
-    <div>
-        <div class="text-card-header">
-            {{dataCard.title.text}}
+<div class="card">
+    <div
+        class="base-card"
+        *ngFor="let i of dataCard"
+    >
+        <div class="card-img">
+            <img
+                src="assets/svg/icon-school.svg"
+                alt=""
+            >
         </div>
-        <div class="text-card-status">
-            {{dataCard.title.status}}
-        </div>
-    </div>
-    <div class="base-grid" [style.grid-template-columns]="numCol">
-        <div *ngFor="let i of dataCard.list">
-            <div class="text-card-label">
-                {{i.label}}
-            </div>
-            <div class="text-card-content">
-                {{i.value}}
-            </div>
-        </div>
+        <ul class="card-info">
+            <li class="base-header">{{i.header}}</li>
+            <li class="base-text">
+                <div class="base-icon">
+                    <img
+                        src=" assets/svg/menber/mb-icon-ms.svg"
+                        alt=""
+                    >
+                </div>
+                {{i.group}}
+            </li>
+            <li class="base-text">
+                <div class="base-icon">
+                    <img
+                        src="assets/svg/menber/mb-icon-group.svg"
+                        alt=""
+                    >
+                </div>{{i.member}}
+            </li>
+        </ul>
+
     </div>
 </div>
