@@ -1,0 +1,10 @@
+<div class="container-fluid notification">
+  <div class="title">THÔNG BÁO</div>
+  <br /><br />
+  <app-table
+    [data]="data"
+    [tableData]="tableData"
+    [listActive]="listActive"
+    (callback)="handleTableCallback($event)"
+  ></app-table>
+</div>

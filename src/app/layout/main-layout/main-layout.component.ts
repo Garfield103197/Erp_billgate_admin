@@ -17,29 +17,29 @@ export class MainLayoutComponent implements OnInit {
   dataNav = {
     list: [
       {
-        icon: 'assets/img/home.svg',
+        icon: 'assets/img/distributor.svg',
         name: 'Thành viên',
-        linkURL: 'home',
+        linkURL: 'member',
       },
       {
         icon: 'assets/img/bag.svg',
         name: 'Thời khóa biểu',
-        linkURL: 'product',
+        linkURL: 'schedule',
       },
       {
         icon: 'assets/img/enterprise-code.svg',
         name: 'Thực đơn',
-        linkURL: 'enterprise',
+        linkURL: 'menu',
       },
       {
         icon: 'assets/img/distributor.svg',
         name: 'Thông báo',
-        linkURL: 'distributor',
+        linkURL: 'notification',
       },
       {
         icon: 'assets/img/shop.svg',
         name: 'Tin tức',
-        linkURL: 'shop',
+        linkURL: 'news',
       },
     ],
   };

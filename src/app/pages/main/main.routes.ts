@@ -6,32 +6,32 @@ export const mainRoutes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'home',
+        path: 'member',
         loadChildren: () =>
-          import('./home/home.module').then((m) => m.HomeModule),
+          import('./member/member.module').then((m) => m.MemberModule),
+      },
+      // {
+      //   path: 'product',
+      //   loadChildren: () => import('./product/product.module').then(m => m.ProductModule),
+      // },
+      // {
+      //   path: 'enterprise',
+      //   loadChildren: () =>
+      //     import('./enterprise/enterprise.module').then((m) => m.EnterpriseModule),
+      // },
+      {
+        path: 'notification',
+        loadChildren: () =>
+          import('./notification/noti.module').then((m) => m.NotiModule),
       },
       {
-        path: 'product',
-        loadChildren: () => import('./product/product.module').then(m => m.ProductModule),
-      },
-      {
-        path: 'enterprise',
+        path: 'news',
         loadChildren: () =>
-          import('./enterprise/enterprise.module').then((m) => m.EnterpriseModule),
-      },
-      {
-        path: 'distributor',
-        loadChildren: () =>
-          import('./distributor/distributor.module').then((m) => m.DistributorModule),
-      },
-      {
-        path: 'shop',
-        loadChildren: () =>
-          import('./shop/shop.module').then((m) => m.ShopModule),
+          import('./news/news.module').then((m) => m.NewsModule),
       },
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'member',
         pathMatch: 'full',
       },
     ],
