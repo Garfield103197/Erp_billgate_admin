@@ -4,9 +4,8 @@ import { RouterModule } from '@angular/router';
 import { LayoutModule } from 'src/app/layout/layout.module';
 import { MainComponent } from './main.component';
 import { mainRoutes } from './main.routes';
-
 @NgModule({
-  declarations: [MainComponent, ],
+  declarations: [MainComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(mainRoutes),

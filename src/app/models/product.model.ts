@@ -54,8 +54,6 @@ export class Product {
                 condition: 'fullText'
             }];
     }
-
-
     public get collums(): Array<CollumsModel> {
         return [
 

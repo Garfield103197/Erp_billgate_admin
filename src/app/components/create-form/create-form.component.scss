@@ -1,0 +1,48 @@
+.form-create {
+    .title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 15px 0;
+    }
+    .content {
+        padding: 20px;
+        input,
+        select, textarea {
+            width: 95%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #e4e4e4;
+            outline: none;
+        }
+        .img{
+            display: flex;
+            flex-direction: column;
+            img{
+               width: 150px;
+               height: 150px;
+            }
+        }
+    }
+    .group-btn {
+        text-align: center;
+    }
+}
+.btn-save{
+    width: 150px;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+    background-color: #E9BC82;
+    color: white;
+    cursor: pointer;
+}
+.btn-cancel{
+    width: 150px;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+    background-color: #9E9E9E;
+    color: white;
+    cursor: pointer;
+}
