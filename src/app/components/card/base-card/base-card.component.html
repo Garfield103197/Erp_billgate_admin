@@ -2,6 +2,7 @@
     <div
         class="base-card"
         *ngFor="let i of dataCard"
+        (click)="callback.emit(i)"
     >
         <div class="card-img">
             <img

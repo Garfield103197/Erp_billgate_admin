@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { MemberDetailComponent } from "./components/member-detail/member-detail.component";
+import { MemberHomeClassComponent } from "./components/member-home-class/member-home-class.component";
 import { MemberHomeGroupComponent } from "./components/member-home-group/member-home-group.component";
 import { MemberHomeComponent } from "./components/member-home/member-home.component";
 
@@ -21,6 +22,10 @@ export const memberRoute: Routes = [
             {
                 path: 'member-home-group',
                 component: MemberHomeGroupComponent
+            },
+            {
+                path: 'member-home-class',
+                component: MemberHomeClassComponent
             },
             {
                 path: '',

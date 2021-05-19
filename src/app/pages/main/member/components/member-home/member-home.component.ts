@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-member-home',
@@ -10,7 +11,8 @@ export class MemberHomeComponent implements OnInit {
         {
             header: 'Nhà trường',
             group: '3 nhóm',
-            member: '3 thành viên'
+            member: '3 thành viên',
+            id: 1,
         },
     ]
 
@@ -18,7 +20,8 @@ export class MemberHomeComponent implements OnInit {
         {
             header: 'Pre-school',
             group: '10 lớp',
-            member: '140 thành viên'
+            member: '140 thành viên',
+            id: 2,
         },
     ]
 
@@ -26,24 +29,33 @@ export class MemberHomeComponent implements OnInit {
         {
             header: 'Tiểu học ',
             group: '10 lớp',
-            member: '300 thành viên'
+            member: '300 thành viên',
+            id: 3,
+
         },
         {
             header: 'THCS',
             group: '10 lớp',
-            member: '300 thành viên'
+            member: '300 thành viên',
+            id: 4,
         },
         {
             header: 'THPT',
             group: '10 lớp',
-            member: '300 thành viên'
+            member: '300 thành viên',
+            id: 5,
+
         },
 
     ]
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit(): void {
     }
+    routerTo(ev) {
 
+        this.router.navigate(['/main/member/member-home-group', { id: ev.id }])
+
+    }
 }
