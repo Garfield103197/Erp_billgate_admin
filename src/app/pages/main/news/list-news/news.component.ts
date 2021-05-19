@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { News } from 'src/app/models/news.model';
 import { Notification } from 'src/app/models/noti.model';
+import { CreateNewsComponent } from '../create-news/create-news.component';
 
 @Component({
   selector: 'app-news',
@@ -9,7 +11,9 @@ import { Notification } from 'src/app/models/noti.model';
 })
 export class NewsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
   config = new News; 
   listActive = [];
   tableData; 
@@ -59,6 +63,12 @@ export class NewsComponent implements OnInit {
     this.listActive = this.config.btnActice;
   }
   handleTableCallback(ev){
-
+    if (ev.type === 'create') {
+      return this.dialog.open(CreateNewsComponent, {
+        width: '500px',
+        height: '800px'
+      }).afterClosed().subscribe(result => {
+      });
+    }
   }
 }

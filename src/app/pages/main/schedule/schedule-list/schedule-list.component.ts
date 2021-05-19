@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ImportScheduleComponent } from '../import-schedule/import-schedule.component';
 
 @Component({
   selector: 'app-schedule-list',
@@ -7,27 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScheduleListComponent implements OnInit {
 
-  constructor() { }
-  dataTable = [
-    {
-      Day: "Thứ 2",
-    },
-    {
-      Day: "Thứ 3",
-    },
-    {
-      Day: "Thứ 4",
-    },    {
-      Day: "Thứ 5",
-    },
-    {
-      Day: "Thứ 6",
-    },    
-    {
-      Day: "Thứ 7",
-    }
-  ]
+  constructor(
+    private dialog: MatDialog
+  ) { }
   ngOnInit(): void {
+  }
+
+  upload(){
+    return this.dialog.open(ImportScheduleComponent, {
+      width: '800px',
+      height: '500px'
+    }).afterClosed().subscribe(result => {
+    });
   }
 
 }

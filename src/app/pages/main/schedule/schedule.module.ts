@@ -7,14 +7,17 @@ import { ScheduleGroupComponent } from './schedule-group/schedule-group.componen
 import { ScheduleListComponent } from './schedule-list/schedule-list.component';
 import { ScheduleComponent } from './schedule.component';
 import { scheduleRoute } from './schedule.routes';
+import { ImportScheduleComponent } from './import-schedule/import-schedule.component';
+import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
 
 
 @NgModule({
-    declarations: [ScheduleComponent, ScheduleGroupDetailComponent, ScheduleListComponent, ScheduleGroupComponent],
+    declarations: [ScheduleComponent, ScheduleGroupDetailComponent, ScheduleListComponent, ScheduleGroupComponent, ImportScheduleComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(scheduleRoute),
-        BaseCardModule
+        BaseCardModule,
+        CreateFormModule
     ],
     exports: [ScheduleComponent]
 })

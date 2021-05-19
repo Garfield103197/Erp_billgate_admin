@@ -1,0 +1,78 @@
+.create-news {
+  .title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 30px;
+  }
+  .form {
+    padding: 0 20px;
+    .content {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+      .label {
+        margin-bottom: 10px;
+      }
+      input,
+      select,
+      textarea {
+        width: 95%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #e4e4e4;
+        outline: none;
+      }
+      .img {
+        display: flex;
+        flex-direction: column;
+        img {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    }
+    .images{
+        width: 100%;
+        margin: auto;
+        height: 300px;
+        border-radius: 20px;
+        border: 1px solid;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        img{
+            width: 100%;
+            height: 300px;
+        }
+        // .btn-upload-img{
+        //     display: flex;
+        //     .upload, .default{
+        //         width: 150px;
+        //         height: 45px;
+        //         border: 1px solid;
+        //     }
+        // }
+    }
+  }
+  .group-btn {
+    text-align: center;
+  }
+}
+.btn-save {
+  width: 150px;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  background-color: #e9bc82;
+  color: white;
+  cursor: pointer;
+}
+.btn-cancel {
+  width: 150px;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  background-color: #9e9e9e;
+  color: white;
+  cursor: pointer;
+}

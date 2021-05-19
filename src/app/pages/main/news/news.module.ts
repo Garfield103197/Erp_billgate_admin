@@ -4,12 +4,13 @@ import { RouterModule } from '@angular/router';
 import { TableBaseModule } from 'src/app/components/table/table.component';
 import { NewsComponent } from './list-news/news.component';
 import { newsRoute } from './news.routes';
+import { CreateNewsComponent } from './create-news/create-news.component';
 
 
 
 
 @NgModule({
-  declarations: [NewsComponent],
+  declarations: [NewsComponent, CreateNewsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(newsRoute),

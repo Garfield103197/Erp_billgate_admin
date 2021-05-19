@@ -1,26 +1,53 @@
 <div class="member-home">
-    <h4>Lớp 6A1</h4>
-    <br><br>
-    <div class="table">
-        <table class="data-table">
-            <thead>
-                <tr >
-                    <th>Tiết</th>
-                    <th *ngFor="let item of dataTable">
-                        {{item.Day}}
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 'B']">
-                    <td >
-                        {{i}}
-                    </td>
-                    <td *ngFor="let i of [1, 2, 3, 4, 5, 6]">
-                        {{i}}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <h4>Lớp 10A1</h4>
+  <p>Giáo viên chủ nhiệm: Nguyễn văn A</p>
+  <p>Sĩ số: 35</p>
+  <div class="btn-group">
+    <div class="list-button">
+        <button class="btn-schedule"><img src="assets/svg/icon-save.svg" alt="" srcset="">Lưu</button>
+        <button class="btn-schedule" (click)="upload()"><img src="assets/svg/icon-upload.svg">Nhập</button>
+        <button class="btn-schedule"><img src="assets/svg/icon-output.svg">Xuất</button>
     </div>
+    <div>
+        <button class="btn-create">+ Thêm</button>
+    </div>
+  </div>
+  <div class="table">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Tiết</th>
+          <th>Thứ 2</th>
+          <th>Thứ 3</th>
+          <th>Thứ 4</th>
+          <th>Thứ 5</th>
+          <th>Thứ 6</th>
+          <th>Thứ 7</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of [1,2,3,4,5,6,7,8]">
+          <td>{{i}}</td>
+          <td *ngFor="let item of [2, 3, 4, 5, 6, 7]">
+            <div>
+              <Select class="selected">
+                <option value="1">Toán 10</option>
+                <option value="1">Vật lý 10</option>
+                <option value="1">Hoá 10</option>
+                <option value="1">Ngữ Văn 10</option>
+              </Select>
+            </div>
+            <div>
+              <Select class="selected">
+                <option value="1">Nguyễn Văn A</option>
+                <option value="1">Nguyễn Văn B</option>
+                <option value="1">Nguyễn Văn C</option>
+                <option value="1">Nguyễn Văn D</option>
+              </Select>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -3,7 +3,7 @@
     {{ option?.title }}
   </div>
   <div class="content row align-items-center" *ngFor="let item of data">
-    <div class="col-3">{{ item?.label }}</div>
+    <div class="col-3 label">{{ item?.label }}</div>
     <div class="col-9" [class]="item.class">
       <div class="img" *ngIf="item.type === 'img'">
         <input
@@ -16,7 +16,7 @@
       </div>
       <div
         *ngIf="
-          item.type === 'text' || item.type === 'number' || item.type === 'file'
+          item.type === 'text' || item.type === 'number' || item.type === 'file' || item.type === 'date'
         "
       >
         <input
