@@ -6,18 +6,20 @@ import { notiRoute } from './noti.routes';
 import { TableBaseModule } from 'src/app/components/table/table.component';
 import { CreateNotiComponent } from './create-noti/create-noti.component';
 import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
+import { SystemNotiComponent } from './system-noti/system-noti.component';
+import { NotificationMainComponent } from './notification-main.component';
 
 
 
 
 @NgModule({
-  declarations: [NotificationComponent, CreateNotiComponent],
+  declarations: [NotificationMainComponent, NotificationComponent, CreateNotiComponent, SystemNotiComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(notiRoute),
     TableBaseModule,
     CreateFormModule
   ],
-  exports: [NotificationComponent]
+  exports: [NotificationMainComponent]
 })
 export class NotiModule { }

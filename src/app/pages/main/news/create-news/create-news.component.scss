@@ -32,30 +32,21 @@
         }
       }
     }
-    .images{
+    .images {
+      width: 100%;
+      margin: auto;
+      height: 300px;
+      border-radius: 20px;
+      border: 1px solid;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      .preview {
         width: 100%;
-        margin: auto;
         height: 300px;
         border-radius: 20px;
-        border: 1px solid;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        img{
-            width: 100%;
-            height: 300px;
-        }
-        // .btn-upload-img{
-        //     display: flex;
-        //     .upload, .default{
-        //         width: 150px;
-        //         height: 45px;
-        //         border: 1px solid;
-        //     }
-        // }
+      }
+
     }
-  }
-  .group-btn {
-    text-align: center;
   }
 }
 .btn-save {
@@ -66,8 +57,11 @@
   background-color: #e9bc82;
   color: white;
   cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 15px;
 }
-.btn-cancel {
+.cancel {
   width: 150px;
   height: 45px;
   border-radius: 10px;
@@ -75,4 +69,46 @@
   background-color: #9e9e9e;
   color: white;
   cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 15px;
 }
+.group-btn {
+  text-align: center;
+  margin-top: 1rem;
+}
+.btn-upload-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    .upload,
+    .default {
+      width: 180px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      font-size: 20px;
+      line-height: 40px;
+      .icon {
+        position: relative;
+        top: 5px;
+        left: -5px;
+      }
+    }
+    .upload {
+      background-color: #e9bc82;
+      margin-right: 10px;
+    }
+    .default {
+      background-color: #9e9e9e;
+      margin-left: 10px;
+      .icon {
+        position: relative;
+        top: 5px;
+        left: -5px;
+      }
+    }
+  }

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { News } from 'src/app/models/news.model';
 import { Notification } from 'src/app/models/noti.model';
 import { CreateNewsComponent } from '../create-news/create-news.component';
+import { DetailNewsComponent } from '../detail-news/detail-news.component';
 
 @Component({
   selector: 'app-news',
@@ -66,7 +67,14 @@ export class NewsComponent implements OnInit {
     if (ev.type === 'create') {
       return this.dialog.open(CreateNewsComponent, {
         width: '500px',
-        height: '800px'
+        height: '750px'
+      }).afterClosed().subscribe(result => {
+      });
+    }
+    if (ev.type === 'edit') {
+      return this.dialog.open(DetailNewsComponent, {
+        width: '500px',
+        height: '750px'
       }).afterClosed().subscribe(result => {
       });
     }

@@ -10,18 +10,25 @@
       <input type="text" />
     </div>
     <div class="images">
-      <img src="" alt="">
-      <div class="btn-upload-img">
-           <input id="upload" type="file" hidden>
-           <label class="upload" for="upload"></label>
-           <input id="default" type="file" hidden> 
-           <label class="default" for="default"></label>
-      </div>
+      <img *ngIf="model.MediaURL" class="preview" [src]="model.MediaURL" alt="">
     </div>
+    <div class="btn-upload-img">
+        <input id="upload" #file   accept="image/*" (change)="preview(file.files)" type="file" hidden>
+        <label class="upload" for="upload">
+            <img class="icon" src="assets/svg/icon-img.svg" alt="" srcset="">
+            Tải lên ảnh mới
+         </label>
+        <input id="default" type="file" hidden> 
+        <label class="default" for="default">
+            <img class="icon" src="assets/svg/icon-img-default.svg" alt="" srcset="">
+            Ảnh mặc định
+         </label>
+   </div>
 
   </div>
-  <div class="group-btn">
-    <button class="btn-save">Xác nhận</button>
-    <button class="btn-cancel">Huỷ bỏ</button>
-  </div>
+ 
 </div>
+<div class="group-btn">
+    <button class="btn-save">Xác nhận</button>
+    <button class="cancel">Huỷ bỏ</button>
+  </div>

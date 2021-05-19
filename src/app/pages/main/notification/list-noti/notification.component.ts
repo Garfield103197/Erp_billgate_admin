@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Notification } from 'src/app/models/noti.model';
 import { CreateNotiComponent } from '../create-noti/create-noti.component';
 
@@ -11,7 +12,8 @@ import { CreateNotiComponent } from '../create-noti/create-noti.component';
 export class NotificationComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) { }
   config = new Notification; 
   listActive = [];
@@ -57,12 +59,17 @@ export class NotificationComponent implements OnInit {
     this.listActive = this.config.btnActice;
   }
   handleTableCallback(ev){
+    console.log(ev);
+    
     if (ev.type === 'create') {
       return this.dialog.open(CreateNotiComponent, {
         width: '800px',
         height: '500px'
       }).afterClosed().subscribe(result => {
       });
+    }
+    if (ev.type === 'noti') {
+        this.router.navigateByUrl('/main/notification/system-notification')
     }
   }
 }
