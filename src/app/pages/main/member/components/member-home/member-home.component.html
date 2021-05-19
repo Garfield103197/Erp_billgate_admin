@@ -5,15 +5,15 @@
     </app-base-card>
 
 
-    <app-base-card
-        [dataCard]="list2"
-        routerLink="/main/member/member-home-group"
-    >
-
+    <app-base-card [dataCard]="list2">
+        <!-- routerLink="/main/member/member-home-group"-->
     </app-base-card>
 
 
-    <app-base-card [dataCard]="list3">
+    <app-base-card
+        [dataCard]="list3"
+        (callback)="routerTo($event)"
+    >
 
     </app-base-card>
 </div>

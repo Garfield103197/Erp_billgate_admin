@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -9,7 +9,7 @@ import { NgModule } from '@angular/core';
 })
 export class BaseCardComponent implements OnInit {
     @Input() dataCard: any;
-
+    @Output() callback = new EventEmitter();
 
     constructor() { }
 
