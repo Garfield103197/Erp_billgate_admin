@@ -12,7 +12,6 @@ import { ScheduleListComponent } from './schedule-list/schedule-list.component';
     declarations: [ScheduleGroupComponent, ScheduleGroupDetailComponent, ScheduleListComponent],
     imports: [
         CommonModule,
-        RouterModule,
         RouterModule.forChild(scheduleRoute),
         BaseCardModule
     ],

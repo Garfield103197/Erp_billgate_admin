@@ -8,6 +8,7 @@ import { mainRoutes } from './main.routes';
   declarations: [MainComponent],
   imports: [
     CommonModule,
+    RouterModule,
     RouterModule.forChild(mainRoutes),
     LayoutModule,],
   providers: [],

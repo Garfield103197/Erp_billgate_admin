@@ -2,18 +2,30 @@ import { Routes } from "@angular/router";
 import { ScheduleGroupDetailComponent } from "./schedule-group-detail/schedule-group-detail.component";
 import { ScheduleGroupComponent } from "./schedule-group/schedule-group.component";
 import { ScheduleListComponent } from "./schedule-list/schedule-list.component";
+import { ScheduleComponent } from "./schedule.component";
 
 export const scheduleRoute: Routes = [
     {
         path: '',
-        component: ScheduleGroupComponent,
-    },
-    {
-        path: 'schedule-group-detail',
-        component: ScheduleGroupDetailComponent,
-    },
-    {
-        path: 'schedule-list',
-        component: ScheduleListComponent,
+        component: ScheduleComponent,
+        children: [
+            {
+                path: 'schedule-group',
+                component: ScheduleGroupComponent,
+            },
+            {
+                path: 'schedule-group-detail',
+                component: ScheduleGroupDetailComponent,
+            },
+            {
+                path: 'schedule-list',
+                component: ScheduleListComponent,
+            },
+            {
+                path: '',
+                redirectTo: 'schedule-group',
+                pathMatch: 'full',
+              },
+        ]
     },
 ]
