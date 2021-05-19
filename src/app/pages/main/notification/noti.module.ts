@@ -8,6 +8,7 @@ import { CreateNotiComponent } from './create-noti/create-noti.component';
 import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
 import { SystemNotiComponent } from './system-noti/system-noti.component';
 import { NotificationMainComponent } from './notification-main.component';
+import { BaseCardModule } from 'src/app/components/card/base-card/base-card.component';
 
 
 
@@ -18,6 +19,7 @@ import { NotificationMainComponent } from './notification-main.component';
     CommonModule,
     RouterModule.forChild(notiRoute),
     TableBaseModule,
+    BaseCardModule,
     CreateFormModule
   ],
   exports: [NotificationMainComponent]

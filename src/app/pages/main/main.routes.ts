@@ -14,11 +14,10 @@ export const mainRoutes: Routes = [
         path: 'schedule',
         loadChildren: () => import('./schedule/schedule.module').then(m => m.ScheduleModule),
       },
-      // {
-      //   path: 'enterprise',
-      //   loadChildren: () =>
-      //     import('./enterprise/enterprise.module').then((m) => m.EnterpriseModule),
-      // },
+      {
+        path: 'menu',
+        loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule),
+      },
       {
         path: 'notification',
         loadChildren: () =>

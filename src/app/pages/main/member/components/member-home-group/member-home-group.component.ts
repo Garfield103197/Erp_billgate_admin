@@ -74,7 +74,6 @@ export class MemberHomeGroupComponent implements OnInit {
             id: 9
 
         },
-
     ]
 
     data3 = [
@@ -99,8 +98,6 @@ export class MemberHomeGroupComponent implements OnInit {
             id: 12
 
         },
-
-
     ]
 
 
@@ -122,12 +119,9 @@ export class MemberHomeGroupComponent implements OnInit {
         } else {
             this.data = this.data3
         }
-
     }
     routerTo(ev) {
         this.router.navigate(['/main/member/member-home-class', { id: ev.id }])
         console.log(ev);
-
     }
-
 }
