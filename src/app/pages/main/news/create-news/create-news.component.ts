@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-news',
@@ -7,18 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateNewsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<CreateNewsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data,
+  ) { }
   imagePath;
   model: any = {};
   ngOnInit(): void {
   }
-  save(){
-
+  save() {
+    this.dialogRef.close(this.model);
   }
-  cancel(){
-
+  cancel() {
+    this.dialogRef.close();
   }
-  
+
   preview(files) {
     if (files.length === 0)
       return;
