@@ -62,7 +62,9 @@ export class CreateFormComponent implements OnInit {
       var worksheet = workbook.Sheets[first_sheet_name];
       this.dataImport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       this.callback.emit(this.dataImport);
-       console.log(this.dataImport);
+      console.log(this.dataImport);
+      
+       console.table(this.dataImport);
        
     }
     fileReader.readAsArrayBuffer(this.file);

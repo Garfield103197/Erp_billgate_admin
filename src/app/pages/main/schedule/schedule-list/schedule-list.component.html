@@ -10,7 +10,7 @@
       <button class="btn-schedule" (click)="upload()">
         <img src="assets/svg/icon-upload.svg" />Nhập
       </button>
-      <button class="btn-schedule">
+      <button (click)="exportExcel(dataSchedule, 'data')" class="btn-schedule">
         <img src="assets/svg/icon-output.svg" />Xuất
       </button>
     </div>
