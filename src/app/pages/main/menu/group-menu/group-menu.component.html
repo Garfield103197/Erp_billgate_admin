@@ -1,19 +1,10 @@
 <div class="member-home">
-    <h4>NHÓM NGƯỜI DÙNG </h4>
-    <app-base-card [dataCard]="list1">
-
-    </app-base-card>
-
-
-    <app-base-card [dataCard]="list2">
-        <!-- routerLink="/main/member/member-home-group"-->
-    </app-base-card>
-
-
-    <app-base-card
-        [dataCard]="list3"
-        (callback)="routerTo($event)"
-    >
-
-    </app-base-card>
+  <h4>NHÓM NGƯỜI DÙNG</h4>
+  <app-base-card [dataCard]="list1" (callback)="routerTo($event)">
+  </app-base-card>
+  <app-base-card [dataCard]="list2" (callback)="routerTo($event)">
+    <!-- routerLink="/main/member/member-home-group"-->
+  </app-base-card>
+  <app-base-card [dataCard]="list3" (callback)="routerTo($event)">
+  </app-base-card>
 </div>

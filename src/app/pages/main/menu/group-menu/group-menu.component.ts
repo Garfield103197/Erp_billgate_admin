@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-group-menu',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
   list1 = [
     {
       header: 'Nhà trường',
@@ -52,5 +55,6 @@ export class GroupMenuComponent implements OnInit {
   ngOnInit(): void {
   }
   routerTo(ev) {
+    this.router.navigateByUrl("/main/menu/list-menu");
   }
 }

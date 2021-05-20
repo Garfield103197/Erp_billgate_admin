@@ -7,13 +7,15 @@ import { TableBaseModule } from "src/app/components/table/table.component";
 import { GroupMenuComponent } from "./group-menu/group-menu.component";
 import { MenuComponent } from "./menu.component";
 import { menuRoute } from "./menu.routes";
+import { ListMenuComponent } from './list-menu/list-menu.component';
+import { EditDishComponent } from './edit-dish/edit-dish.component';
 
 
 
 
 
 @NgModule({
-    declarations: [MenuComponent, GroupMenuComponent],
+    declarations: [MenuComponent, GroupMenuComponent, ListMenuComponent, EditDishComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(menuRoute),

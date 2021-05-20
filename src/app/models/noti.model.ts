@@ -44,6 +44,46 @@ export class Notification{
             },
         ];
     }
+    public get collumsSystem(): Array<CollumsModel> {
+        return [
+            {
+                id: 'checkbox',
+                name: '',
+                width: 50,
+                type: 'checkbox'
+            },
+            {
+                id: 'stt',
+                name: 'STT',
+                width: 50,
+                type: 'text',
+            },
+            {
+                id: 'content',
+                name: 'Thông báo',
+                width: 300,
+                type: 'text',
+            },
+            {
+                id: 'CreatedOn',
+                name: 'Tạo lúc',
+                width: 200,
+                type: 'date',
+            },
+            {
+                id: 'create_person',
+                name: 'Người tạo',
+                width: 200,
+                type: 'text',
+            },
+            {
+                id: '',
+                name: '',
+                width: 200,
+                type: 'setting',
+            },
+        ];
+    }
     public get btnActice(): Array<any> {
         return [
             {

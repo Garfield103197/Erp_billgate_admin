@@ -1,23 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { Notification } from 'src/app/models/noti.model';
-import { CreateNotiComponent } from '../create-noti/create-noti.component';
-
+import { Notification } from "../../../../models/noti.model";
 @Component({
-  selector: 'app-notification',
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.scss']
+  selector: 'app-system-list-table',
+  templateUrl: './system-list-table.component.html',
+  styleUrls: ['./system-list-table.component.scss']
 })
-export class NotificationComponent implements OnInit {
-
-  constructor(
-    private dialog: MatDialog,
-    private router: Router
-  ) { }
-  config = new Notification; 
+export class SystemListTableComponent implements OnInit {
+  config = new Notification;
   listActive = [];
-  tableData; 
+  tableData;
   data = [
     {
       "stt": 1,
@@ -49,27 +40,19 @@ export class NotificationComponent implements OnInit {
       "CreatedOn": "08/05/2021",
       "create_person": "Nguyễn Tuấn Anh"
     }
+
+
   ];
 
-
-
+  constructor() { }
 
   ngOnInit(): void {
-    this.tableData = this.config.collums;
-    this.listActive = this.config.btnActice;
+    this.tableData = this.config.collumsSystem;
+
   }
-  handleTableCallback(ev){
-    console.log(ev);
-    
-    if (ev.type === 'create') {
-      return this.dialog.open(CreateNotiComponent, {
-        width: '800px',
-        height: '500px'
-      }).afterClosed().subscribe(result => {
-      });
-    }
-    if (ev.type === 'noti') {
-        this.router.navigateByUrl('/main/notification/system-notification')
-    }
+
+  handleTableCallback(ev) {
+
   }
+
 }

@@ -9,12 +9,14 @@ import { CreateFormModule } from 'src/app/components/create-form/create-form.com
 import { SystemNotiComponent } from './system-noti/system-noti.component';
 import { NotificationMainComponent } from './notification-main.component';
 import { BaseCardModule } from 'src/app/components/card/base-card/base-card.component';
+import { SystemListDetailComponent } from './system-list-detail/system-list-detail.component';
+import { SystemListTableComponent } from './system-list-table/system-list-table.component';
 
 
 
 
 @NgModule({
-  declarations: [NotificationMainComponent, NotificationComponent, CreateNotiComponent, SystemNotiComponent],
+  declarations: [NotificationMainComponent, NotificationComponent, CreateNotiComponent, SystemNotiComponent, SystemListDetailComponent, SystemListTableComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(notiRoute),
