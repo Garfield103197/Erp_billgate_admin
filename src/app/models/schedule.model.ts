@@ -25,7 +25,7 @@ export class ScheduleModel {
                 id: 'file',
                 label: 'File',
                 name: 'file',
-                type: 'file'
+                type: 'upload'
             }
         ];
     }

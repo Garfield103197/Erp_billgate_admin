@@ -55,7 +55,7 @@ export class MemberHomeComponent implements OnInit {
     }
     routerTo(ev) {
 
-        this.router.navigate(['/main/member/member-home-group', { id: ev.id }])
+        this.router.navigate(['/member/member-home-group', { id: ev.id }])
 
     }
 }

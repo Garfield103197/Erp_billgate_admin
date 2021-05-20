@@ -16,7 +16,10 @@
       </div>
       <div
         *ngIf="
-          item.type === 'text' || item.type === 'number' || item.type === 'file' || item.type === 'date'
+          item.type === 'text' ||
+          item.type === 'number' ||
+          item.type === 'file' ||
+          item.type === 'date'
         "
       >
         <input
@@ -26,8 +29,16 @@
           [(ngModel)]="model[item.id]"
         />
       </div>
+      <div *ngIf="item.type === 'upload'">
+        <input type="file" multiple="false" (change)="incomingfile($event)" />
+      </div>
       <div *ngIf="item.type === 'textarea'">
-          <textarea [(ngModel)]="model[item.id]" name="" id="" rows="10"></textarea>
+        <textarea
+          [(ngModel)]="model[item.id]"
+          name=""
+          id=""
+          rows="10"
+        ></textarea>
       </div>
       <div *ngIf="item.type === 'selected'">
         <select [(ngModel)]="model[item.id]">

@@ -4,12 +4,18 @@
   <p>Sĩ số: 35</p>
   <div class="btn-group">
     <div class="list-button">
-        <button class="btn-schedule"><img src="assets/svg/icon-save.svg" alt="" srcset="">Lưu</button>
-        <button class="btn-schedule" (click)="upload()"><img src="assets/svg/icon-upload.svg">Nhập</button>
-        <button class="btn-schedule"><img src="assets/svg/icon-output.svg">Xuất</button>
+      <button class="btn-schedule">
+        <img src="assets/svg/icon-save.svg" alt="" srcset="" />Lưu
+      </button>
+      <button class="btn-schedule" (click)="upload()">
+        <img src="assets/svg/icon-upload.svg" />Nhập
+      </button>
+      <button class="btn-schedule">
+        <img src="assets/svg/icon-output.svg" />Xuất
+      </button>
     </div>
     <div>
-        <button class="btn-create">+ Thêm</button>
+      <button class="btn-create">+ Thêm</button>
     </div>
   </div>
   <div class="table">
@@ -26,23 +32,41 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let i of [1,2,3,4,5,6,7,8]">
-          <td>{{i}}</td>
-          <td *ngFor="let item of [2, 3, 4, 5, 6, 7]">
-            <div>
-              <Select class="selected">
-                <option value="1">Toán 10</option>
-                <option value="1">Vật lý 10</option>
-                <option value="1">Hoá 10</option>
-                <option value="1">Ngữ Văn 10</option>
+        <tr *ngFor="let i of dataSchedule">
+          <td>{{ i.LessonId }}</td>
+          <td *ngFor="let item of i.ListSubjects">
+            <p *ngIf="item.SubjectName === 'Chào cờ'">{{ item.SubjectName }}</p>
+            <div
+              class="listSubject"
+              *ngIf="
+                item.SubjectName !== 'Chào cờ' &&
+                item.SubjectName !== null &&
+                item.TeacherName !== null
+              "
+            >
+              <Select
+                class="selected"
+                (change)="onChange($event.target.value, item)"
+              >
+                <option
+                  [selected]="item.SubjectName"
+                  *ngFor="let subject of listSubject"
+                  [value]="subject.SubjectName"
+                >
+                  {{ subject.SubjectName }}
+                </option>
               </Select>
-            </div>
-            <div>
-              <Select class="selected">
-                <option value="1">Nguyễn Văn A</option>
-                <option value="1">Nguyễn Văn B</option>
-                <option value="1">Nguyễn Văn C</option>
-                <option value="1">Nguyễn Văn D</option>
+              <Select
+                class="selected"
+                (change)="onChange($event.target.value, item)"
+              >
+                <option
+                  [selected]="item.TeacherName"
+                  *ngFor="let teacher of listTeacher"
+                  [value]="teacher.TeacherName"
+                >
+                  {{ teacher.TeacherName }}
+                </option>
               </Select>
             </div>
           </td>

@@ -121,7 +121,7 @@ export class MemberHomeGroupComponent implements OnInit {
         }
     }
     routerTo(ev) {
-        this.router.navigate(['/main/member/member-home-class', { id: ev.id }])
+        this.router.navigate(['/member/member-home-class', { id: ev.id }])
         console.log(ev);
     }
 }

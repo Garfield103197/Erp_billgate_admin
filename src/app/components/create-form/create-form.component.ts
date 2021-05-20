@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component,EventEmitter, Input, NgModule, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, NgModule, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import * as XLSX from 'xlsx';
+
 
 @Component({
   selector: 'app-create-form',
@@ -18,6 +20,10 @@ export class CreateFormComponent implements OnInit {
   model: any = {};
   imagePath;
   imgURL;
+  arrayBuffer: any;
+  checkError = false;
+  file: File;
+  dataImport;
   constructor(
   ) { }
 
@@ -40,9 +46,27 @@ export class CreateFormComponent implements OnInit {
   onCallBackData = () => { }
 
   onClickButton = (i) => {
-      this.callback.emit(i);
+    this.callback.emit(i);
   }
-
+  incomingfile(event) {
+    let fileReader = new FileReader();
+    this.file = event.target.files[0];
+    fileReader.onload = (e) => {
+      this.arrayBuffer = fileReader.result;
+      var data = new Uint8Array(this.arrayBuffer);
+      var arr = new Array();
+      for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+      var bstr = arr.join("");
+      var workbook = XLSX.read(bstr, { type: "binary" });
+      var first_sheet_name = workbook.SheetNames[0];
+      var worksheet = workbook.Sheets[first_sheet_name];
+      this.dataImport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+      this.callback.emit(this.dataImport);
+       console.log(this.dataImport);
+       
+    }
+    fileReader.readAsArrayBuffer(this.file);
+  }
 }
 
 
@@ -51,4 +75,4 @@ export class CreateFormComponent implements OnInit {
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [CreateFormComponent],
 })
-export class CreateFormModule {}
+export class CreateFormModule { }

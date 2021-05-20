@@ -55,6 +55,6 @@ export class GroupMenuComponent implements OnInit {
   ngOnInit(): void {
   }
   routerTo(ev) {
-    this.router.navigateByUrl("/main/menu/list-menu");
+    this.router.navigateByUrl("/menu/list-menu");
   }
 }

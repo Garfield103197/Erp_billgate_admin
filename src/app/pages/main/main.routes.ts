@@ -29,6 +29,11 @@ export const mainRoutes: Routes = [
           import('./news/news.module').then((m) => m.NewsModule),
       },
       {
+        path: 'document',
+        loadChildren: () =>
+          import('./document/document.module').then((m) => m.DocumentModule),
+      },
+      {
         path: '',
         redirectTo: 'member',
         pathMatch: 'full',

@@ -69,7 +69,7 @@ export class NotificationComponent implements OnInit {
       });
     }
     if (ev.type === 'noti') {
-        this.router.navigateByUrl('/main/notification/system-notification')
+        this.router.navigateByUrl('/notification/system-notification')
     }
   }
 }
