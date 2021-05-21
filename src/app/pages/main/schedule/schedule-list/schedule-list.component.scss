@@ -5,6 +5,17 @@
 .member-home {
   font-weight: 600;
   font-size: 22px;
+  input{
+    border: none;
+    background: none;
+    outline: none;
+    text-align: center;
+    height: 25px;
+  }
+}
+p{
+  font-size: 16px;
+
 }
 .selected {
   background: none;

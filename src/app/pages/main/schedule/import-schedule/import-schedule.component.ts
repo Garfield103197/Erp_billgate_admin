@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ScheduleModel } from 'src/app/models/schedule.model';
 
 @Component({
@@ -8,7 +9,9 @@ import { ScheduleModel } from 'src/app/models/schedule.model';
 })
 export class ImportScheduleComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialoRef: MatDialogRef<ImportScheduleComponent>,
+  ) { }
   conFig = new ScheduleModel;
   dataModel = {};
   option = {
@@ -29,6 +32,7 @@ export class ImportScheduleComponent implements OnInit {
       this.listCreate = this.conFig.create;
   }
   handleCallbackEvent(ev) {
-
+      this.dialoRef.close(ev);
+       
   }
 }

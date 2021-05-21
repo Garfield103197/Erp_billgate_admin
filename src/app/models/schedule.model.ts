@@ -10,18 +10,6 @@ export class ScheduleModel {
                 type: 'date'
             },
             {
-                id: 'level',
-                label: 'Khối',
-                name: 'level',
-                type: 'selected'
-            },
-            {
-                id: 'class',
-                label: 'Lớp',
-                name: 'class',
-                type: 'selected'
-            },
-            {
                 id: 'file',
                 label: 'File',
                 name: 'file',

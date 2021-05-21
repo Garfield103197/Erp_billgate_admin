@@ -9,15 +9,18 @@ import { MemberDetailComponent } from './components/member-detail/member-detail.
 import { MemberHomeGroupComponent } from './components/member-home-group/member-home-group.component';
 import { MemberHomeClassComponent } from './components/member-home-class/member-home-class.component';
 import { TableBaseModule } from 'src/app/components/table/table.component';
+import { CreateMemberComponent } from './components/create-member/create-member.component';
+import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
 
 
 
 
 @NgModule({
-    declarations: [MemberComponent, MemberHomeComponent, MemberDetailComponent, MemberHomeGroupComponent, MemberHomeClassComponent],
+    declarations: [MemberComponent, MemberHomeComponent, MemberDetailComponent, MemberHomeGroupComponent, MemberHomeClassComponent, CreateMemberComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(memberRoute),
+        CreateFormModule,
         BaseCardModule,
         TableBaseModule
     ],

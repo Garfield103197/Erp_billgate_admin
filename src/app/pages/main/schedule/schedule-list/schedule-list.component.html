@@ -46,28 +46,17 @@
             >
               <Select
                 class="selected"
-                (change)="onChange($event.target.value, item)"
+                [(ngModel)]="item.SubjectName" ngDefaultControl
               >
                 <option
-                  [selected]="item.SubjectName"
                   *ngFor="let subject of listSubject"
                   [value]="subject.SubjectName"
                 >
                   {{ subject.SubjectName }}
                 </option>
               </Select>
-              <Select
-                class="selected"
-                (change)="onChange($event.target.value, item)"
-              >
-                <option
-                  [selected]="item.TeacherName"
-                  *ngFor="let teacher of listTeacher"
-                  [value]="teacher.TeacherName"
-                >
-                  {{ teacher.TeacherName }}
-                </option>
-              </Select>
+              <input type="text" [(ngModel)]="item.TeacherName">
+              <input type="text" [(ngModel)]="item.ClassRoom">
             </div>
           </td>
         </tr>

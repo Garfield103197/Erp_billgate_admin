@@ -3,6 +3,6 @@ export class CreateModel {
     name: string;
     type: string;
     label: string;
-    data?: [];
+    data?: Array<Object>;
     class?: string;
 }

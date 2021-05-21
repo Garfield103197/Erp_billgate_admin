@@ -9,12 +9,15 @@ import { ScheduleComponent } from './schedule.component';
 import { scheduleRoute } from './schedule.routes';
 import { ImportScheduleComponent } from './import-schedule/import-schedule.component';
 import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
     declarations: [ScheduleComponent, ScheduleGroupDetailComponent, ScheduleListComponent, ScheduleGroupComponent, ImportScheduleComponent],
     imports: [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forChild(scheduleRoute),
         BaseCardModule,
         CreateFormModule

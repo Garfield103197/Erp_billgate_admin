@@ -43,7 +43,7 @@
       <div *ngIf="item.type === 'selected'">
         <select [(ngModel)]="model[item.id]">
           <option *ngFor="let i of item.data" [value]="i.value">
-            {{ i.value || 1 }}
+            {{ i.name  }}
           </option>
         </select>
       </div>

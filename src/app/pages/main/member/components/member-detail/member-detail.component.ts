@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { News } from 'src/app/models/news.model';
+import { CreateMemberComponent } from '../create-member/create-member.component';
 
 @Component({
     selector: 'app-member-detail',
@@ -45,7 +47,9 @@ export class MemberDetailComponent implements OnInit {
 
     ];
 
-    constructor() { }
+    constructor(
+        private dialog: MatDialog
+    ) { }
 
     ngOnInit(): void {
         this.tableData = this.config.collumsClass;
@@ -54,6 +58,13 @@ export class MemberDetailComponent implements OnInit {
     }
 
     handleTableCallback(ev) {
+        if (ev.type === 'create') {
+            return this.dialog.open(CreateMemberComponent, {
+              width: '500px',
+              height: '750px'
+            }).afterClosed().subscribe(result => {
+            });
+          }
 
     }
 }

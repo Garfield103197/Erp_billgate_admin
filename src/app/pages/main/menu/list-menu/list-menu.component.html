@@ -6,10 +6,11 @@
       <button class="btn-schedule">
         <img src="assets/svg/icon-save.svg" alt="" srcset="" />Lưu
       </button>
-      <button class="btn-schedule" (click)="upload()">
+      <button class="btn-schedule" (click)="file.click()">
         <img src="assets/svg/icon-upload.svg" />Nhập
       </button>
-      <button class="btn-schedule">
+      <input #file hidden type="file" multiple="false" (change)="incomingfile($event)" />
+      <button class="btn-schedule" (click)="exportExcel(dataExport, 'file_menu')">
         <img src="assets/svg/icon-output.svg" />Xuất
       </button>
     </div>
@@ -31,19 +32,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td rowspan="4">BỮA CHÍNH</td>
-          <td *ngFor="let item of ['Cá diêu hồng', 'Sốt cà chua', 'Canh cua', 'Canh thịt bằm', 'Trứng', 'Bò']">{{ item }}</td>
+        <tr *ngFor="let item of listMenuMain; let first = first"> 
+          <td *ngIf="first" [attr.rowspan]="listMenuMain.length">
+            Món chính
+          </td>
+          <td *ngFor="let day of listDay">
+            {{ item[day.Day]}}
+          </td>
         </tr>
-        <tr *ngFor="let i of [1, 2, 3]">
-            <td *ngFor="let item of ['Cá diêu hồng', 'Sốt cà chua', 'Canh cua', 'Canh thịt bằm', 'Trứng', 'Bò']">{{ item }}</td>
-        </tr>
-        <tr>
-          <td rowspan="4">BỮA PHỤ</td>
-          <td *ngFor="let item of [2, 3, 4, 5, 6, 7]">{{ item }}</td>
-        </tr>
-        <tr *ngFor="let i of [1, 2, 3]">
-          <td *ngFor="let item of [2, 3, 4, 5, 6, 7]">{{ item }}</td>
+        <tr *ngFor="let item of listMenuSub; let first = first"> 
+          <td *ngIf="first" [attr.rowspan]="listMenuSub.length">
+            Món Phụ
+          </td>
+          <td *ngFor="let day of listDay">
+            {{ item[day.Day]}}
+          </td>
         </tr>
       </tbody>
     </table>
