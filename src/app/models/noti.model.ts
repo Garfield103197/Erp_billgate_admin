@@ -71,12 +71,6 @@ export class Notification{
                 type: 'date',
             },
             {
-                id: 'create_person',
-                name: 'Người tạo',
-                width: 200,
-                type: 'text',
-            },
-            {
                 id: '',
                 name: '',
                 width: 200,

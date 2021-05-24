@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MemberModel } from 'src/app/models/member.model';
 import { News } from 'src/app/models/news.model';
@@ -11,6 +11,7 @@ import { EditMemberComponent } from '../edit-member/edit-member.component';
     styleUrls: ['./member-detail.component.scss']
 })
 export class MemberDetailComponent implements OnInit {
+
     config = new MemberModel;
     listActive = [];
     tableData;

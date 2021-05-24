@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -7,13 +7,19 @@ import { NgModule } from '@angular/core';
     templateUrl: './base-card.component.html',
     styleUrls: ['./base-card.component.scss'],
 })
-export class BaseCardComponent implements OnInit {
+export class BaseCardComponent implements OnInit, OnChanges {
     @Input() dataCard: any;
+    @Input() showIcon: any;
     @Output() callback = new EventEmitter();
-
+    showIconButton = false;
     constructor() { }
-
-    ngOnInit(): void { }
+    ngOnChanges(changes: SimpleChanges): void {
+        this.showIconButton = this.showIcon
+    }
+    
+    ngOnInit(): void { 
+        this.showIconButton = false;
+    }
 }
 
 @NgModule({

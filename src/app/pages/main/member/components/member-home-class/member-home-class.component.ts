@@ -50,7 +50,7 @@ export class MemberHomeClassComponent implements OnInit {
     }
 
     routerTo(ev) {
-        this.router.navigate(['/member/member-detail'])
+        this.router.navigate(['/main/member/member-detail'])
 
     }
 }

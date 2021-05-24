@@ -2,15 +2,18 @@
     <div
         class="base-card"
         *ngFor="let i of dataCard"
-        (click)="callback.emit(i)"
     >
-        <div class="card-img">
+        <div class="card-img"
+        (click)="callback.emit(i)"
+        >
             <img
                 src="assets/svg/icon-school.svg"
                 alt=""
             >
         </div>
-        <ul class="card-info">
+        <ul class="card-info"
+        (click)="callback.emit(i)"
+        >
             <li class="base-header">{{i.header}}</li>
             <li class="base-text">
                 <div class="base-icon">
@@ -30,6 +33,6 @@
                 </div>{{i.member}}
             </li>
         </ul>
-
+        <img *ngIf="showIcon" class="delete" src="assets/svg/icon-delete.svg" alt="" srcset="">
     </div>
 </div>

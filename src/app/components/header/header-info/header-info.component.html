@@ -4,6 +4,7 @@
     </div>
     <div class="header-info-name ">
         {{profile.UserFullName}}
+
     </div>
     <div class="header-info-btn " mat-icon-button [matMenuTriggerFor]="menu " aria-label="Example icon-button with a menu ">
         <!-- <mat-icon>more_vert</mat-icon> -->
@@ -19,11 +20,11 @@
                     <span>Đăng xuất</span>
             </button>
 
-            <button mat-menu-item (click)="changePassword()">
+            <!-- <button mat-menu-item (click)="changePassword()">
               <mat-icon><span class="material-icons ">
                 https
                 </span></mat-icon>
               <span>Đổi mật khẩu</span>
-            </button>
+            </button> -->
         </mat-menu>
     </div>

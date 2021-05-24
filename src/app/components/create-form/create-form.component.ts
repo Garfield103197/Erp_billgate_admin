@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, NgModule, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, NgModule, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as XLSX from 'xlsx';
 
@@ -10,6 +10,10 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./create-form.component.scss']
 })
 export class CreateFormComponent implements OnInit {
+  @HostListener('window:beforeunload', ['$event'])
+  doSomething($event) {
+     $event.returnValue='Your data will be lost!';
+  }
   @Input() data: any;
   @Input() option: any;
   @Input() arrayButton: any;

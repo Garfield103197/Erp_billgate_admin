@@ -29,11 +29,12 @@ export class LoginComponent implements OnInit {
   login(ev) {
     this.loaderService.show();
     this.authService
-      .login(ev.username,ev.password).subscribe((res) => {
-          this.localStorage.set('access_token', res);
-          this.router.navigate(['/main/member']);
-          this.loaderService.hide();
-        },
+      .login(ev.username, ev.password).subscribe((res) => {
+        localStorage.setItem('access_token', res.access_token);
+        localStorage.setItem('access_user', JSON.stringify(res));
+        this.router.navigateByUrl('/main/member');
+        this.loaderService.hide();
+      },
         (err) => {
           this.errorLogin = err.error.message;
         }

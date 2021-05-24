@@ -15,6 +15,7 @@ ul ,li {
         width: 327px;
         border-radius: 15px;
         display: flex;
+        position: relative;
         box-shadow: 1px 0px 1px 2px rgb(0 0 0 / 4%);
     
         .card-img{
@@ -55,4 +56,12 @@ ul ,li {
         }
     
     }
+}
+.delete{
+    width: 24px;
+    height: 24px;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+
 }

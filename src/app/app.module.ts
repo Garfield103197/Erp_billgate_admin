@@ -20,8 +20,7 @@ import { LoaderService } from './services/loader.service';
     HttpClientModule,
   ],
   providers: [
-    LoaderService,
-    CanDeactivateGuard,
+    LoaderService, 
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,

@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { ProfileModel } from 'src/app/models/profile/profile.model';
 import { LocalStorageService } from 'src/app/services/localstorage.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import Swal from 'sweetalert2';
 import { ChangePasswordComponent } from '../../dialog/change-password/change-password.component';
 
 @Component({
@@ -16,33 +17,44 @@ import { ChangePasswordComponent } from '../../dialog/change-password/change-pas
 export class HeaderInfoComponent implements OnInit {
   @Input() dataHeaderInfo;
   profile: Observable<ProfileModel>;
-  constructor( private local : LocalStorageService,
+  constructor(
     private route: Router,
     private profileService: ProfileService,
-    private dialog: MatDialog ) { }
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
-   this.getProfile()
-    
+    this.getProfile()
+
   }
 
   btnLogout() {
-    this.local.clear();
-    this.route.navigate([''])
+    Swal.fire({
+      title: 'Bạn có muốn đăng xuất không?',
+      text: "",
+      // icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Không',
+      confirmButtonText: 'Có',
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.clear();
+        this.route.navigate(['']);
+      }
+    })
+
   }
   getProfile() {
-    this.profile = JSON.parse(localStorage.getItem('access_token'));
-    // this.profile = this.profileService.get('').pipe(map((res : any) => {
-    //   return res.data
-    // }))
-    
+    this.profile = JSON.parse(localStorage.getItem('access_user'));
   }
-  changePassword() : void {
+  changePassword(): void {
     this.dialog.open(ChangePasswordComponent, {
       data: {}
     })
       .afterClosed()
-    .subscribe(() => {})
+      .subscribe(() => { })
   }
 
 }

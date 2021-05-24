@@ -1,8 +1,8 @@
 <div>
-    <h4>NHÓM NGƯỜI DÙNG</h4>
-    <app-base-card
-        [dataCard]="data"
-        (callback)="routerTo($event)"
-    >
-    </app-base-card>
+  <div class="header">
+    <h4>KHỐI</h4>
+    <!-- <button class="btn-create create">+ Thêm Lớp</button> -->
+  </div>
+  <app-base-card [dataCard]="data" (callback)="routerTo($event)">
+  </app-base-card>
 </div>

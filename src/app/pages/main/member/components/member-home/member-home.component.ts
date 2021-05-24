@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 
 @Component({
     selector: 'app-member-home',
@@ -7,6 +8,11 @@ import { Router } from '@angular/router';
     styleUrls: ['./member-home.component.scss']
 })
 export class MemberHomeComponent implements OnInit {
+
+    constructor(
+        private router: Router,
+        private levelService: SchoolGradeLevelService
+    ) { }
     list1 = [
         {
             header: 'Nhà trường',
@@ -49,13 +55,16 @@ export class MemberHomeComponent implements OnInit {
 
     ]
 
-    constructor(private router: Router) { }
-
     ngOnInit(): void {
+        this.getListLevel();
     }
     routerTo(ev) {
-
         this.router.navigate(['/main/member/member-home-group', { id: ev.id }])
-
+    }
+    getListLevel() {
+        this.levelService.getListLevel().subscribe(res => {
+            console.log(res);
+            
+        })
     }
 }
