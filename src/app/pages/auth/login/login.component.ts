@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/auth.service';
+import { LoaderService } from 'src/app/services/loader.service';
 import { LocalStorageService } from 'src/app/services/localstorage.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private localStorage: LocalStorageService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private loaderService: LoaderService
   ) { }
 
   data = {
@@ -25,15 +27,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   login(ev) {
+    this.loaderService.show();
     this.authService
-      .login({
-        username: ev.username,
-        password: ev.password,
-      })
-      .subscribe(
-        (res) => {
+      .login(ev.username,ev.password).subscribe((res) => {
           this.localStorage.set('access_token', res);
           this.router.navigate(['/main/member']);
+          this.loaderService.hide();
         },
         (err) => {
           this.errorLogin = err.error.message;

@@ -1,9 +1,9 @@
-<div class="header-info" *ngIf="profile |async as pro">
+<div class="header-info" *ngIf="profile">
     <div class="header-info-avt">
-        <img [src]="pro.Avatar" alt="">
+        <img [src]="profile.Avatar" alt="">
     </div>
     <div class="header-info-name ">
-        {{pro.FullName}}
+        {{profile.UserFullName}}
     </div>
     <div class="header-info-btn " mat-icon-button [matMenuTriggerFor]="menu " aria-label="Example icon-button with a menu ">
         <!-- <mat-icon>more_vert</mat-icon> -->

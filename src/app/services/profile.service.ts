@@ -8,6 +8,6 @@ import { BaseApiService } from "./base-api.service";
         })
 export class ProfileService extends BaseApiService<ProfileModel> {
 constructor(http: HttpClient) {
-          super(http, 'api/SalesManager/Admin/Account');
+          super(http, '');
 }
 }

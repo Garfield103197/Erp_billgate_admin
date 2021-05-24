@@ -9,6 +9,8 @@ import { APIInterceptor } from './utils/interceptors/api.interceptor';
 import { AuthInterceptor } from './utils/interceptors/auth.interceptor';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
+import { LoaderModule } from './utils/loader/loader.component';
+import { LoaderService } from './services/loader.service';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -18,6 +20,7 @@ import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
     HttpClientModule,
   ],
   providers: [
+    LoaderService,
     CanDeactivateGuard,
     {
       provide: HTTP_INTERCEPTORS,

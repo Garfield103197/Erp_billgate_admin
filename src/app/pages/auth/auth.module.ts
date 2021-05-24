@@ -8,6 +8,7 @@ import { authRoutes } from './auth.routes';
 import {  LoginFormMudule } from './components/login-form/login-form.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotComponent } from './forgot/forgot.component';
+import { LoaderModule } from 'src/app/utils/loader/loader.component';
 
 @NgModule({
   declarations: [AuthComponent,LoginComponent, ForgotComponent,  ],
@@ -15,6 +16,7 @@ import { ForgotComponent } from './forgot/forgot.component';
     CommonModule,
     RouterModule.forChild(authRoutes),
     LayoutModule,
+    LoaderModule,
     // FormsModule,
     // ReactiveFormsModule,
     LoginFormMudule

@@ -11,12 +11,13 @@ import { MemberHomeClassComponent } from './components/member-home-class/member-
 import { TableBaseModule } from 'src/app/components/table/table.component';
 import { CreateMemberComponent } from './components/create-member/create-member.component';
 import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
+import { EditMemberComponent } from './components/edit-member/edit-member.component';
 
 
 
 
 @NgModule({
-    declarations: [MemberComponent, MemberHomeComponent, MemberDetailComponent, MemberHomeGroupComponent, MemberHomeClassComponent, CreateMemberComponent],
+    declarations: [MemberComponent, MemberHomeComponent, MemberDetailComponent, MemberHomeGroupComponent, MemberHomeClassComponent, CreateMemberComponent, EditMemberComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(memberRoute),

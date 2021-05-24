@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SystemListTableComponent } from './system-list-table.component';
+import { EditMemberComponent } from './edit-member.component';
 
-describe('SystemListTableComponent', () => {
-  let component: SystemListTableComponent;
-  let fixture: ComponentFixture<SystemListTableComponent>;
+describe('EditMemberComponent', () => {
+  let component: EditMemberComponent;
+  let fixture: ComponentFixture<EditMemberComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SystemListTableComponent ]
+      declarations: [ EditMemberComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SystemListTableComponent);
+    fixture = TestBed.createComponent(EditMemberComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

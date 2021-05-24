@@ -31,9 +31,10 @@ export class HeaderInfoComponent implements OnInit {
     this.route.navigate([''])
   }
   getProfile() {
-    this.profile = this.profileService.get('').pipe(map((res : any) => {
-      return res.data
-    }))
+    this.profile = JSON.parse(localStorage.getItem('access_token'));
+    // this.profile = this.profileService.get('').pipe(map((res : any) => {
+    //   return res.data
+    // }))
     
   }
   changePassword() : void {

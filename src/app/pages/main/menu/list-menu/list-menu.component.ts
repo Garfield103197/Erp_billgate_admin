@@ -73,8 +73,9 @@ export class ListMenuComponent implements OnInit {
       var worksheet = workbook.Sheets[first_sheet_name];
       this.dataImport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       this.dataExport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
-
-      this.handleData(this.dataExport);
+      console.log(this.dataExport);
+      
+      this.handleData(this.dataImport);
     }
     fileReader.readAsArrayBuffer(this.file);
   }

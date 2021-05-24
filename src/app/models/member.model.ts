@@ -12,7 +12,7 @@ export class MemberModel {
                 id: 'stt',
                 name: 'STT',
                 width: 50,
-                type: 'stt'
+                type: 'text'
             },
             {
                 id: 'FullName',
@@ -108,7 +108,7 @@ export class MemberModel {
                 name: 'ClassName',
                 type: 'text'
             },            {
-                id: 'StudentCode',
+                id: 'StudentId',
                 label: 'Mã học sinh',
                 name: 'StudentCode',
                 type: 'text'
@@ -122,5 +122,14 @@ export class MemberModel {
 
         ];
     }
-
+    public get btnActice(): Array<any> {
+        return [
+            {
+                class: 'btn-create',
+                text: '+  Thêm',
+                type: 'create',
+                icon: ''
+            }
+        ];
+    }
 }

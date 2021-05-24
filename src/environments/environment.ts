@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://uat-cbh-viettel.congbaohiem.com.vn',
+  API_URL: 'https://schoolbusapi.chuyendoisodn.com',
 
 };
 

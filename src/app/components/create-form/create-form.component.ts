@@ -46,7 +46,10 @@ export class CreateFormComponent implements OnInit {
   onCallBackData = () => { }
 
   onClickButton = (i) => {
-    this.callback.emit(i);
+    this.callback.emit({
+      item: this.model,
+      btn: i
+    });
   }
   incomingfile(event) {
     let fileReader = new FileReader();
@@ -63,9 +66,6 @@ export class CreateFormComponent implements OnInit {
       this.dataImport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       this.callback.emit(this.dataImport);
       console.log(this.dataImport);
-      
-       console.table(this.dataImport);
-       
     }
     fileReader.readAsArrayBuffer(this.file);
   }
