@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/VT-HTBH-Admin",
+    "public": "dist/erp-billgate-admin",
     "ignore": [
       "firebase.json",
       "**/.*",
