@@ -17,6 +17,7 @@ export class ScheduleListComponent implements OnInit {
   ) { }
   fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   fileExtension = '.xlsx';
+  checkActiveInput = false;
   dataSchedule = [
     {
       "LessonId": 1,
@@ -32,7 +33,7 @@ export class ScheduleListComponent implements OnInit {
         {
           "DayId": 2,
           "DayName": "thứ 3",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 2,
           "TeacherName": "Lê Chí Trung"
         },
@@ -46,7 +47,7 @@ export class ScheduleListComponent implements OnInit {
         {
           "DayId": 4,
           "DayName": "thứ 5",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 2,
           "TeacherName": "Lê Chí Trung"
         },
@@ -73,42 +74,42 @@ export class ScheduleListComponent implements OnInit {
         {
           "DayId": 1,
           "DayName": "thứ 2",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 1,
           "TeacherName": "Lê Chí Trung"
         },
         {
           "DayId": 2,
           "DayName": "thứ 3",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 2,
           "TeacherName": "Lê Chí Trung"
         },
         {
           "DayId": 3,
           "DayName": "thứ 4",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 1,
           "TeacherName": "Lê Chí Trung"
         },
         {
           "DayId": 4,
           "DayName": "thứ 5",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 2,
           "TeacherName": "Lê Chí Trung"
         },
         {
           "DayId": 5,
           "DayName": "thứ 6",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 1,
           "TeacherName": "Lê Chí Trung"
         },
         {
           "DayId": 6,
           "DayName": "thứ 7",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 2,
           "TeacherName": "Lê Chí Trung"
         }
@@ -121,7 +122,7 @@ export class ScheduleListComponent implements OnInit {
         {
           "DayId": 1,
           "DayName": "thứ 2",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 1,
           "TeacherName": "Lê Chí Trung"
         },
@@ -135,28 +136,28 @@ export class ScheduleListComponent implements OnInit {
         {
           "DayId": 3,
           "DayName": "thứ 4",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 1,
           "TeacherName": "Lê Chí Trung"
         },
         {
           "DayId": 5,
           "DayName": "thứ 5",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 2,
           "TeacherName": "Lê Chí Trung"
         },
         {
           "DayId": 6,
           "DayName": "thứ 6",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 1,
           "TeacherName": "Lê Chí Trung"
         },
         {
           "DayId": 7,
           "DayName": "thứ 7",
-          "SubjectName": "Vật lý 10",
+          "SubjectName": "Vật lý",
           "SubjectId": 2,
           "TeacherName": "Lê Chí Trung"
         }
@@ -217,6 +218,19 @@ export class ScheduleListComponent implements OnInit {
     window.onbeforeunload = function () {
       return 'Are you sure you want to leave?';
     };
+    this.dataSchedule.forEach(x => {
+      x.ListSubjects = x.ListSubjects.map(x => {
+        return {
+          DayId: x.DayId,
+          DayName: x.DayName,
+          SubjectName: x.SubjectName,
+          SubjectId: x.SubjectId,
+          TeacherName: x.TeacherName,
+          checkTeacher: false,
+          checkSubject: false,
+        }
+      })
+    }) 
   }
 
   onChange(value, item) {
@@ -227,8 +241,8 @@ export class ScheduleListComponent implements OnInit {
       width: '800px',
       height: '500px'
     }).afterClosed().subscribe(result => {
-      this.dataExport = result.item.listData;
-      if(result){
+      if(result !== null){
+        this.dataExport = result.item.listData;
         this.dataSchedule = result.item.listData.map(x => {
           return {
             "LessonId": x['Tiết'],
@@ -276,8 +290,9 @@ export class ScheduleListComponent implements OnInit {
             ]
           }
         })
+        console.log(this.dataSchedule);
       }
-      console.log(this.dataSchedule);
+
     });
   }
   exportExcel(data, fileName) {

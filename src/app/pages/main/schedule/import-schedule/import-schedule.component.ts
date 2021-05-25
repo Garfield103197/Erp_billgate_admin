@@ -36,9 +36,13 @@ export class ImportScheduleComponent implements OnInit {
       this.listCreate = this.conFig.create;
   }
   handleCallbackEvent(ev) {
-    console.log(ev);
-    
-      this.dialoRef.close(ev);
+      if(ev.btn.class === 'btn-cancel'){
+        this.dialoRef.close(null);
+      }
+      else{
+        this.dialoRef.close(ev)
+      }
+ 
        
   }
 }

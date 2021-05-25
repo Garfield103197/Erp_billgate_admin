@@ -36,27 +36,22 @@
           <td>{{ i.LessonId }}</td>
           <td *ngFor="let item of i.ListSubjects">
             <p *ngIf="item.SubjectName === 'Chào cờ'">{{ item.SubjectName }}</p>
-            <div
-              class="listSubject"
-              *ngIf="
+            <div class="listSubject" *ngIf="
                 item.SubjectName !== 'Chào cờ' &&
                 item.SubjectName !== null &&
                 item.TeacherName !== null
-              "
-            >
-              <Select
-                class="selected"
-                [(ngModel)]="item.SubjectName" ngDefaultControl
-              >
-                <option
-                  *ngFor="let subject of listSubject"
-                  [value]="subject.SubjectName"
-                >
+              ">
+              <Select class="selected" [(ngModel)]="item.SubjectName" ngDefaultControl>
+                <option *ngFor="let subject of listSubject" [value]="subject.SubjectName">
                   {{ subject.SubjectName }}
                 </option>
               </Select>
-              <input class="active-input" type="text" (click)="onClick()" [(ngModel)]="item.TeacherName">
-              <input class="active-input" type="text" [(ngModel)]="item.ClassRoom">
+              <input [readonly]="!item.checkTeacher" [ngClass]="item.checkTeacher ? 'active-input' : ''" type="text"
+                (click)="item.checkTeacher = true" (keyup.enter)="item.checkTeacher = false"
+                [(ngModel)]="item.TeacherName">
+              <input [readonly]="!item.checkSubject" [ngClass]="item.checkSubject ? 'active-input' : ''" type="text"
+                (click)="item.checkSubject = true" (keyup.enter)="item.checkSubject = false"
+                [(ngModel)]="item.ClassRoom">
             </div>
           </td>
         </tr>
