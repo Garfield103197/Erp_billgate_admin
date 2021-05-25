@@ -4,7 +4,7 @@ import { MemberModel } from 'src/app/models/member.model';
 import { News } from 'src/app/models/news.model';
 import { CreateMemberComponent } from '../create-member/create-member.component';
 import { EditMemberComponent } from '../edit-member/edit-member.component';
-
+import * as XLSX from 'xlsx';
 @Component({
     selector: 'app-member-detail',
     templateUrl: './member-detail.component.html',
@@ -46,7 +46,9 @@ export class MemberDetailComponent implements OnInit {
 
 
     ];
-
+    file: File;
+    arrayBuffer;
+    dataImport: any[];
     constructor(
         private dialog: MatDialog
     ) { }
@@ -55,6 +57,24 @@ export class MemberDetailComponent implements OnInit {
         this.tableData = this.config.collums;
         this.listActive = this.config.btnActice; 
     }
+    incomingfile(event) {
+        let fileReader = new FileReader();
+        this.file = event.target.files[0];
+        fileReader.onload = (e) => {
+          this.arrayBuffer = fileReader.result;
+          var data = new Uint8Array(this.arrayBuffer);
+          var arr = new Array();
+          for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+          var bstr = arr.join("");
+          var workbook = XLSX.read(bstr, { type: "binary" });
+          var first_sheet_name = workbook.SheetNames[0];
+          var worksheet = workbook.Sheets[first_sheet_name];
+          this.dataImport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+          console.log(this.dataImport);
+          
+        }
+        fileReader.readAsArrayBuffer(this.file);
+      }
 
     handleTableCallback(ev) {
         console.log(ev);
@@ -74,7 +94,9 @@ export class MemberDetailComponent implements OnInit {
             }).afterClosed().subscribe(result => {
             });
           }
-
+          if (ev.type === 'upload') {
+            
+          }
 
     }
 }

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ImportScheduleComponent } from '../import-schedule/import-schedule.component';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
+import { ExportFileExcelService } from 'src/app/services/export-file-excel.service';
 @Component({
   selector: 'app-schedule-list',
   templateUrl: './schedule-list.component.html',
@@ -11,7 +12,8 @@ import * as FileSaver from 'file-saver';
 export class ScheduleListComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private exportService: ExportFileExcelService
   ) { }
   fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   fileExtension = '.xlsx';
@@ -210,12 +212,13 @@ export class ScheduleListComponent implements OnInit {
       "TeacherName": "Lê Chí Trung"
     },
   ]
-
+  dataExport = [];
   ngOnInit(): void {
-    window.onbeforeunload = function(){
+    window.onbeforeunload = function () {
       return 'Are you sure you want to leave?';
     };
   }
+
   onChange(value, item) {
     item.SubjectName = value;
   }
@@ -224,69 +227,61 @@ export class ScheduleListComponent implements OnInit {
       width: '800px',
       height: '500px'
     }).afterClosed().subscribe(result => {
-      this.dataSchedule = result.map(x => {
-        return {
-          "LessonId": x['Tiết'],
-          "ListSubjects": [
-            {
-
-              "DayName": "Thứ 2",
-              "SubjectName": x['Thứ 2'],
-              "TeacherName": x['__EMPTY_1'],
-              "ClassRoom": x['__EMPTY']
-            },
-            {
-
-              "DayName": "Thứ 3",
-              "SubjectName": x['Thứ 3'],
-              "TeacherName": x['__EMPTY_3'],
-              "ClassRoom": x['__EMPTY_2']
-            },
-            {
-
-              "DayName": "Thứ 4",
-              "SubjectName": x['Thứ 4'],
-              "TeacherName": x['__EMPTY_5'],
-              "ClassRoom": x['__EMPTY_4']
-            },
-            {
-
-              "DayName": "Thứ 5",
-              "SubjectName": x['Thứ 5'],
-              "TeacherName": x['__EMPTY_7'],
-              "ClassRoom": x['__EMPTY_6']
-            },
-            {
-
-              "DayName": "Thứ 6",
-              "SubjectName": x['Thứ 6'],
-              "TeacherName": x['__EMPTY_9'],
-              "ClassRoom": x['__EMPTY_8']
-            },
-            {
-
-              "DayName": "Thứ 7",
-              "SubjectName": x['Thứ 7'],
-              "TeacherName": x['__EMPTY_11'],
-              "ClassRoom": x['__EMPTY_10']
-            }
-          ]
-        }
-      })
+      this.dataExport = result.item.listData;
+      if(result){
+        this.dataSchedule = result.item.listData.map(x => {
+          return {
+            "LessonId": x['Tiết'],
+            "ListSubjects": [
+              {
+                "DayName": "Thứ 2",
+                "SubjectName": x['Thứ 2'] || null,
+                "TeacherName": x['__EMPTY_1'] || null,
+                "ClassRoom": x['__EMPTY'] || null
+              },
+              {
+                "DayName": "Thứ 3",
+                "SubjectName": x['Thứ 3'] || null,
+                "TeacherName": x['__EMPTY_3'] || null,
+                "ClassRoom": x['__EMPTY_2'] || null
+              },
+              {
+  
+                "DayName": "Thứ 4",
+                "SubjectName": x['Thứ 4'] || null,
+                "TeacherName": x['__EMPTY_5'] || null,
+                "ClassRoom": x['__EMPTY_4'] || null
+              },
+              {
+  
+                "DayName": "Thứ 5",
+                "SubjectName": x['Thứ 5'] || null,
+                "TeacherName": x['__EMPTY_7'] || null,
+                "ClassRoom": x['__EMPTY_6'] || null
+              },
+              {
+  
+                "DayName": "Thứ 6",
+                "SubjectName": x['Thứ 6'] || null,
+                "TeacherName": x['__EMPTY_9'] || null,
+                "ClassRoom": x['__EMPTY_8'] || null
+              },
+              {
+  
+                "DayName": "Thứ 7",
+                "SubjectName": x['Thứ 7'] || null,
+                "TeacherName": x['__EMPTY_11'] || null,
+                "ClassRoom": x['__EMPTY_10'] || null
+              }
+            ]
+          }
+        })
+      }
       console.log(this.dataSchedule);
-      
     });
   }
-  public exportExcel(jsonData: any[], fileName: string): void {
+  exportExcel(data, fileName) {
+    this.exportService.exportExcel(data, fileName);
+  }
 
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(jsonData);
-    const wb: XLSX.WorkBook = { Sheets: { 'data': ws }, SheetNames: ['data'] };
-    const excelBuffer: any = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-    this.saveExcelFile(excelBuffer, fileName);
-  }
-  
-  private saveExcelFile(buffer: any, fileName: string): void {
-    const data: Blob = new Blob([buffer], {type: this.fileType});
-    FileSaver.saveAs(data, fileName + this.fileExtension);
-  }
 }

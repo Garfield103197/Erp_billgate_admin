@@ -6,7 +6,7 @@
       <button class="btn-schedule">
         <img src="assets/svg/icon-save.svg" alt="" srcset="" />Lưu
       </button>
-      <button class="btn-schedule" (click)="file.click()">
+      <button class="btn-schedule" (click)="ImportFile()">
         <img src="assets/svg/icon-upload.svg" />Nhập
       </button>
       <input #file hidden type="file" multiple="false" (change)="incomingfile($event)" />
@@ -37,7 +37,7 @@
             Món chính
           </td>
           <td *ngFor="let day of listDay">
-            {{ item[day.Day]}}
+            {{ item[day.Day] || item[day.DayValue]}}
           </td>
         </tr>
         <tr *ngFor="let item of listMenuSub; let first = first"> 
@@ -45,7 +45,7 @@
             Món Phụ
           </td>
           <td *ngFor="let day of listDay">
-            {{ item[day.Day]}}
+            {{ item[day.Day] || item[day.DayValue]}}
           </td>
         </tr>
       </tbody>

@@ -9,13 +9,14 @@ import { MenuComponent } from "./menu.component";
 import { menuRoute } from "./menu.routes";
 import { ListMenuComponent } from './list-menu/list-menu.component';
 import { EditDishComponent } from './edit-dish/edit-dish.component';
+import { ImportExcelComponent } from './import-excel/import-excel.component';
 
 
 
 
 
 @NgModule({
-    declarations: [MenuComponent, GroupMenuComponent, ListMenuComponent, EditDishComponent],
+    declarations: [MenuComponent, GroupMenuComponent, ListMenuComponent, EditDishComponent, ImportExcelComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(menuRoute),

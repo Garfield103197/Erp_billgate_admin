@@ -10,16 +10,17 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./create-form.component.scss']
 })
 export class CreateFormComponent implements OnInit {
-  @HostListener('window:beforeunload', ['$event'])
-  doSomething($event) {
-     $event.returnValue='Your data will be lost!';
-  }
+  // @HostListener('window:beforeunload', ['$event'])
+  // doSomething($event) {
+  //    $event.returnValue='Your data will be lost!';
+  // }
   @Input() data: any;
   @Input() option: any;
   @Input() arrayButton: any;
   @Input() dataModel?: any;
+  @Input() checkFile?: any;
   @Output() callback = new EventEmitter<any>();
-
+  fileImport: any  = {};
   html: '';
   model: any = {};
   imagePath;
@@ -33,8 +34,11 @@ export class CreateFormComponent implements OnInit {
 
   ngOnInit() {
     this.model = this.dataModel || {};
+    this.fileImport = this.checkFile || {};
   }
-
+  fileDownload(url) {
+    document.location.href = url;
+  }
   preview(files) {
     if (files.length === 0)
       return;
@@ -58,20 +62,22 @@ export class CreateFormComponent implements OnInit {
   incomingfile(event) {
     let fileReader = new FileReader();
     this.file = event.target.files[0];
-    fileReader.onload = (e) => {
-      this.arrayBuffer = fileReader.result;
-      var data = new Uint8Array(this.arrayBuffer);
-      var arr = new Array();
-      for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-      var bstr = arr.join("");
-      var workbook = XLSX.read(bstr, { type: "binary" });
-      var first_sheet_name = workbook.SheetNames[0];
-      var worksheet = workbook.Sheets[first_sheet_name];
-      this.dataImport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
-      this.callback.emit(this.dataImport);
-      console.log(this.dataImport);
+    if(this.file){
+      fileReader.onload = (e) => {
+        this.arrayBuffer = fileReader.result;
+        var data = new Uint8Array(this.arrayBuffer);
+        var arr = new Array();
+        for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+        var bstr = arr.join("");
+        var workbook = XLSX.read(bstr, { type: "binary" });
+        var first_sheet_name = workbook.SheetNames[0];
+        var worksheet = workbook.Sheets[first_sheet_name];
+        this.dataImport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+        this.model.listData = this.dataImport;
+      }
+      fileReader.readAsArrayBuffer(this.file);
     }
-    fileReader.readAsArrayBuffer(this.file);
+    
   }
 }
 

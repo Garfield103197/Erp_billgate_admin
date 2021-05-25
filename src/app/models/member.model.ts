@@ -129,6 +129,18 @@ export class MemberModel {
                 text: '+  Thêm',
                 type: 'create',
                 icon: ''
+            },
+            {
+                class: 'btn-save',
+                text: 'Lưu',
+                type: 'save',
+                icon: 'assets/svg/icon-save.svg'
+            },
+            {
+                class: 'btn-upload',
+                text: 'Nhập',
+                type: 'upload',
+                icon: 'assets/svg/icon-upload.svg',
             }
         ];
     }

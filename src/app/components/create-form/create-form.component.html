@@ -69,9 +69,14 @@
           <mat-radio-button value="2">Nữ</mat-radio-button>
         </mat-radio-group>
       </div>
+     
       <div *ngIf="item.type === 'checkbox'">123</div>
     </div>
+   
   </div>
+  <div class="download" *ngIf="fileImport.type === 'schedule' || fileImport.type === 'menu' || fileImport.type === 'student'">
+    <a (click)="fileDownload(fileImport.Url)">Tải file mẫu</a>
+</div>
   <div class="group-btn">
     <button
       *ngFor="let i of arrayButton; let index = index"

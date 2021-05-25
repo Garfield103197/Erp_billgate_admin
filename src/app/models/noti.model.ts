@@ -87,10 +87,10 @@ export class Notification{
                 icon: ''
             },
             {
-                class: 'btn-noti',
+                class: 'btn-save',
                 text: 'Thông báo hệ thống',
                 type: 'noti',
-                icon: ''
+                icon: 'assets/svg/icon-noti-system.svg'
             }
         ];
     }

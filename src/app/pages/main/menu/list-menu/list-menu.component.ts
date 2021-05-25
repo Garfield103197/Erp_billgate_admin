@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ImportScheduleComponent } from '../../schedule/import-schedule/import-schedule.component';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
+import { ImportExcelComponent } from '../import-excel/import-excel.component';
 @Component({
   selector: 'app-list-menu',
   templateUrl: './list-menu.component.html',
@@ -26,21 +27,27 @@ export class ListMenuComponent implements OnInit {
   listDay = [
     {
       Day: "Thứ hai",
+      DayValue: "DayValue1"
     },
     {
       Day: "Thứ ba",
+      DayValue: "DayValue2"
     },
     {
       Day: "Thứ tư",
+      DayValue: "DayValue3"
     },
     {
       Day: "Thứ năm",
+      DayValue: "DayValue4"
     },
     {
       Day: "Thứ sáu",
+      DayValue: "DayValue5"
     },
     {
       Day: "Thứ bảy",
+      DayValue: "DayValue6"
     }
   ];
 
@@ -59,6 +66,18 @@ export class ListMenuComponent implements OnInit {
     const data: Blob = new Blob([buffer], { type: this.fileType });
     FileSaver.saveAs(data, fileName + this.fileExtension);
   }
+
+  ImportFile(){
+    return this.dialog.open(ImportExcelComponent, {
+      width: '800px',
+      height: '500px'
+    }).afterClosed().subscribe(result => {
+        if(result){
+          this.handleData(result.item.listData);
+        }
+    })
+  }
+
   incomingfile(event) {
     let fileReader = new FileReader();
     this.file = event.target.files[0];
@@ -74,17 +93,43 @@ export class ListMenuComponent implements OnInit {
       this.dataImport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       this.dataExport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       console.log(this.dataExport);
-      
+
       this.handleData(this.dataImport);
     }
     fileReader.readAsArrayBuffer(this.file);
   }
-  handleData(data){
-    console.table(data);
-    this.index = data.findIndex(x => x['Món'] === "Món phụ");
-    this.listMenuMain = data.splice(0, this.index);
-    this.listMenuSub = data;
+  handleData(data) {
+    this.index = data.findIndex(x => x['Món']  === "Món phụ");
+    this.listMenuMain = data.splice(0, this.index).map(x => {
+      return {
+        Type: 1,
+        DayValue1: x['Thứ hai'] || null,
+        DayValue2: x['Thứ ba'] || null,
+        DayValue3: x['Thứ tư'] || null,
+        DayValue4: x['Thứ năm'] || null,
+        DayValue5: x['Thứ sáu'] || null,
+        DayValue6: x['Thứ bảy'] || null,
+      }
+    });
+    this.listMenuSub = data.map(x => {
+      return {
+        Type: 2,
+        DayValue1: x['Thứ hai'] || null,
+        DayValue2: x['Thứ ba'] || null,
+        DayValue3: x['Thứ tư'] || null,
+        DayValue4: x['Thứ năm'] || null,
+        DayValue5: x['Thứ sáu'] || null,
+        DayValue6: x['Thứ bảy'] || null,
+      }
+    });
+    let model = {
+      "SchoolLevelId": 2,
+      "StartDate": "2021-05-22",
+      "DishMenuList" : this.listMenuMain.concat(this.listMenuSub)
+    }
+    console.log(model);
+    
   }
 
-  
+
 }

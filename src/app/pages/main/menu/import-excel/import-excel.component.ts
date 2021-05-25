@@ -3,23 +3,23 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ScheduleModel } from 'src/app/models/schedule.model';
 
 @Component({
-  selector: 'app-import-schedule',
-  templateUrl: './import-schedule.component.html',
-  styleUrls: ['./import-schedule.component.scss']
+  selector: 'app-import-excel',
+  templateUrl: './import-excel.component.html',
+  styleUrls: ['./import-excel.component.scss']
 })
-export class ImportScheduleComponent implements OnInit {
+export class ImportExcelComponent implements OnInit {
 
   constructor(
-    public dialoRef: MatDialogRef<ImportScheduleComponent>,
+    public dialoRef: MatDialogRef<ImportExcelComponent>,
   ) { }
   conFig = new ScheduleModel;
   dataModel = {};
   checkFile = {
-    type: 'schedule',
-    Url: 'assets/files/schedule.xlsx'
+    type: 'menu',
+    Url: 'assets/files/menu-table.xlsx'
   }
   option = {
-    title: 'Import Thời khoá biểu',
+    title: 'Import thực đơn',
     type: 'create'
   };
 
