@@ -155,8 +155,8 @@
 
 .nav-menu-active-icon {
   img {
-    filter: invert(99%) sepia(18%) saturate(4618%) hue-rotate(305deg) brightness(94%) contrast(102%);
- 
+    filter: invert(99%) sepia(18%) saturate(4618%) hue-rotate(305deg)
+      brightness(94%) contrast(102%);
   }
 }
 
@@ -225,22 +225,23 @@
   font-weight: 600;
 }
 
-
 // ---- Style table base -------
 .data-table {
   min-width: 100%;
   text-align: center;
+  font-size: 16px;
   thead {
-    background-color: #708AC5;
+    background-color: #708ac5;
     color: white;
     font-weight: 500;
-    border-radius: 10px;
+    // border-radius: 10px;
     tr {
-      background-color: #708AC5;
-      height: 60px;
+      background-color: #708ac5;
+      height: 45px;
     }
     th {
-      background-color: #708AC5;
+      background-color: #708ac5;
+      min-width: 75px;
     }
     th:not(:last-child) {
       .content {
@@ -253,18 +254,18 @@
     }
   }
   th:nth-child(1) {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    // border-top-left-radius: 10px;
+    // border-bottom-left-radius: 10px;
   }
   th:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    // border-top-right-radius: 10px;
+    // border-bottom-right-radius: 10px;
   }
   tbody {
     height: 65px;
     tr {
       height: 65px;
-      
+
       td {
         .data-content {
           height: 100%;
@@ -272,8 +273,8 @@
           flex-direction: row;
           justify-content: center;
           align-items: center;
-          white-space: nowrap; 
-          text-overflow: ellipsis; 
+          white-space: nowrap;
+          text-overflow: ellipsis;
           margin: auto;
         }
       }
@@ -285,12 +286,12 @@
 }
 
 // ---- button -----
-.btn-create{
+.btn-create {
   width: 100px;
   height: 40px;
-  color: #1894FF;
+  color: #1894ff;
   background-color: #ffffff;
   border-radius: 10px;
-  border: 1px solid #1894FF;
+  border: 1px solid #1894ff;
   cursor: pointer;
 }

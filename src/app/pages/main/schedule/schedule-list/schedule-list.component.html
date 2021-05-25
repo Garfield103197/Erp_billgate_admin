@@ -55,8 +55,8 @@
                   {{ subject.SubjectName }}
                 </option>
               </Select>
-              <input type="text" [(ngModel)]="item.TeacherName">
-              <input type="text" [(ngModel)]="item.ClassRoom">
+              <input class="active-input" type="text" (click)="onClick()" [(ngModel)]="item.TeacherName">
+              <input class="active-input" type="text" [(ngModel)]="item.ClassRoom">
             </div>
           </td>
         </tr>
