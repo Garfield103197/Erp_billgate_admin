@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 
 @Component({
   selector: 'app-group-menu',
@@ -9,52 +10,65 @@ import { Router } from '@angular/router';
 export class GroupMenuComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private schoolGradeLevelService: SchoolGradeLevelService
   ) { }
   list1 = [
     {
-      header: 'Nhà trường',
-      group: '3 nhóm',
-      member: '3 thành viên',
+      Name: 'Nhà trường',
+      ClassCount: '3 nhóm',
+      StudentCount: '3 thành viên',
       id: 1,
+      SchoolLevelId: 1
     },
   ]
 
   list2 = [
     {
-      header: 'Pre-school',
-      group: '10 lớp',
-      member: '140 thành viên',
+      Name: 'Pre-school',
+      ClassCount: '10 lớp',
+      StudentCount: '140 thành viên',
       id: 2,
+      SchoolLevelId: 1
     },
   ]
 
   list3 = [
     {
-      header: 'Tiểu học ',
-      group: '10 lớp',
-      member: '300 thành viên',
+      Name: 'Tiểu học ',
+      ClassCount: '10 lớp',
+      StudentCount: '300 thành viên',
       id: 3,
+      SchoolLevelId: 1
 
     },
     {
-      header: 'THCS',
-      group: '10 lớp',
-      member: '300 thành viên',
+      Name: 'THCS',
+      ClassCount: '10 lớp',
+      StudentCount: '300 thành viên',
       id: 4,
+      SchoolLevelId: 1
     },
     {
-      header: 'THPT',
-      group: '10 lớp',
-      member: '300 thành viên',
+      Name: 'THPT',
+      ClassCount: '10 lớp',
+      StudentCount: '300 thành viên',
       id: 5,
-
+      SchoolLevelId: 1
     },
   ]
-
+  listLevelSchool: any = [];
   ngOnInit(): void {
+    this.getListLevel();
+  }
+  getListLevel(){
+    this.schoolGradeLevelService.getListLevel().subscribe(res => {
+      this.listLevelSchool = res;
+      console.log(res);
+      
+    })
   }
   routerTo(ev) {
-    this.router.navigateByUrl("/main/menu/list-menu");
+    this.router.navigateByUrl(`/main/menu/list-menu/level/${ev.SchoolLevelId}`);
   }
 }

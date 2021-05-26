@@ -5,6 +5,8 @@ import { News } from 'src/app/models/news.model';
 import { CreateMemberComponent } from '../create-member/create-member.component';
 import { EditMemberComponent } from '../edit-member/edit-member.component';
 import * as XLSX from 'xlsx';
+import { ActivatedRoute } from '@angular/router';
+import { MemberService } from 'src/app/services/member.service';
 @Component({
     selector: 'app-member-detail',
     templateUrl: './member-detail.component.html',
@@ -49,13 +51,24 @@ export class MemberDetailComponent implements OnInit {
     file: File;
     arrayBuffer;
     dataImport: any[];
+    classId: number;
     constructor(
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private activeRouter: ActivatedRoute,
+        private memberService: MemberService
     ) { }
 
     ngOnInit(): void {
-        this.tableData = this.config.collums;
-        this.listActive = this.config.btnActice; 
+      const classId = this.activeRouter.snapshot.params.classId;
+      this.getListStudentOfClass(classId);
+      this.tableData = this.config.collums;
+      this.listActive = this.config.btnActice; 
+    }
+    getListStudentOfClass(classId){
+        this.memberService.getListStudentClass(classId).subscribe(res => {
+          this.data = res;
+          console.log(res);
+        })
     }
     incomingfile(event) {
         let fileReader = new FileReader();

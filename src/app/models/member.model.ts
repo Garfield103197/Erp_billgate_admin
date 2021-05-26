@@ -15,7 +15,7 @@ export class MemberModel {
                 type: 'text'
             },
             {
-                id: 'FullName',
+                id: 'LastName',
                 name: 'Họ và tên',
                 width: 200,
                 type: 'text',
@@ -28,7 +28,7 @@ export class MemberModel {
             },
 
             {
-                id: 'Gender',
+                id: 'GenderString',
                 name: 'Giới tính',
                 width: 50,
                 type: 'text',
@@ -52,7 +52,7 @@ export class MemberModel {
                 type: 'text',
             },
             {
-                id: 'Address',
+                id: 'LocationAddress',
                 name: 'Địa chỉ',
                 width: 300,
                 type: 'text',
@@ -69,9 +69,9 @@ export class MemberModel {
     public get create(): Array<CreateModel> {
         return [
             {
-                id: 'FullName',
+                id: 'LastName',
                 label: 'Họ và tên',
-                name: 'FullName',
+                name: 'LastName',
                 type: 'text'
             },
             {
@@ -87,9 +87,9 @@ export class MemberModel {
                 type: 'date',
             },
             {
-                id: 'Gender',
+                id: 'GenderString',
                 label: 'Giới tính',
-                name: 'Gender',
+                name: 'GenderString',
                 type: 'selected',
                 data: [
                     {
@@ -108,15 +108,15 @@ export class MemberModel {
                 name: 'ClassName',
                 type: 'text'
             },            {
-                id: 'StudentId',
+                id: 'Code',
                 label: 'Mã học sinh',
-                name: 'StudentCode',
+                name: 'Code',
                 type: 'text'
             },
             {
-                id: 'Address',
+                id: 'LocationAddress',
                 label: 'Địa chỉ',
-                name: 'Address',
+                name: 'LocationAddress',
                 type: 'textarea'
             }
 

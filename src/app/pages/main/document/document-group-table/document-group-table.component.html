@@ -1,1 +1,12 @@
-<p>document-group-table works!</p>
+<div class="member-detail">
+    <div class="title">
+        TÀI LIỆU
+    </div>
+    <br>
+    <app-table
+        [data]="data"
+        [tableData]="tableData"
+        [listActive]="listActive"
+        (callback)="handleTableCallback($event)"
+    ></app-table>
+</div>

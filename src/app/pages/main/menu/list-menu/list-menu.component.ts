@@ -67,14 +67,14 @@ export class ListMenuComponent implements OnInit {
     FileSaver.saveAs(data, fileName + this.fileExtension);
   }
 
-  ImportFile(){
+  ImportFile() {
     return this.dialog.open(ImportExcelComponent, {
       width: '800px',
       height: '500px'
     }).afterClosed().subscribe(result => {
-        if(result){
-          this.handleData(result.item.listData);
-        }
+      if (result) {
+        this.handleData(result.item.listData);
+      }
     })
   }
 
@@ -99,36 +99,39 @@ export class ListMenuComponent implements OnInit {
     fileReader.readAsArrayBuffer(this.file);
   }
   handleData(data) {
-    this.index = data.findIndex(x => x['Món']  === "Món phụ");
-    this.listMenuMain = data.splice(0, this.index).map(x => {
-      return {
-        Type: 1,
-        DayValue1: x['Thứ hai'] || null,
-        DayValue2: x['Thứ ba'] || null,
-        DayValue3: x['Thứ tư'] || null,
-        DayValue4: x['Thứ năm'] || null,
-        DayValue5: x['Thứ sáu'] || null,
-        DayValue6: x['Thứ bảy'] || null,
-      }
-    });
-    this.listMenuSub = data.map(x => {
-      return {
-        Type: 2,
-        DayValue1: x['Thứ hai'] || null,
-        DayValue2: x['Thứ ba'] || null,
-        DayValue3: x['Thứ tư'] || null,
-        DayValue4: x['Thứ năm'] || null,
-        DayValue5: x['Thứ sáu'] || null,
-        DayValue6: x['Thứ bảy'] || null,
-      }
-    });
+    this.index = data.findIndex(x => x['Món'] === "Món phụ");
+    if (this.index > 0) {
+      this.listMenuMain = data.splice(0, this.index).map(x => {
+        return {
+          Type: 1,
+          DayValue1: x['Thứ hai'] || null,
+          DayValue2: x['Thứ ba'] || null,
+          DayValue3: x['Thứ tư'] || null,
+          DayValue4: x['Thứ năm'] || null,
+          DayValue5: x['Thứ sáu'] || null,
+          DayValue6: x['Thứ bảy'] || null,
+        }
+      });
+      this.listMenuSub = data.map(x => {
+        return {
+          Type: 2,
+          DayValue1: x['Thứ hai'] || null,
+          DayValue2: x['Thứ ba'] || null,
+          DayValue3: x['Thứ tư'] || null,
+          DayValue4: x['Thứ năm'] || null,
+          DayValue5: x['Thứ sáu'] || null,
+          DayValue6: x['Thứ bảy'] || null,
+        }
+      });
+    }
+
     let model = {
       "SchoolLevelId": 2,
       "StartDate": "2021-05-22",
-      "DishMenuList" : this.listMenuMain.concat(this.listMenuSub)
+      "DishMenuList": this.listMenuMain.concat(this.listMenuSub)
     }
     console.log(model);
-    
+
   }
 
 

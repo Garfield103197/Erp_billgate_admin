@@ -1,23 +1,10 @@
-<div class="member-home">
-  <h4>THỐNG BÁO HỆ THỐNG</h4>
-  <app-base-card
-    [dataCard]="list1"
-    routerLink="/main/notification/system-list-detail"
-  >
-  </app-base-card>
-  <app-base-card
-    [dataCard]="list2"
-    routerLink="/main/notification/system-list-detail"
-  >
-  </app-base-card>
-  <app-base-card
-    [dataCard]="list3"
-    routerLink="/main/notification/system-list-detail"
-  >
-  </app-base-card>
+<div class="notification">
+  <div class="title">THỐNG BÁO HỆ THỐNG</div>
+  <br>
   <app-base-card
     [dataCard]="highSchool"
-    routerLink="/main/notification/system-list-detail"
+    (callback)="callback($event)"
   >
   </app-base-card>
+  
 </div>

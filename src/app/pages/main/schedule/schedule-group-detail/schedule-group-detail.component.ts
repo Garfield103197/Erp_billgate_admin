@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ScheduleService } from 'src/app/services/schedule.service';
 
 @Component({
   selector: 'app-schedule-group-detail',
@@ -7,25 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScheduleGroupDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private scheduleService: ScheduleService,
+    private router: Router
+  ) { }
   listClass = [
     {
-      header: 'Lớp 6A1',
-      group: '3 lớp',
-      member: '30 thành viên'
+      Name: 'Lớp 6A1',
+      ClassCount: '3 lớp',
+      StudentCount: '30 thành viên',
+      ClassId: 1,
+
     },
     {
-      header: 'Lớp 6A2',
-      group: '3 lớp',
-      member: '30 thành viên'
+      Name: 'Lớp 6A2',
+      ClassCount: '3 lớp',
+      StudentCount: '30 thành viên',
+      ClassId: 2,
     },
     {
-      header: 'Lớp 6A3',
-      group: '3 lớp',
-      member: '30 thành viên'
+      Name: 'Lớp 6A3',
+      ClassCount: '3 lớp',
+      StudentCount: '30 thành viên',
+      ClassId: 3,
     },
   ]
   ngOnInit(): void {
   }
-
+  callback(ev){
+     this.router.navigateByUrl(`/main/schedule/schedule-list/class/${ev.ClassId}`)
+  }
 }

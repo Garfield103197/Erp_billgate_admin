@@ -11,21 +11,21 @@ export const documentRoute: Routes = [
         component: DocumentComponent,
         children: [
             {
-                path: 'document-group',
+                path: 'list-grade',
                 component: DocumentGroupComponent,
             },
             {
-                path: 'document-group-detail',
+                path: 'list-class/:gradeId',
                 component: DocumentGroupDetailComponent,
             },
             {
-                path: 'document-group-table',
+                path: 'list-document/class/:classId',
                 component: DocumentGroupTableComponent,
 
             },
             {
                 path: '',
-                redirectTo: 'document-group',
+                redirectTo: 'list-grade',
                 pathMatch: 'full'
             }
         ]

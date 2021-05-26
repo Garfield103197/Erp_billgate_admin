@@ -30,7 +30,7 @@
         />
       </div>
       <div *ngIf="item.type === 'upload'">
-        <input type="file" multiple="false" (change)="incomingfile($event)" />
+        <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" multiple="false" (change)="incomingfile($event)" />
       </div>
       <div *ngIf="item.type === 'textarea'">
         <textarea

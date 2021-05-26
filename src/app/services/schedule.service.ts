@@ -10,9 +10,9 @@ export class ScheduleService {
   constructor(private http: HttpClient) { }
 
   getScheduleOfClass(classId, startDate){
-    return this.http.get(`api/TimeTableLesson?ClassId=${classId}&StartDate=${startDate}`).pipe(map((res: any) => res));
+    return this.http.get(`api/TimeTableLesson?ClassId=${classId}&StartDate=${startDate}`).pipe(map((res: any) => res.Payload));
   }
   uploadTimeTableLesson(data){
-    return this.http.post('api/TimeTableLesson/upload', data).pipe(map((res: any) => res));
+    return this.http.post('api/TimeTableLesson/upload', data).pipe(map((res: any) => res.Payload));
   }
 }

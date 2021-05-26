@@ -14,11 +14,11 @@ export const scheduleRoute: Routes = [
                 component: ScheduleGroupComponent,
             },
             {
-                path: 'schedule-group-detail',
+                path: 'class/:gradeId',
                 component: ScheduleGroupDetailComponent,
             },
             {
-                path: 'schedule-list',
+                path: 'schedule-list/class/:classId',
                 component: ScheduleListComponent,
             },
             {

@@ -37,9 +37,7 @@
           <td *ngFor="let item of i.ListSubjects">
             <p *ngIf="item.SubjectName === 'Chào cờ'">{{ item.SubjectName }}</p>
             <div class="listSubject" *ngIf="
-                item.SubjectName !== 'Chào cờ' &&
-                item.SubjectName !== null &&
-                item.TeacherName !== null
+                item.SubjectName !== 'Chào cờ'
               ">
               <Select class="selected" [(ngModel)]="item.SubjectName" ngDefaultControl>
                 <option *ngFor="let subject of listSubject" [value]="subject.SubjectName">

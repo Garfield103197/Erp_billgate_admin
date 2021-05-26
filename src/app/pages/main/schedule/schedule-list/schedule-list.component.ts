@@ -239,7 +239,8 @@ export class ScheduleListComponent implements OnInit {
   upload() {
     return this.dialog.open(ImportScheduleComponent, {
       width: '800px',
-      height: '500px'
+      height: '500px',
+      disableClose: true
     }).afterClosed().subscribe(result => {
       if(result !== null){
         this.dataExport = result.item.listData;

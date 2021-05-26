@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-schedule-group',
@@ -6,87 +7,64 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./schedule-group.component.scss']
 })
 export class ScheduleGroupComponent implements OnInit {
-
-
-    list1 = [
-        {
-            header: 'Mầm non',
-            group: '3 lớp',
-            member: '30 thành viên'
-        },
-    ]
-
     list2 = [
         {
-            header: 'Khối 1',
-            group: '10 lớp',
-            member: '140 thành viên'
+            Name: 'Khối 1',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            GradeId: 1
         },
         {
-            header: 'Khối 2',
-            group: '10 lớp',
-            member: '140 thành viên'
+            Name: 'Khối 2',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            GradeId: 2
         },
         {
-            header: 'Khối 3',
-            group: '10 lớp',
-            member: '140 thành viên'
+            Name: 'Khối 3',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            GradeId: 3
         },
         {
-            header: 'Khối 4',
-            group: '10 lớp',
-            member: '140 thành viên'
+            Name: 'Khối 4',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            GradeId: 4
         },
         {
-            header: 'Khối 5',
-            group: '10 lớp',
-            member: '140 thành viên'
+            Name: 'Khối 5',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            GradeId: 5
         },
     ]
-
-    list3 = [
-        {
-            header: 'Khối 6 ',
-            group: '10 lớp',
-            member: '300 thành viên'
-        },
-        {
-            header: 'Khối 7',
-            group: '10 lớp',
-            member: '300 thành viên'
-        },
-        {
-            header: 'Khối 8',
-            group: '10 lớp',
-            member: '300 thành viên'
-        },
-        {
-            header: 'Khối 9',
-            group: '10 lớp',
-            member: '300 thành viên'
-        },
-    ]
-
     highSchool = [
         {
-            header: 'Khối 10',
-            group: '10 lớp',
-            member: '300 thành viên'
+            Name: 'Khối 10',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên'
         },
         {
-            header: 'Khối 11',
-            group: '10 lớp',
-            member: '300 thành viên'
+            Name: 'Khối 11',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên'
         },
         {
-            header: 'Khối 12',
-            group: '10 lớp',
-            member: '300 thành viên'
+            Name: 'Khối 12',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên'
         },
     ]
-    constructor() { }
+    constructor(
+        private router: Router
+    ) { }
     ngOnInit(): void {
 
+    }
+    callback(ev){
+       console.log(ev);
+       this.router.navigateByUrl(`/main/schedule/class/${ev.GradeId}`);
     }
 
 }

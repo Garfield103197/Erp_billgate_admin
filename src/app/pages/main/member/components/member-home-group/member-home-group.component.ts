@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BaseUploadComponent, S3FileService } from '@consult-indochina/common';
 
 @Component({
     selector: 'app-member-home-group',
@@ -9,37 +10,37 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MemberHomeGroupComponent implements OnInit {
     data1 = [
         {
-            header: 'Khối 1',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 1
+            Name: 'Khối 1',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 1
 
         },
         {
-            header: 'Khối 2',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 2
+            Name: 'Khối 2',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 2
 
         },
         {
-            header: 'Khối 3',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 3
+            Name: 'Khối 3',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 3
         },
         {
-            header: 'Khối 4',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 4
+            Name: 'Khối 4',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 4
 
         },
         {
-            header: 'Khối 5',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 5
+            Name: 'Khối 5',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 5
 
         },
 
@@ -47,55 +48,55 @@ export class MemberHomeGroupComponent implements OnInit {
 
     data2 = [
         {
-            header: 'Khối 6',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 6
+            Name: 'Khối 6',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 6
 
         },
         {
-            header: 'Khối 7',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 7
+            Name: 'Khối 7',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 7
 
         },
         {
-            header: 'Khối 8',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 8
+            Name: 'Khối 8',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 8
 
         },
         {
-            header: 'Khối 9',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 9
+            Name: 'Khối 9',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 9
 
         },
     ]
 
     data3 = [
         {
-            header: 'Khối 10',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 10
+            Name: 'Khối 10',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 10
 
         },
         {
-            header: 'Khối 11',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 11
+            Name: 'Khối 11',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 11
 
         },
         {
-            header: 'Khối 12',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 12
+            Name: 'Khối 12',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 12
 
         },
     ]
@@ -104,12 +105,14 @@ export class MemberHomeGroupComponent implements OnInit {
     data = [];
 
     header: any;
-    constructor(private getrouter: ActivatedRoute, private router: Router) {
-
+    constructor(
+        private getrouter: ActivatedRoute,
+        private router: Router,
+    ) {
     }
 
-    ngOnInit(): void {
-        this.header = this.getrouter.snapshot.params.id;
+    ngOnInit() {
+        this.header = this.getrouter.snapshot.params.schoolLevelId;
         console.log(this.header);
 
         if (this.header == 3) {
@@ -120,8 +123,9 @@ export class MemberHomeGroupComponent implements OnInit {
             this.data = this.data3
         }
     }
+
     routerTo(ev) {
-        this.router.navigate(['/main/member/member-home-class', { id: ev.id }])
+        this.router.navigate([`/main/member/member-home/list-class/${ev.GradeId}`])
         console.log(ev);
     }
 }

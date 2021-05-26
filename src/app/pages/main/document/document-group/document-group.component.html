@@ -1,23 +1,11 @@
-<div class="member-home">
-    <h4>TÀI LIỆU</h4>
+<div class="document">
+    <div class="title">
+         TÀI LIỆU
+    </div>
+    <br>
     <app-base-card
-      [dataCard]="list1"
-      routerLink="/main/document/document-group-detail"
-    >
-    </app-base-card>
-    <app-base-card
-      [dataCard]="list2"
-      routerLink="/main/document/document-group-detail"
-    >
-    </app-base-card>
-    <app-base-card
-      [dataCard]="list3"
-      routerLink="/main/document/document-group-detail"
-    >
-    </app-base-card>
-    <app-base-card
-      [dataCard]="highSchool"
-      routerLink="/main/document/document-group-detail"
+      [dataCard]="listGrade"
+      (callback)="callback($event)"
     >
     </app-base-card>
   </div>

@@ -11,6 +11,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { LoaderModule } from './utils/loader/loader.component';
 import { LoaderService } from './services/loader.service';
+import { CiCommonModule, S3FileService } from '@consult-indochina/common';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -18,9 +19,13 @@ import { LoaderService } from './services/loader.service';
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     HttpClientModule,
+    CiCommonModule.forRoot({
+      S3_URL: ''
+    })
   ],
   providers: [
     LoaderService, 
+    S3FileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,

@@ -8,12 +8,12 @@ import { map } from 'rxjs/operators';
 export class MemberService {
   constructor(private http: HttpClient) { }
   getListStudentClass(classId){
-    return this.http.get(`api/student?ClassId=${classId}`).pipe(map((res: any) => res));
+    return this.http.get(`api/student?ClassId=${classId}`).pipe(map((res: any) => res.Payload));
   }
   createStudent(data){
-    return this.http.post('api/Account/RegisterParentWithStudent', data).pipe(map((res: any) => res));
+    return this.http.post('api/Account/RegisterParentWithStudent', data).pipe(map((res: any) => res.Payload));
   }
   editStudent(studentId, data){
-    return this.http.put(`api/student/${studentId}`, data).pipe(map((res: any) => res));
+    return this.http.put(`api/student/${studentId}`, data).pipe(map((res: any) => res.Payload));
   }
 }

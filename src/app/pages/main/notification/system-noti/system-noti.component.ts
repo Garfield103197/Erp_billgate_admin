@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-system-noti',
@@ -7,84 +8,101 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SystemNotiComponent implements OnInit {
 
-    constructor() { }
+    constructor( 
+        private router: Router
+    ) { }
     list1 = [
         {
-            header: 'Mầm non',
-            group: '3 lớp',
-            member: '30 thành viên'
+            Name: 'Mầm non',
+            ClassCount: '3 lớp',
+            StudentCount: '30 thành viên',
+            GradeId: 1
         },
     ]
 
     list2 = [
         {
-            header: 'Khối 1',
-            group: '10 lớp',
-            member: '140 thành viên'
+            Name: 'Khối 1',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            GradeId: 1
         },
         {
-            header: 'Khối 2',
-            group: '10 lớp',
-            member: '140 thành viên'
+            Name: 'Khối 2',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            GradeId: 1
         },
         {
-            header: 'Khối 3',
-            group: '10 lớp',
-            member: '140 thành viên'
+            Name: 'Khối 3',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            GradeId: 1
         },
         {
-            header: 'Khối 4',
-            group: '10 lớp',
-            member: '140 thành viên'
+            Name: 'Khối 4',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            GradeId: 1
         },
         {
-            header: 'Khối 5',
-            group: '10 lớp',
-            member: '140 thành viên'
+            Name: 'Khối 5',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            GradeId: 1
         },
     ]
 
     list3 = [
         {
-            header: 'Khối 6 ',
-            group: '10 lớp',
-            member: '300 thành viên'
+            Name: 'Khối 6 ',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 1
         },
         {
-            header: 'Khối 7',
-            group: '10 lớp',
-            member: '300 thành viên'
+            Name: 'Khối 7',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 1
         },
         {
-            header: 'Khối 8',
-            group: '10 lớp',
-            member: '300 thành viên'
+            Name: 'Khối 8',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 1
         },
         {
-            header: 'Khối 9',
-            group: '10 lớp',
-            member: '300 thành viên'
+            Name: 'Khối 9',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 1
         },
     ]
 
     highSchool = [
         {
-            header: 'Khối 10',
-            group: '10 lớp',
-            member: '300 thành viên'
+            Name: 'Khối 10',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 1
         },
         {
-            header: 'Khối 11',
-            group: '10 lớp',
-            member: '300 thành viên'
+            Name: 'Khối 11',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 1
         },
         {
-            header: 'Khối 12',
-            group: '10 lớp',
-            member: '300 thành viên'
+            Name: 'Khối 12',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            GradeId: 1
         },
     ]
     ngOnInit(): void {
     }
-
+   callback(ev){
+      this.router.navigateByUrl(`/main/notification/system-notification/grade/${ev.GradeId}`)
+   }
 }

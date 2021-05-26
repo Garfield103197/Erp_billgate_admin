@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://schoolbusapi.chuyendoisodn.com',
-  // API_URL: 'http://192.168.1.34/school',
+  // API_URL: 'https://schoolbusapi.chuyendoisodn.com',
+  API_URL: 'http://192.168.1.34/school',
 
 };
 

@@ -10,6 +10,7 @@
         <img [src]="i.icon" />{{ i?.text }}
       </button>
       <input #file hidden  type="file" multiple="false" (change)="incomingfile($event)" />
+      <input #fileUpload hidden  type="file" multiple="false" (change)="chooseFile($event.target.files)" />
     </div>
     <div class="col-3">
       <div class="paginator">

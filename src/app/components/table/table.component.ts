@@ -11,7 +11,8 @@ export class TableComponent implements OnInit, OnChanges {
     @Input() tableData: any;
     @Input() listActive?: any;
     @Output() callback = new EventEmitter<any>();
-    @ViewChild('file') clickFile: ElementRef
+    @ViewChild('file') clickFile: ElementRef;
+    @ViewChild('fileUpload') uploadDoc: ElementRef;
     totalPage: number;
     currentPage: number = 1;
     dataSub = [];
@@ -76,11 +77,19 @@ export class TableComponent implements OnInit, OnChanges {
     onClickBtnActive = (i) => {
         if(i.type === 'upload'){
             this.clickFile.nativeElement.click();
+            this.callback.emit({
+                type: i.type,
+                service: i.service
+            })
         }
-        this.callback.emit({
-            type: i.type,
-            service: i.service
-        })
+        if(i.type === 'uploadFile'){
+            this.uploadDoc.nativeElement.click();
+        }
+       
+    }
+    chooseFile(event){
+        this.callback.emit(event)
+        
     }
 
     handleRouteLink = (item) => {

@@ -16,15 +16,15 @@ export const memberRoute: Routes = [
                 component: MemberHomeComponent
             },
             {
-                path: 'member-detail',
+                path: 'member-home/class/:classId',
                 component: MemberDetailComponent
             },
             {
-                path: 'member-home-group',
+                path: 'member-home/list-grade/:schoolLevelId',
                 component: MemberHomeGroupComponent
             },
             {
-                path: 'member-home-class',
+                path: 'member-home/list-class/:gradeId',
                 component: MemberHomeClassComponent
             },
             {

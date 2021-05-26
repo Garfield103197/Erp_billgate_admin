@@ -1,6 +1,7 @@
-<div class="member-home">
-    <h4>THỐNG BÁO HỆ THỐNG </h4>
-    <app-base-card [dataCard]="list1"  routerLink="/main/notification/system-list-table" >
+<div class="notification">
+    <div class="title">THỐNG BÁO HỆ THỐNG </div>
+    <br>
+    <app-base-card [dataCard]="list1" (callback)="callback($event)"  >
     </app-base-card>
 </div>
 

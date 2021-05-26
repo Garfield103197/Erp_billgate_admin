@@ -20,11 +20,11 @@ export const notiRoute: Routes = [
         component: SystemNotiComponent
       },
       {
-        path: 'system-list-detail',
+        path: 'system-notification/grade/:gradeId',
         component: SystemListDetailComponent
       },
       {
-        path: 'system-list-table',
+        path: 'system-list-table/class/:classId',
         component: SystemListTableComponent
       },
       {

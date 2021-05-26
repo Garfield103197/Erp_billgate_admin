@@ -12,45 +12,44 @@ export class MemberHomeClassComponent implements OnInit {
     k1 = [
 
         {
-            header: '6A1',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 1
+            Name: '6A1',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            ClassId: 1
 
         },
         {
-            header: '6A2',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 2
+            Name: '6A2',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            ClassId: 2
 
         },
         {
-            header: '6A3',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 3
+            Name: '6A3',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            ClassId: 3
 
         },
         {
-            header: '6A4',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 4
+            Name: '6A4',
+            ClassCount: '10 lớp',
+            StudentCount: '300 thành viên',
+            ClassId: 4
 
         },
 
     ]
     constructor(private activeRouter: ActivatedRoute, private router: Router) { }
 
-    ngOnInit(): void {
-        const id = this.activeRouter.snapshot.params.id
-        console.log(id);
-
+    ngOnInit(){
+        const gradeId = this.activeRouter.snapshot.params.gradeId;
+        console.log(gradeId);
     }
 
     routerTo(ev) {
-        this.router.navigate(['/main/member/member-detail'])
+        this.router.navigate([`/main/member/member-home/class/${ev.ClassId}`])
 
     }
 }

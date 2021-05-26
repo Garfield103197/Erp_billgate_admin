@@ -1,14 +1,9 @@
-<div class="member-home">
-    <h4>NHÓM NGƯỜI DÙNG </h4>
-    <app-base-card [dataCard]="list1">
-    </app-base-card>
+<div class="schedule">
+    <div class="title">NHÓM NGƯỜI DÙNG </div>
+    <br>
     <app-base-card
         [dataCard]="list2"
-        routerLink="/main/schedule/schedule-group-detail"
+        (callback)="callback($event)"
     >
-    </app-base-card>
-    <app-base-card [dataCard]="list3">
-    </app-base-card>
-    <app-base-card [dataCard]="highSchool">
     </app-base-card>
 </div>

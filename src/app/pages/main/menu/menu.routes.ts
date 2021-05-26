@@ -14,7 +14,7 @@ export const menuRoute: Routes = [
                 component: GroupMenuComponent
             },
             {
-                path: 'list-menu',
+                path: 'list-menu/level/:schoolLevelId',
                 component: ListMenuComponent
             },
             {

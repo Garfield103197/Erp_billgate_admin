@@ -1,5 +1,6 @@
-<div class="member-home">
-    <h4>NHÓM LỚP </h4>
-    <app-base-card [dataCard]="listClass" routerLink="/main/schedule/schedule-list">
+<div class="document">
+    <div class="title">TÀI LIỆU </div>
+    <br>
+    <app-base-card [dataCard]="listClass" (callback)="callback($event)">
     </app-base-card>
 </div>

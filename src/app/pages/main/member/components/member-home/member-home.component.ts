@@ -15,56 +15,51 @@ export class MemberHomeComponent implements OnInit {
     ) { }
     list1 = [
         {
-            header: 'Nhà trường',
-            group: '3 nhóm',
-            member: '3 thành viên',
-            id: 1,
+            Name: 'Nhà trường',
+            ClassCount: '3 nhóm',
+            StudentCount: '3 thành viên',
+            SchoolLevelId: 1,
         },
     ]
 
     list2 = [
         {
-            header: 'Pre-school',
-            group: '10 lớp',
-            member: '140 thành viên',
-            id: 2,
+            Name: 'Mầm Non',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            SchoolLevelId: 2,
         },
     ]
 
-    list3 = [
+    listLevel = [
         {
-            header: 'Tiểu học ',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 3,
-
+            Name: 'Tiểu học',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            SchoolLevelId: 3,
         },
         {
-            header: 'THCS',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 4,
+            Name: 'THCS',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            SchoolLevelId: 4,
         },
         {
-            header: 'THPT',
-            group: '10 lớp',
-            member: '300 thành viên',
-            id: 5,
-
+            Name: 'THPT',
+            ClassCount: '10 lớp',
+            StudentCount: '140 thành viên',
+            SchoolLevelId: 5,
         },
-
     ]
-
     ngOnInit(): void {
         this.getListLevel();
     }
     routerTo(ev) {
-        this.router.navigate(['/main/member/member-home-group', { id: ev.id }])
+        this.router.navigateByUrl(`/main/member/member-home/list-grade/${ev.SchoolLevelId}`)
     }
     getListLevel() {
         this.levelService.getListLevel().subscribe(res => {
-            console.log(res);
-            
+          this.listLevel = res;
         })
     }
 }
