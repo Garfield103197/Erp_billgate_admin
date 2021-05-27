@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ScheduleService } from 'src/app/services/schedule.service';
+import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 
 @Component({
   selector: 'app-schedule-group-detail',
@@ -10,33 +11,21 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 export class ScheduleGroupDetailComponent implements OnInit {
 
   constructor(
-    private scheduleService: ScheduleService,
-    private router: Router
+    private router: Router,
+    private schoolGradeLevel: SchoolGradeLevelService,
+    private activeRouter: ActivatedRoute
   ) { }
   listClass = [
-    {
-      Name: 'Lớp 6A1',
-      ClassCount: '3 lớp',
-      StudentCount: '30 thành viên',
-      ClassId: 1,
-
-    },
-    {
-      Name: 'Lớp 6A2',
-      ClassCount: '3 lớp',
-      StudentCount: '30 thành viên',
-      ClassId: 2,
-    },
-    {
-      Name: 'Lớp 6A3',
-      ClassCount: '3 lớp',
-      StudentCount: '30 thành viên',
-      ClassId: 3,
-    },
-  ]
+  ];
+  gradeId: any;
   ngOnInit(): void {
+    this.gradeId = this.activeRouter.snapshot.params.gradeId;
+    this.schoolGradeLevel.getClassOfGrade(this.gradeId).subscribe(res => {
+      this.listClass = res;
+      console.log(res);
+    })
   }
   callback(ev){
-     this.router.navigateByUrl(`/main/schedule/schedule-list/class/${ev.ClassId}`)
+     this.router.navigateByUrl(`/main/schedule/schedule-list/class/${ev.GradeId}`)
   }
 }

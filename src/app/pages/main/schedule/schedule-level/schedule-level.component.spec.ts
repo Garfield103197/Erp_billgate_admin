@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditDishComponent } from './edit-dish.component';
+import { ScheduleLevelComponent } from './schedule-level.component';
 
-describe('EditDishComponent', () => {
-  let component: EditDishComponent;
-  let fixture: ComponentFixture<EditDishComponent>;
+describe('ScheduleLevelComponent', () => {
+  let component: ScheduleLevelComponent;
+  let fixture: ComponentFixture<ScheduleLevelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditDishComponent ]
+      declarations: [ ScheduleLevelComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditDishComponent);
+    fixture = TestBed.createComponent(ScheduleLevelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

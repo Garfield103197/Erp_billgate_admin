@@ -12,7 +12,7 @@ export class SchoolGradeLevelService {
     return this.http.get('api/SchoolLevel').pipe(map((res: any) => res.Payload));
   }
   getGradeOfLevel(level: number){
-    return this.http.get(`api/Grade?SchoolLevel=${level}`).pipe(map((res: any) => res.Payload));
+    return this.http.get(`api/Grade?SchoolLevelId=${level}`).pipe(map((res: any) => res.Payload));
   }
   getClassOfGrade(gradeId: number){
     return this.http.get(`api/class?GradeId=${gradeId}`).pipe(map((res: any) => res.Payload));

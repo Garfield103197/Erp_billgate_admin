@@ -12,6 +12,7 @@ import { TableBaseModule } from 'src/app/components/table/table.component';
 import { CreateMemberComponent } from './components/create-member/create-member.component';
 import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
 import { EditMemberComponent } from './components/edit-member/edit-member.component';
+import { LoaderModule } from 'src/app/utils/loader/loader.component';
 
 
 
@@ -22,6 +23,7 @@ import { EditMemberComponent } from './components/edit-member/edit-member.compon
         CommonModule,
         RouterModule.forChild(memberRoute),
         CreateFormModule,
+        LoaderModule,
         BaseCardModule,
         TableBaseModule
     ],

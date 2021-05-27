@@ -10,10 +10,11 @@ import { scheduleRoute } from './schedule.routes';
 import { ImportScheduleComponent } from './import-schedule/import-schedule.component';
 import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ScheduleLevelComponent } from './schedule-level/schedule-level.component';
 
 
 @NgModule({
-    declarations: [ScheduleComponent, ScheduleGroupDetailComponent, ScheduleListComponent, ScheduleGroupComponent, ImportScheduleComponent],
+    declarations: [ScheduleComponent, ScheduleGroupDetailComponent, ScheduleListComponent, ScheduleGroupComponent, ImportScheduleComponent, ScheduleLevelComponent],
     imports: [
         CommonModule,
         FormsModule,

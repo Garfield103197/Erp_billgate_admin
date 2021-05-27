@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 
 @Component({
     selector: 'app-member-home-class',
@@ -8,44 +9,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MemberHomeClassComponent implements OnInit {
 
-    data: []
-    k1 = [
+    data: [];
+    constructor(
+        private activeRouter: ActivatedRoute,
+        private router: Router,
+        private schoolLevelGrade: SchoolGradeLevelService
+    ) { }
 
-        {
-            Name: '6A1',
-            ClassCount: '10 lớp',
-            StudentCount: '300 thành viên',
-            ClassId: 1
-
-        },
-        {
-            Name: '6A2',
-            ClassCount: '10 lớp',
-            StudentCount: '300 thành viên',
-            ClassId: 2
-
-        },
-        {
-            Name: '6A3',
-            ClassCount: '10 lớp',
-            StudentCount: '300 thành viên',
-            ClassId: 3
-
-        },
-        {
-            Name: '6A4',
-            ClassCount: '10 lớp',
-            StudentCount: '300 thành viên',
-            ClassId: 4
-
-        },
-
-    ]
-    constructor(private activeRouter: ActivatedRoute, private router: Router) { }
-
-    ngOnInit(){
+    ngOnInit() {
         const gradeId = this.activeRouter.snapshot.params.gradeId;
-        console.log(gradeId);
+        this.schoolLevelGrade.getClassOfGrade(gradeId).subscribe(res => {
+            this.data = res;
+        })
     }
 
     routerTo(ev) {

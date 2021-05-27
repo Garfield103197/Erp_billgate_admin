@@ -11,9 +11,12 @@ export class MemberService {
     return this.http.get(`api/student?ClassId=${classId}`).pipe(map((res: any) => res.Payload));
   }
   createStudent(data){
-    return this.http.post('api/Account/RegisterParentWithStudent', data).pipe(map((res: any) => res.Payload));
+    return this.http.post('api/Account/RegisterParentWithStudent', data).pipe(map((res: any) => res));
   }
   editStudent(studentId, data){
-    return this.http.put(`api/student/${studentId}`, data).pipe(map((res: any) => res.Payload));
+    return this.http.put(`api/student/${studentId}`, data).pipe(map((res: any) => res));
+  }
+  deleteStudent(studentId){
+    return this.http.delete(`api/student/${studentId}`).pipe(map((res: any) => res));
   }
 }

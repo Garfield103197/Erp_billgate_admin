@@ -1,5 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 
 @Component({
     selector: 'app-schedule-group',
@@ -7,59 +9,17 @@ import { Router } from '@angular/router';
     styleUrls: ['./schedule-group.component.scss']
 })
 export class ScheduleGroupComponent implements OnInit {
-    list2 = [
-        {
-            Name: 'Khối 1',
-            ClassCount: '10 lớp',
-            StudentCount: '140 thành viên',
-            GradeId: 1
-        },
-        {
-            Name: 'Khối 2',
-            ClassCount: '10 lớp',
-            StudentCount: '140 thành viên',
-            GradeId: 2
-        },
-        {
-            Name: 'Khối 3',
-            ClassCount: '10 lớp',
-            StudentCount: '140 thành viên',
-            GradeId: 3
-        },
-        {
-            Name: 'Khối 4',
-            ClassCount: '10 lớp',
-            StudentCount: '140 thành viên',
-            GradeId: 4
-        },
-        {
-            Name: 'Khối 5',
-            ClassCount: '10 lớp',
-            StudentCount: '140 thành viên',
-            GradeId: 5
-        },
-    ]
-    highSchool = [
-        {
-            Name: 'Khối 10',
-            ClassCount: '10 lớp',
-            StudentCount: '300 thành viên'
-        },
-        {
-            Name: 'Khối 11',
-            ClassCount: '10 lớp',
-            StudentCount: '300 thành viên'
-        },
-        {
-            Name: 'Khối 12',
-            ClassCount: '10 lớp',
-            StudentCount: '300 thành viên'
-        },
-    ]
+    data = [];
     constructor(
-        private router: Router
+        private router: Router,
+        private schoolGradeLevel: SchoolGradeLevelService,
+        private activeRouter: ActivatedRoute
     ) { }
     ngOnInit(): void {
+      const schoolLevelId = this.activeRouter.snapshot.params.schoolLevelId;
+      this.schoolGradeLevel.getGradeOfLevel(schoolLevelId).subscribe(res => {
+          this.data = res;
+      })
 
     }
     callback(ev){

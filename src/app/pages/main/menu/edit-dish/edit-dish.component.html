@@ -1,1 +1,21 @@
-<p>edit-dish works!</p>
+<div class="edit-dish">
+     <div class="title">
+            SỬA MÓN
+     </div>
+     <div class="form">
+         <div class="group">
+             <label for="">Món cũ</label>
+             <input disabled type="text" [(ngModel)]="data.DayValue">
+         </div>
+         <div class="group">
+              <label for="">Món mới</label>
+              <input type="text">
+        </div>
+     </div>
+     <div class="btn-group">
+         <button (click)="clickButton('cancel')" class="btn-cancel">Huỷ</button>
+         <button (click)="clickButton('save')" class="btn-save">Lưu</button>
+     </div>
+</div>
+
+

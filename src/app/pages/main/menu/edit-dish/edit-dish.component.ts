@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-dish',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditDishComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(
+    public dialoRef: MatDialogRef<EditDishComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
+  model;
   ngOnInit(): void {
+    this.model = this.data;
+    console.log(this.model);
+
+  }
+
+  clickButton(value) {
+    if (value === 'cancel') {
+      this.dialoRef.close();
+    }
+    if (value === 'save') {
+      this.dialoRef.close();
+    }
   }
 
 }

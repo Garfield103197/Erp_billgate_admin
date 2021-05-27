@@ -64,8 +64,6 @@ export class GroupMenuComponent implements OnInit {
   getListLevel(){
     this.schoolGradeLevelService.getListLevel().subscribe(res => {
       this.listLevelSchool = res;
-      console.log(res);
-      
     })
   }
   routerTo(ev) {

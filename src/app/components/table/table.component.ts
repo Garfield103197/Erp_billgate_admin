@@ -75,6 +75,12 @@ export class TableComponent implements OnInit, OnChanges {
     }
 
     onClickBtnActive = (i) => {
+        if(i.type === 'create'){
+            this.callback.emit({
+                type: i.type,
+                service: i.service
+            })
+        }
         if(i.type === 'upload'){
             this.clickFile.nativeElement.click();
             this.callback.emit({

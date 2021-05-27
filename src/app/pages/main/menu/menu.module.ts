@@ -10,6 +10,7 @@ import { menuRoute } from "./menu.routes";
 import { ListMenuComponent } from './list-menu/list-menu.component';
 import { EditDishComponent } from './edit-dish/edit-dish.component';
 import { ImportExcelComponent } from './import-excel/import-excel.component';
+import { FormsModule } from "@angular/forms";
 
 
 
@@ -19,6 +20,7 @@ import { ImportExcelComponent } from './import-excel/import-excel.component';
     declarations: [MenuComponent, GroupMenuComponent, ListMenuComponent, EditDishComponent, ImportExcelComponent],
     imports: [
         CommonModule,
+        FormsModule,
         RouterModule.forChild(menuRoute),
         BaseCardModule,
         CreateFormModule,

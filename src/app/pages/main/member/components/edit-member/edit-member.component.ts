@@ -1,6 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MemberModel } from 'src/app/models/member.model';
+import { LoaderService } from 'src/app/services/loader.service';
+import { MemberService } from 'src/app/services/member.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-member',
@@ -8,11 +11,13 @@ import { MemberModel } from 'src/app/models/member.model';
   styleUrls: ['./edit-member.component.scss']
 })
 export class EditMemberComponent implements OnInit {
- constructor(
-  public dialogRef: MatDialogRef<EditMemberComponent>,
-  @Inject(MAT_DIALOG_DATA) public data,
- ){}
- conFig = new MemberModel;
+  constructor(
+    public dialogRef: MatDialogRef<EditMemberComponent>,
+    private memberService: MemberService,
+    private loaderService: LoaderService,
+    @Inject(MAT_DIALOG_DATA) public data,
+  ) { }
+  conFig = new MemberModel;
   dataModel = {};
   option = {
     title: 'Sửa thông tin học sinh',
@@ -31,16 +36,28 @@ export class EditMemberComponent implements OnInit {
   ngOnInit(): void {
     this.listCreate = this.conFig.create;
     this.dataModel = this.data;
-    console.log(this.data);
-    
   }
   handleCallbackEvent(ev) {
-      if(ev.class === "btn-save"){
+    
+    if (ev.btn.class === "btn-save") {
+      this.loaderService.show();
+      this.memberService.editStudent(ev.item.StudentId, ev.item).subscribe(res => {
+        this.loaderService.hide();
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Sửa thông tin học sinh thành công!!',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.dialogRef.close();
-      }
-      if(ev.class === "btn-cancel"){
-        this.dialogRef.close();
-      }
-       
+      }, () => {
+        this.loaderService.hide();
+      })
+    }
+    if (ev.btn.class === "btn-cancel") {
+      this.dialogRef.close();
+    }
+
   }
 }

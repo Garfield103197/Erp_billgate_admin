@@ -13,44 +13,7 @@ export class MemberHomeComponent implements OnInit {
         private router: Router,
         private levelService: SchoolGradeLevelService
     ) { }
-    list1 = [
-        {
-            Name: 'Nhà trường',
-            ClassCount: '3 nhóm',
-            StudentCount: '3 thành viên',
-            SchoolLevelId: 1,
-        },
-    ]
-
-    list2 = [
-        {
-            Name: 'Mầm Non',
-            ClassCount: '10 lớp',
-            StudentCount: '140 thành viên',
-            SchoolLevelId: 2,
-        },
-    ]
-
-    listLevel = [
-        {
-            Name: 'Tiểu học',
-            ClassCount: '10 lớp',
-            StudentCount: '140 thành viên',
-            SchoolLevelId: 3,
-        },
-        {
-            Name: 'THCS',
-            ClassCount: '10 lớp',
-            StudentCount: '140 thành viên',
-            SchoolLevelId: 4,
-        },
-        {
-            Name: 'THPT',
-            ClassCount: '10 lớp',
-            StudentCount: '140 thành viên',
-            SchoolLevelId: 5,
-        },
-    ]
+    listLevel: any = [];
     ngOnInit(): void {
         this.getListLevel();
     }

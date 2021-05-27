@@ -33,17 +33,17 @@
       <tbody>
         <tr *ngFor="let item of listMenuMain; let first = first"> 
           <td *ngIf="first" [attr.rowspan]="listMenuMain.length">
-            Món chính
+              Món chính
           </td>
-          <td *ngFor="let day of listDay">
+          <td *ngFor="let day of listDay" (click)="clickEditDish(item, item[day.DayValue])">
             {{ item[day.Day] || item[day.DayValue]}}
           </td>
         </tr>
         <tr *ngFor="let item of listMenuSub; let first = first"> 
           <td *ngIf="first" [attr.rowspan]="listMenuSub.length">
-            Món Phụ
+            Món phụ
           </td>
-          <td *ngFor="let day of listDay">
+          <td *ngFor="let day of listDay" (click)="clickEditDish(item, item[day.DayValue])">
             {{ item[day.Day] || item[day.DayValue]}}
           </td>
         </tr>
