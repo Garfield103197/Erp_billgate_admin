@@ -66,12 +66,16 @@ export class ListMenuComponent implements OnInit {
     this.today = this.formateDate.formatDate(new Date(), 'YYYY-MM-DD');
     this.schoolLevelId = +this.activeRouter.snapshot.params.schoolLevelId;
     this.schoolGradeLevelService.getListLevel().subscribe(res => {
-      this.name = res.find(x => x.SchoolLevelId === this.schoolLevelId).Name;      
+      this.name = res.find(x => x.SchoolLevelId === this.schoolLevelId).Name;
     })
-    this.menuService.getMenuOfLevel(this.schoolLevelId, this.today).subscribe(res => {
-         this.listMenuMain = res.filter(x => x.Type === 1);
-         this.listMenuSub = res.filter(x => x.Type === 2);
+    this.getMenuOfLevel();
 
+  }
+
+  getMenuOfLevel() {
+    this.menuService.getMenuOfLevel(this.schoolLevelId, this.today).subscribe(res => {
+      this.listMenuMain = res.filter(x => x.Type === 1);
+      this.listMenuSub = res.filter(x => x.Type === 2);
     })
   }
   public exportExcel(jsonData: any[], fileName: string): void {
@@ -99,7 +103,7 @@ export class ListMenuComponent implements OnInit {
     })
   }
 
-  clickEditDish(item, name){ 
+  clickEditDish(item, name) {
     return this.dialog.open(EditDishComponent, {
       width: '800px',
       height: '350px',
@@ -108,7 +112,7 @@ export class ListMenuComponent implements OnInit {
         DayValue: name
       }
     }).afterClosed().subscribe(result => {
-
+       this.getMenuOfLevel();
     })
   }
 
@@ -174,9 +178,9 @@ export class ListMenuComponent implements OnInit {
       })
 
     }
-    
+
   }
-  
+
 
 
 }

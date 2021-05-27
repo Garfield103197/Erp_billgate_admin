@@ -3,11 +3,11 @@
     <div class="form">
       <div class="content">
         <label class="label" for="">Link tin tức</label>
-        <input type="text" />
+        <input type="text" [(ngModel)]="model.URLLink"/>
       </div>
       <div class="content">
         <label class="label" for="">Tiêu đề</label>
-        <input type="text" />
+        <input type="text" [(ngModel)]="model.Title" />
       </div>
       <div class="images">
         <img *ngIf="model.MediaURL" class="preview" [src]="model.MediaURL" alt="">
@@ -29,7 +29,7 @@
    
   </div>
   <div class="group-btn">
-      <button class="btn-save">Xác nhận</button>
-      <button class="cancel">Huỷ bỏ</button>
+      <button class="btn-save" (click)="save()">Xác nhận</button>
+      <button class="cancel" (click)="cancel()">Huỷ bỏ</button>
     </div>
   

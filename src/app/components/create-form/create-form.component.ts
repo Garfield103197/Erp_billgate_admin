@@ -35,6 +35,8 @@ export class CreateFormComponent implements OnInit {
 
   ngOnInit() {
     this.model = this.dataModel || {};
+    console.log(this.model);
+    
     this.fileImport = this.checkFile || {};
   }
   fileDownload(url) {

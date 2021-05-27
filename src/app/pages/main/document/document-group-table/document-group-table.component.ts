@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BaseUploadComponent, S3FileService } from '@consult-indochina/common';
 import { DocumentModel } from 'src/app/models/document.model';
+import { DocumentService } from 'src/app/services/document.service';
 
 @Component({
   selector: 'app-document-group-table',
@@ -47,16 +49,28 @@ export class DocumentGroupTableComponent extends BaseUploadComponent implements 
   ];
 
   constructor(
-    public s3Service: S3FileService
+    public s3Service: S3FileService,
+    private documentService: DocumentService,
+    private router: ActivatedRoute
   ) {
     super(s3Service)
   }
   linkPreSignedURL;
-
+  classId: string;
   ngOnInit(): void {
+    this.classId = this.router.snapshot.params.classId;
     this.tableData = this.config.collums;
     this.listActive = this.config.btnActice;
+    this.getHomework();
+  }
 
+  getHomework(){
+    this.documentService.getHomeWorkOfClass(this.classId, '').subscribe(res => {
+     this.data = res;
+     this.data.forEach((x, index) => {
+         x.stt = index + 1;
+     });
+    })
   }
 
   handleTableCallback(ev) {

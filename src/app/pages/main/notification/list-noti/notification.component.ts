@@ -72,8 +72,6 @@ export class NotificationComponent implements OnInit {
     })
   }
   handleTableCallback(ev) {
-    console.log(ev);
-
     if (ev.type === 'create') {
       return this.dialog.open(CreateNotiComponent, {
         width: '800px',

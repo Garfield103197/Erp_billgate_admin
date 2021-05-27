@@ -36,8 +36,19 @@ export class CreateMemberComponent implements OnInit {
   },
   ];
   listCreate = [];
+  
   ngOnInit(): void {
     this.listCreate = this.conFig.create;
+    const model = {
+      ClassName: this.data.Name,
+      ClassId: this.data.ClassId
+    }
+    this.dataModel = model;    
+    this.listCreate[4].data = [{
+      value: this.data.ClassId,
+      name: this.data.Name,
+    }]
+    
   }
   handleCallbackEvent(ev) {
       if(ev.btn.class === "btn-save"){

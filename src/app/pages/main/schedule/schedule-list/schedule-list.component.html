@@ -4,7 +4,7 @@
   <p>Sĩ số: 35</p> -->
   <div class="btn-group">
     <div class="list-button">
-      <button class="btn-schedule">
+      <button class="btn-schedule" (click)="buttonSave()">
         <img src="assets/svg/icon-save.svg" alt="" srcset="" />Lưu
       </button>
       <button class="btn-schedule" (click)="upload()">
@@ -13,6 +13,7 @@
       <button (click)="exportExcel(dataExport, 'Thời khoá biểu')" class="btn-schedule">
         <img src="assets/svg/icon-output.svg" />Xuất
       </button>
+      <input class="select-date" type="date" [(ngModel)]="today" (change)="getTimeTable()">
     </div>
     <div>
       <button class="btn-create">+ Thêm</button>
@@ -49,7 +50,7 @@
                 [(ngModel)]="item.TeacherName">
               <input [readonly]="!item.checkSubject" [ngClass]="item.checkSubject ? 'active-input' : ''" type="text"
                 (click)="item.checkSubject = true" (keyup.enter)="item.checkSubject = false"
-                [(ngModel)]="item.ClassRoom">
+                [(ngModel)]="item.RoomName">
             </div>
           </td>
         </tr>

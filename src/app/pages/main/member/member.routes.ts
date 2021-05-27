@@ -16,7 +16,7 @@ export const memberRoute: Routes = [
                 component: MemberHomeComponent
             },
             {
-                path: 'member-home/class/:classId',
+                path: 'member-home/gradeId/:gradeId/class/:classId',
                 component: MemberDetailComponent
             },
             {

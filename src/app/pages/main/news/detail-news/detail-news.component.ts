@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NewsService } from 'src/app/services/news.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detail-news',
@@ -6,18 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail-news.component.scss']
 })
 export class DetailNewsComponent implements OnInit {
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<DetailNewsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data,
+    private newsService: NewsService
+  ) { }
   imagePath;
   model: any = {};
   ngOnInit(): void {
+    this.model = this.data.item;
   }
-  save(){
+  save() {
+    this.newsService.editNews(this.data.item.NewsId, this.data.item).subscribe(res => {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Sửa tin tức thành công!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      this.dialogRef.close();
+    })
+  }
+  cancel() {
+    this.dialogRef.close();
+  }
 
-  }
-  cancel(){
-
-  }
-  
   preview(files) {
     if (files.length === 0)
       return;

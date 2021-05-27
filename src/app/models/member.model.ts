@@ -103,10 +103,11 @@ export class MemberModel {
                 ]
             },
             {
-                id: 'ClassName',
+                id: 'ClassId',
                 label: 'Lớp',
-                name: 'ClassName',
-                type: 'text'
+                name: 'ClassId',
+                type: 'disableSelected',
+                data: []
             },            {
                 id: 'Code',
                 label: 'Mã học sinh',

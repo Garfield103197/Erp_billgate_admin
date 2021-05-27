@@ -18,7 +18,7 @@ export class DocumentModel {
                 type: 'text',
             },
             {
-                id: 'DocumentName',
+                id: 'Title',
                 name: 'Tên tài liệu',
                 width: 200,
                 type: 'text',
@@ -27,7 +27,7 @@ export class DocumentModel {
                 id: 'CreatedOn',
                 name: 'Tạo lúc',
                 width: 200,
-                type: 'text',
+                type: 'date',
             },
             {
                 id: '',

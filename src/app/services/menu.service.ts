@@ -16,6 +16,6 @@ export class MenuService {
     return this.http.post('api/DishMenu/upload', data).pipe(map((res: any) => res.Payload));
   }
   editDishMenu(dishMenuId, data){
-    return this.http.post(`api/DishMenu/${dishMenuId}`, data).pipe(map((res: any) => res.Payload));
+    return this.http.put(`api/DishMenu/${dishMenuId}`, data).pipe(map((res: any) => res.Payload));
   }
 }

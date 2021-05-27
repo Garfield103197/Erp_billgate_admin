@@ -15,16 +15,16 @@ export class MemberHomeClassComponent implements OnInit {
         private router: Router,
         private schoolLevelGrade: SchoolGradeLevelService
     ) { }
-
+   gradeId;
     ngOnInit() {
-        const gradeId = this.activeRouter.snapshot.params.gradeId;
-        this.schoolLevelGrade.getClassOfGrade(gradeId).subscribe(res => {
+        this.gradeId = this.activeRouter.snapshot.params.gradeId;
+        this.schoolLevelGrade.getClassOfGrade(this.gradeId).subscribe(res => {
             this.data = res;
         })
     }
 
     routerTo(ev) {
-        this.router.navigate([`/main/member/member-home/class/${ev.ClassId}`])
+        this.router.navigate([`/main/member/member-home/gradeId/${this.gradeId}/class/${ev.ClassId}`])
 
     }
 }

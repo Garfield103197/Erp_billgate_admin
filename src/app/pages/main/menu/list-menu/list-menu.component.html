@@ -35,7 +35,7 @@
               Món chính
           </td>
           <td *ngFor="let day of listDay" (click)="clickEditDish(item, item[day.DayValue])">
-            {{ item[day.Day] || item[day.DayValue]}}
+            {{ item[day.Day] || item[day.DayValue].split('|')[0]}}
           </td>
         </tr>
         <tr *ngFor="let item of listMenuSub; let first = first"> 
@@ -43,7 +43,7 @@
             Món phụ
           </td>
           <td *ngFor="let day of listDay" (click)="clickEditDish(item, item[day.DayValue])">
-            {{ item[day.Day] || item[day.DayValue]}}
+            {{ item[day.Day] || item[day.DayValue].split('|')[0]}}
           </td>
         </tr>
       </tbody>

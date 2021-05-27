@@ -8,6 +8,7 @@ import * as XLSX from 'xlsx';
 import { ActivatedRoute } from '@angular/router';
 import { MemberService } from 'src/app/services/member.service';
 import Swal from 'sweetalert2';
+import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 @Component({
   selector: 'app-member-detail',
   templateUrl: './member-detail.component.html',
@@ -18,6 +19,7 @@ export class MemberDetailComponent implements OnInit {
   config = new MemberModel;
   listActive = [];
   tableData;
+  dataModel = {};
   data = [
     {
       "StudentId": 1,
@@ -56,22 +58,27 @@ export class MemberDetailComponent implements OnInit {
   arrayBuffer;
   dataImport: any[];
   classId: number;
+  gradeId;
   constructor(
     private dialog: MatDialog,
     private activeRouter: ActivatedRoute,
-    private memberService: MemberService
+    private memberService: MemberService,
+    private schoolGradeLevel: SchoolGradeLevelService
   ) { }
-
+  classDetail;
   ngOnInit(): void {
-    this.classId = this.activeRouter.snapshot.params.classId;
+    this.classId = +this.activeRouter.snapshot.params.classId;
+    this.gradeId = +this.activeRouter.snapshot.params.gradeId;
     this.getListStudentOfClass();
     this.tableData = this.config.collums;
     this.listActive = this.config.btnActice;
+    this.schoolGradeLevel.getClassOfGrade(this.gradeId).subscribe(res => {
+        this.classDetail = res.find(x => x.ClassId === this.classId);
+    })
   }
   getListStudentOfClass() {
     this.memberService.getListStudentClass(this.classId).subscribe(res => {
       this.data = res;
-      console.log(res);
     })
   }
   incomingfile(event) {
@@ -99,7 +106,8 @@ export class MemberDetailComponent implements OnInit {
     if (ev.type === 'create') {
       return this.dialog.open(CreateMemberComponent, {
         width: '500px',
-        height: '750px'
+        height: '750px',
+        data: this.classDetail
       }).afterClosed().subscribe(result => {
         this.getListStudentOfClass();
       });

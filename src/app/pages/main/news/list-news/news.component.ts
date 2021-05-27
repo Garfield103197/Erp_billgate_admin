@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { News } from 'src/app/models/news.model';
 import { Notification } from 'src/app/models/noti.model';
+import { NewsService } from 'src/app/services/news.service';
 import { CreateNewsComponent } from '../create-news/create-news.component';
 import { DetailNewsComponent } from '../detail-news/detail-news.component';
 
@@ -13,7 +14,8 @@ import { DetailNewsComponent } from '../detail-news/detail-news.component';
 export class NewsComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private newsService: NewsService
   ) { }
   config = new News; 
   listActive = [];
@@ -21,6 +23,7 @@ export class NewsComponent implements OnInit {
   data = [
     {
       "stt": 1,
+      "NewsId": 1,
       "content": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
       "CreatedOn": "08/05/2021",
       "create_person": "Nguyễn Tuấn Anh",
@@ -28,6 +31,7 @@ export class NewsComponent implements OnInit {
     },
     {
       "stt": 2,
+      "NewsId": 2,
       "content": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
       "CreatedOn": "08/05/2021",
       "create_person": "Nguyễn Tuấn Anh",
@@ -35,6 +39,7 @@ export class NewsComponent implements OnInit {
     },
     {
       "stt": 3,
+      "NewsId": 3,
       "content": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
       "CreatedOn": "08/05/2021",
       "Link": "https://moet.gov.vn/Pages/ho...",
@@ -62,19 +67,31 @@ export class NewsComponent implements OnInit {
   ngOnInit(): void {
     this.tableData = this.config.collums;
     this.listActive = this.config.btnActice;
+    this.getListNews();
   }
+  getListNews(){
+    this.newsService.getListnews(1, 50).subscribe(res => {
+       this.data = res;
+    })
+  }
+
   handleTableCallback(ev){
+    console.log(ev);
+    
     if (ev.type === 'create') {
       return this.dialog.open(CreateNewsComponent, {
         width: '500px',
         height: '750px'
       }).afterClosed().subscribe(result => {
+        console.log(result);
+        
       });
     }
     if (ev.type === 'edit') {
       return this.dialog.open(DetailNewsComponent, {
         width: '500px',
-        height: '750px'
+        height: '750px',
+        data: ev.item
       }).afterClosed().subscribe(result => {
       });
     }

@@ -20,7 +20,7 @@ import { CiCommonModule, S3FileService } from '@consult-indochina/common';
     BrowserAnimationsModule,
     HttpClientModule,
     CiCommonModule.forRoot({
-      S3_URL: ''
+      S3_URL: 'https://fgehlb1to6.execute-api.ap-southeast-1.amazonaws.com/prod/presigned-url'
     })
   ],
   providers: [
