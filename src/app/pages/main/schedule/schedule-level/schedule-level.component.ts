@@ -20,7 +20,6 @@ export class ScheduleLevelComponent implements OnInit {
         console.log(res);
         
     })
-
   }
   callback(ev){
      this.router.navigateByUrl(`/main/schedule/grade/${ev.SchoolLevelId}`);

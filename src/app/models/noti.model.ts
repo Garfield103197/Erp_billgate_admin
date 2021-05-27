@@ -19,7 +19,7 @@ export class Notification{
                 type: 'text',
             },
             {
-                id: 'content',
+                id: 'Content',
                 name: 'Thông báo',
                 width: 300,
                 type: 'text',
@@ -31,7 +31,7 @@ export class Notification{
                 type: 'date',
             },
             {
-                id: 'create_person',
+                id: 'CreatedByName',
                 name: 'Người tạo',
                 width: 200,
                 type: 'text',
@@ -97,15 +97,15 @@ export class Notification{
     public get create(): Array<CreateModel> {
         return [
             {
-                id: 'title',
+                id: 'Title',
                 label: 'Tiêu đề',
-                name: 'title',
+                name: 'Title',
                 type: 'text'
             },
             {
-                id: 'content',
+                id: 'Content',
                 label: 'Nội dung',
-                name: 'content',
+                name: 'Content',
                 type: 'textarea'
             }
         ];

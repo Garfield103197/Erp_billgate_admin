@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 import { Notification } from "../../../../models/noti.model";
 @Component({
   selector: 'app-system-list-table',
@@ -44,11 +46,26 @@ export class SystemListTableComponent implements OnInit {
 
   ];
 
-  constructor() { }
+  constructor(
+    private router: ActivatedRoute,
+    private notiService: NotificationService
+  ) { }
 
+  classId;
   ngOnInit(): void {
+    this.classId = this.router.snapshot.params.classId;
     this.tableData = this.config.collumsSystem;
+    this.getListNotiAuto();
 
+  }
+
+  getListNotiAuto() {
+    this.notiService.getListSystemNotiOfClass(this.classId).subscribe(res => {
+      this.data = res;
+      this.data.forEach((x, index) => {
+        x.stt = index + 1;
+      });
+    })
   }
 
   handleTableCallback(ev) {

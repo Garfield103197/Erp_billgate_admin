@@ -1,10 +1,10 @@
 import { Routes } from "@angular/router";
 import { NotificationComponent } from "./list-noti/notification.component";
 import { NotificationMainComponent } from "./notification-main.component";
-import { SystemListDetailComponent } from "./system-list-detail/system-list-detail.component";
 import { SystemListTableComponent } from "./system-list-table/system-list-table.component";
-import { SystemNotiComponent } from "./system-noti/system-noti.component";
-
+import { SystemNotiLevelComponent } from "./system-levelGradeClass/system-noti-level/system-noti-level.component";
+import { SystemListDetailComponent } from "./system-levelGradeClass/system-list-detail/system-list-detail.component";
+import { SystemNotiComponent } from "./system-levelGradeClass/system-noti/system-noti.component";
 
 export const notiRoute: Routes = [
   {
@@ -17,14 +17,18 @@ export const notiRoute: Routes = [
       },
       {
         path: 'system-notification',
-        component: SystemNotiComponent
+        component: SystemNotiLevelComponent
       },
       {
-        path: 'system-notification/grade/:gradeId',
+        path: 'system-notification/list-class/:gradeId',
         component: SystemListDetailComponent
       },
       {
-        path: 'system-list-table/class/:classId',
+        path: 'system-notification/grade/:schoolLevelId',
+        component: SystemNotiComponent
+      },
+      {
+        path: 'system-notification/class/:classId',
         component: SystemListTableComponent
       },
       {

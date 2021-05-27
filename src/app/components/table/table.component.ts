@@ -91,6 +91,12 @@ export class TableComponent implements OnInit, OnChanges {
         if(i.type === 'uploadFile'){
             this.uploadDoc.nativeElement.click();
         }
+        if(i.type === 'noti'){
+            this.callback.emit({
+                type: i.type,
+                service: i.service
+            })
+        }
        
     }
     chooseFile(event){

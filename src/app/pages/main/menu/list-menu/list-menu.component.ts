@@ -9,6 +9,7 @@ import { MenuService } from 'src/app/services/menu.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { EditDishComponent } from '../edit-dish/edit-dish.component';
+import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 @Component({
   selector: 'app-list-menu',
   templateUrl: './list-menu.component.html',
@@ -20,65 +21,17 @@ export class ListMenuComponent implements OnInit {
     private dialog: MatDialog,
     private formateDate: FormatDateService,
     private menuService: MenuService,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private schoolGradeLevelService: SchoolGradeLevelService
   ) { }
   fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   fileExtension = '.xlsx';
   arrayBuffer: any;
   file: File;
   dataImport;
-  index;
-  listMenuMain = [
-    {
-      "Type": 1,
-      "DayValue1": "Cháo bò rau củ",
-      "DayValue2": "Cháo sườn bí đỏ",
-      "DayValue3": "Cháo chim câu hạt sen",
-      "DayValue4": "Cháo chân gìo rau xanh",
-      "DayValue5": "Cháo bò pho mai",
-      "DayValue6": "Cháo chim câu hạt sen"
-  },
-  {
-      "Type": 1,
-      "DayValue1": "Dưa hấu",
-      "DayValue2": "Chuối",
-      "DayValue3": "Nước cam tươi",
-      "DayValue4": "Xoài",
-      "DayValue5": "Sữa chua hoa quả",
-      "DayValue6": "Nước cam tươi"
-  },
-  {
-      "Type": 1,
-      "DayValue1": "Cháo cá quả thì là\r\n Nemo: Sữa bột Grow Plus +",
-      "DayValue2": "Cháo tôm rau xanh/ \r\n Nemo: Sữa bột Grow Plus +",
-      "DayValue3": "Cháo bò pho mai/ \r\n Nemo: Sữa bột Grow Plus +",
-      "DayValue4": "Cháo gà rau xanh/ \r\n Nemo: Sữa bột Grow Plus +",
-      "DayValue5": "Cháo trứng rau xanh\r\n  Nemo: Sữa bột Grow Plus +",
-      "DayValue6": "Cháo bò pho mai/ \r\n Nemo: Sữa bột Grow Plus +"
-  },
-  ];
-  listMenuSub = [
-    {
-      "Type": 2,
-      "DayValue1": "Cháo dinh dưỡng",
-      "DayValue2": "Cháo vịt đỗ xanh ",
-      "DayValue3": "Cháo trai hành răm",
-      "DayValue4": "Cháo lươn hành răm",
-      "DayValue5": "Cháo thịt đỗ xanh lạc vừng",
-      "DayValue6": "Cháo trai hành răm"
-  },
-  {
-      "Type": 2,
-      "DayValue1": "Sữa bột Grow Plus +",
-      "DayValue2": null,
-      "DayValue3": "Sữa bột Grow Plus +",
-      "DayValue4": "Sữa bột Grow Plus +",
-      "DayValue5": null,
-      "DayValue6": "Sữa bột Grow Plus +"
-  }
-  ];
-  menuData = [
-  ]
+  listMenuMain = [];
+  listMenuSub = []
+  menuData = []
   listDay = [
     {
       Day: "Thứ hai",
@@ -108,9 +61,18 @@ export class ListMenuComponent implements OnInit {
   today: string;
   schoolLevelId: any;
   dataExport = [];
+  name: any;
   ngOnInit(): void {
     this.today = this.formateDate.formatDate(new Date(), 'YYYY-MM-DD');
-    this.schoolLevelId = this.activeRouter.snapshot.params.schoolLevelId;
+    this.schoolLevelId = +this.activeRouter.snapshot.params.schoolLevelId;
+    this.schoolGradeLevelService.getListLevel().subscribe(res => {
+      this.name = res.find(x => x.SchoolLevelId === this.schoolLevelId).Name;      
+    })
+    this.menuService.getMenuOfLevel(this.schoolLevelId, this.today).subscribe(res => {
+         this.listMenuMain = res.filter(x => x.Type === 1);
+         this.listMenuSub = res.filter(x => x.Type === 2);
+
+    })
   }
   public exportExcel(jsonData: any[], fileName: string): void {
 

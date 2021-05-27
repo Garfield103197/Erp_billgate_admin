@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DocumentGroupComponent } from './document-group.component';
+import { SystemNotiLevelComponent } from './system-noti-level.component';
 
-describe('DocumentGroupComponent', () => {
-  let component: DocumentGroupComponent;
-  let fixture: ComponentFixture<DocumentGroupComponent>;
+describe('SystemNotiLevelComponent', () => {
+  let component: SystemNotiLevelComponent;
+  let fixture: ComponentFixture<SystemNotiLevelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DocumentGroupComponent ]
+      declarations: [ SystemNotiLevelComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DocumentGroupComponent);
+    fixture = TestBed.createComponent(SystemNotiLevelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

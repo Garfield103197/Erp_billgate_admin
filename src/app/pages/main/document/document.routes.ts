@@ -1,8 +1,9 @@
 import { Routes } from "@angular/router";
-import { DocumentGroupDetailComponent } from "./document-group-detail/document-group-detail.component";
+import { DocumentGradeComponent } from "./document-levelGradeClass/document-grade/document-grade.component";
 import { DocumentGroupTableComponent } from "./document-group-table/document-group-table.component";
-import { DocumentGroupComponent } from "./document-group/document-group.component";
 import { DocumentComponent } from "./document.component";
+import { DocumentGroupComponent } from "./document-levelGradeClass/document-group/document-group.component";
+import { DocumentGroupDetailComponent } from "./document-levelGradeClass/document-group-detail/document-group-detail.component";
 
 
 export const documentRoute: Routes = [
@@ -11,8 +12,12 @@ export const documentRoute: Routes = [
         component: DocumentComponent,
         children: [
             {
-                path: 'list-grade',
+                path: 'list-level',
                 component: DocumentGroupComponent,
+            },
+            {
+                path: 'list-grade/:schoolLevelId',
+                component: DocumentGradeComponent,
             },
             {
                 path: 'list-class/:gradeId',
@@ -25,7 +30,7 @@ export const documentRoute: Routes = [
             },
             {
                 path: '',
-                redirectTo: 'list-grade',
+                redirectTo: 'list-level',
                 pathMatch: 'full'
             }
         ]

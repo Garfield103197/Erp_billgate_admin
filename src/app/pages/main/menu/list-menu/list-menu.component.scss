@@ -2,9 +2,11 @@
   padding: 0;
   margin: 0;
 }
-.list-menu {
-  font-weight: 600;
-  font-size: 22px;
+.menu {
+    .title{
+        font-weight: 600;
+        font-size: 26px;
+    }
 }
 .selected {
   background: none;

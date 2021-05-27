@@ -6,17 +6,19 @@ import { notiRoute } from './noti.routes';
 import { TableBaseModule } from 'src/app/components/table/table.component';
 import { CreateNotiComponent } from './create-noti/create-noti.component';
 import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
-import { SystemNotiComponent } from './system-noti/system-noti.component';
 import { NotificationMainComponent } from './notification-main.component';
 import { BaseCardModule } from 'src/app/components/card/base-card/base-card.component';
-import { SystemListDetailComponent } from './system-list-detail/system-list-detail.component';
 import { SystemListTableComponent } from './system-list-table/system-list-table.component';
+import { SystemNotiLevelComponent } from './system-levelGradeClass/system-noti-level/system-noti-level.component';
+import { SystemNotiComponent } from './system-levelGradeClass/system-noti/system-noti.component';
+import { SystemListDetailComponent } from './system-levelGradeClass/system-list-detail/system-list-detail.component';
+import { EditNotiComponent } from './edit-noti/edit-noti.component';
 
 
 
 
 @NgModule({
-  declarations: [NotificationMainComponent, NotificationComponent, CreateNotiComponent, SystemNotiComponent, SystemListDetailComponent, SystemListTableComponent],
+  declarations: [NotificationMainComponent, NotificationComponent, CreateNotiComponent, SystemNotiComponent, SystemListDetailComponent, SystemListTableComponent, SystemNotiLevelComponent, EditNotiComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(notiRoute),
