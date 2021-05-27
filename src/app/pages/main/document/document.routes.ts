@@ -1,9 +1,9 @@
 import { Routes } from "@angular/router";
-import { DocumentGradeComponent } from "./document-levelGradeClass/document-grade/document-grade.component";
+import { DocumentGradeComponent } from "./document-levelGradeClass/document-list-grade/document-grade.component";
 import { DocumentGroupTableComponent } from "./document-group-table/document-group-table.component";
 import { DocumentComponent } from "./document.component";
-import { DocumentGroupComponent } from "./document-levelGradeClass/document-group/document-group.component";
-import { DocumentGroupDetailComponent } from "./document-levelGradeClass/document-group-detail/document-group-detail.component";
+import { DocumentGroupComponent } from "./document-levelGradeClass/document-list-level/document-group.component";
+import { DocumentGroupDetailComponent } from "./document-levelGradeClass/document-list-class/document-group-detail.component";
 
 
 export const documentRoute: Routes = [

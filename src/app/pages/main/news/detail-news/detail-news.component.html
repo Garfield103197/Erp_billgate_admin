@@ -10,7 +10,7 @@
         <input type="text" [(ngModel)]="model.Title" />
       </div>
       <div class="images">
-        <img *ngIf="model.MediaURL" class="preview" [src]="model.MediaURL" alt="">
+        <img *ngIf="model.MediaURL" class="preview" [src]="img" alt="">
       </div>
       <div class="btn-upload-img">
           <input id="upload" #file   accept="image/*" (change)="preview(file.files)" type="file" hidden>
@@ -18,7 +18,7 @@
               <img class="icon" src="assets/svg/icon-img.svg" alt="" srcset="">
               Tải lên ảnh mới
            </label>
-          <input id="default" type="file" hidden> 
+           <input id="default" #default   accept="image/*" (change)="preview(default.files)" type="file" hidden>
           <label class="default" for="default">
               <img class="icon" src="assets/svg/icon-img-default.svg" alt="" srcset="">
               Ảnh mặc định

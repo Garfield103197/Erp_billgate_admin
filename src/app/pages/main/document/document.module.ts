@@ -6,9 +6,9 @@ import { TableBaseModule } from 'src/app/components/table/table.component';
 import { DocumentComponent } from './document.component';
 import { documentRoute } from './document.routes';
 import { DocumentGroupTableComponent } from './document-group-table/document-group-table.component';
-import { DocumentGradeComponent } from './document-levelGradeClass/document-grade/document-grade.component';
-import { DocumentGroupComponent } from './document-levelGradeClass/document-group/document-group.component';
-import { DocumentGroupDetailComponent } from './document-levelGradeClass/document-group-detail/document-group-detail.component';
+import { DocumentGradeComponent } from './document-levelGradeClass/document-list-grade/document-grade.component';
+import { DocumentGroupComponent } from './document-levelGradeClass/document-list-level/document-group.component';
+import { DocumentGroupDetailComponent } from './document-levelGradeClass/document-list-class/document-group-detail.component';
 
 
 

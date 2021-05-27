@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
-import { ScheduleGroupDetailComponent } from "./schedule-group-detail/schedule-group-detail.component";
-import { ScheduleGroupComponent } from "./schedule-group/schedule-group.component";
-import { ScheduleLevelComponent } from "./schedule-level/schedule-level.component";
+import { ScheduleGroupDetailComponent } from "./schedule-levelGradeClass/schedule-list-class/schedule-group-detail.component";
+import { ScheduleGroupComponent } from "./schedule-levelGradeClass/schedule-list-grade/schedule-group.component";
+import { ScheduleLevelComponent } from "./schedule-levelGradeClass/schedule-list-level/schedule-level.component";
 import { ScheduleListComponent } from "./schedule-list/schedule-list.component";
 import { ScheduleComponent } from "./schedule.component";
 

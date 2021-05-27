@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { News } from 'src/app/models/news.model';
 import { Notification } from 'src/app/models/noti.model';
 import { NewsService } from 'src/app/services/news.service';
+import Swal from 'sweetalert2';
 import { CreateNewsComponent } from '../create-news/create-news.component';
 import { DetailNewsComponent } from '../detail-news/detail-news.component';
 
@@ -24,40 +25,42 @@ export class NewsComponent implements OnInit {
     {
       "stt": 1,
       "NewsId": 1,
-      "content": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
+      "Title": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
       "CreatedOn": "08/05/2021",
       "create_person": "Nguyễn Tuấn Anh",
-      "Link": "https://moet.gov.vn/Pages/ho...",
+      "URLLink": "https://moet.gov.vn/Pages/ho...",
     },
     {
       "stt": 2,
       "NewsId": 2,
-      "content": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
+      "Title": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
       "CreatedOn": "08/05/2021",
       "create_person": "Nguyễn Tuấn Anh",
-      "Link": "https://moet.gov.vn/Pages/ho...",
+      "URLLink": "https://moet.gov.vn/Pages/ho...",
     },
     {
       "stt": 3,
       "NewsId": 3,
-      "content": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
+      "Title": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
       "CreatedOn": "08/05/2021",
-      "Link": "https://moet.gov.vn/Pages/ho...",
+      "URLLink": "https://moet.gov.vn/Pages/ho...",
       "create_person": "Nguyễn Tuấn Anh"
     },
     {
       "stt": 4,
-      "content": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
+      "NewsId": 4,
+      "Title": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
       "CreatedOn": "08/05/2021",
       "create_person": "Nguyễn Tuấn Anh",
-      "Link": "https://moet.gov.vn/Pages/ho...",
+      "URLLink": "https://moet.gov.vn/Pages/ho...",
     },
     {
       "stt": 5,
-      "content": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
+      "NewsId": 5,
+      "Title": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
       "CreatedOn": "08/05/2021",
       "create_person": "Nguyễn Tuấn Anh",
-      "Link": "https://moet.gov.vn/Pages/ho...",
+      "URLLink": "https://moet.gov.vn/Pages/ho...",
     }
   ];
 
@@ -83,8 +86,7 @@ export class NewsComponent implements OnInit {
         width: '500px',
         height: '750px'
       }).afterClosed().subscribe(result => {
-        console.log(result);
-        
+         this.getListNews();
       });
     }
     if (ev.type === 'edit') {
@@ -93,7 +95,31 @@ export class NewsComponent implements OnInit {
         height: '750px',
         data: ev.item
       }).afterClosed().subscribe(result => {
+        this.getListNews();
       });
+    }
+    if (ev.type === 'delete') {
+      Swal.fire({
+        text: "Bạn muốn xoá tin tức này không?",
+        showCancelButton: true,
+        cancelButtonColor: '#3085d6',
+        confirmButtonColor: '#d33',
+        cancelButtonText: 'Huỷ',
+        confirmButtonText: 'Xoá'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.newsService.deleteNews(ev.item.NewsId).subscribe(res => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Xoá tin tức thành công!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            this.getListNews();
+          })
+        }
+      })
     }
   }
 }

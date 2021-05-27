@@ -10,9 +10,9 @@ import { MemberService } from 'src/app/services/member.service';
 import Swal from 'sweetalert2';
 import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 @Component({
-  selector: 'app-member-detail',
-  templateUrl: './member-detail.component.html',
-  styleUrls: ['./member-detail.component.scss']
+  selector: 'app-member-list-table',
+  templateUrl: './member-list-table.component.html',
+  styleUrls: ['./member-list-table.component.scss']
 })
 export class MemberDetailComponent implements OnInit {
 

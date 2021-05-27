@@ -1,8 +1,8 @@
 import { Routes } from "@angular/router";
-import { MemberDetailComponent } from "./components/member-detail/member-detail.component";
-import { MemberHomeClassComponent } from "./components/member-home-class/member-home-class.component";
-import { MemberHomeGroupComponent } from "./components/member-home-group/member-home-group.component";
-import { MemberHomeComponent } from "./components/member-home/member-home.component";
+import { MemberDetailComponent } from "./components/member-list-table/member-list-table.component";
+import { MemberHomeClassComponent } from "./components/member-levelGradeClass/member-list-class/member-home-class.component";
+import { MemberHomeGroupComponent } from "./components/member-levelGradeClass/member-list-grade/member-home-group.component";
+import { MemberHomeComponent } from "./components/member-levelGradeClass/member-list-level/member-home.component";
 
 import { MemberComponent } from './member.component'
 

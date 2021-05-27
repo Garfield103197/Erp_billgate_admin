@@ -16,11 +16,13 @@ export class DetailNewsComponent implements OnInit {
   ) { }
   imagePath;
   model: any = {};
+  img;
   ngOnInit(): void {
-    this.model = this.data.item;
+    this.model = this.data;
+    this.img = this.data.MediaURL;
   }
   save() {
-    this.newsService.editNews(this.data.item.NewsId, this.data.item).subscribe(res => {
+    this.newsService.editNews(this.data.NewsId, this.data).subscribe(res => {
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -42,7 +44,8 @@ export class DetailNewsComponent implements OnInit {
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
-      this.model.MediaURL = reader.result;
+      this.img = reader.result;
+      this.model.MediaURL = this.img.split(',')[1];
     }
   }
 

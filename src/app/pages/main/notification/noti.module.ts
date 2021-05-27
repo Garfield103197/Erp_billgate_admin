@@ -9,9 +9,9 @@ import { CreateFormModule } from 'src/app/components/create-form/create-form.com
 import { NotificationMainComponent } from './notification-main.component';
 import { BaseCardModule } from 'src/app/components/card/base-card/base-card.component';
 import { SystemListTableComponent } from './system-list-table/system-list-table.component';
-import { SystemNotiLevelComponent } from './system-levelGradeClass/system-noti-level/system-noti-level.component';
-import { SystemNotiComponent } from './system-levelGradeClass/system-noti/system-noti.component';
-import { SystemListDetailComponent } from './system-levelGradeClass/system-list-detail/system-list-detail.component';
+import { SystemNotiLevelComponent } from './system-levelGradeClass/system-list-level/system-noti-level.component';
+import { SystemNotiComponent } from './system-levelGradeClass/system-list-grade/system-noti.component';
+import { SystemListDetailComponent } from './system-levelGradeClass/system-list-class/system-list-detail.component';
 import { EditNotiComponent } from './edit-noti/edit-noti.component';
 
 

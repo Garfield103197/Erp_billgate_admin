@@ -2,9 +2,9 @@ import { Routes } from "@angular/router";
 import { NotificationComponent } from "./list-noti/notification.component";
 import { NotificationMainComponent } from "./notification-main.component";
 import { SystemListTableComponent } from "./system-list-table/system-list-table.component";
-import { SystemNotiLevelComponent } from "./system-levelGradeClass/system-noti-level/system-noti-level.component";
-import { SystemListDetailComponent } from "./system-levelGradeClass/system-list-detail/system-list-detail.component";
-import { SystemNotiComponent } from "./system-levelGradeClass/system-noti/system-noti.component";
+import { SystemNotiLevelComponent } from "./system-levelGradeClass/system-list-level/system-noti-level.component";
+import { SystemListDetailComponent } from "./system-levelGradeClass/system-list-class/system-list-detail.component";
+import { SystemNotiComponent } from "./system-levelGradeClass/system-list-grade/system-noti.component";
 
 export const notiRoute: Routes = [
   {

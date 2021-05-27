@@ -18,19 +18,19 @@ export class News {
                 type: 'text',
             },
             {
-                id: 'content',
+                id: 'Title',
                 name: 'Tiêu đề',
                 width: 300,
                 type: 'text',
             },
             {
-                id: 'Link',
+                id: 'URLLink',
                 name: 'Link',
                 width: 200,
                 type: 'text',
             },
             {
-                id: 'create_person',
+                id: 'CreatedByName',
                 name: 'Người tạo',
                 width: 200,
                 type: 'text',
@@ -54,63 +54,4 @@ export class News {
         ];
     }
 
-
-    public get collumsClass(): Array<CollumsModel> {
-        return [
-            {
-                id: 'stt',
-                name: 'STT',
-                width: 20,
-                type: 'text',
-            },
-            {
-                id: 'name',
-                name: 'Họ và tên',
-                width: 150,
-                type: 'text',
-            },
-            {
-                id: 'dob',
-                name: 'Ngày sinh',
-                width: 50,
-                type: 'text',
-            },
-            {
-                id: 'gender',
-                name: 'Giới tính',
-                width: 50,
-                type: 'text',
-            },
-            {
-                id: 'class',
-                name: 'Lớp',
-                width: 50,
-                type: 'text',
-            },
-            {
-                id: 'code',
-                name: 'Mã học sinh',
-                width: 50,
-                type: 'text',
-            },
-            {
-                id: 'phone',
-                name: 'SĐT phụ huynh',
-                width: 50,
-                type: 'text',
-            },
-            {
-                id: 'address',
-                name: 'Địa chỉ',
-                width: 50,
-                type: 'text',
-            }
-            , {
-                id: '',
-                name: '',
-                width: 200,
-                type: 'setting',
-            },
-        ]
-    }
 }
