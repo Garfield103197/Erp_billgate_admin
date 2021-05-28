@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private loaderService: LoaderService
   ) { }
-
+  error = "";
   data = {
     type: {
       phone: 'phone',
@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
         this.loaderService.hide();
       },
         (err) => {
-          this.errorLogin = err.error.message;
+          this.error = "Sai tên tài khoản hoặc mật khẩu."
+          this.loaderService.hide();
         }
       );
   }
