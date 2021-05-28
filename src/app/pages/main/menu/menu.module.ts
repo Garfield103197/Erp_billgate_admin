@@ -11,6 +11,7 @@ import { ListMenuComponent } from './list-menu/list-menu.component';
 import { EditDishComponent } from './edit-dish/edit-dish.component';
 import { ImportExcelComponent } from './import-excel/import-excel.component';
 import { FormsModule } from "@angular/forms";
+import { LoaderModule } from "src/app/utils/loader/loader.component";
 
 
 
@@ -23,6 +24,7 @@ import { FormsModule } from "@angular/forms";
         FormsModule,
         RouterModule.forChild(menuRoute),
         BaseCardModule,
+        LoaderModule,
         CreateFormModule,
         TableBaseModule
     ],

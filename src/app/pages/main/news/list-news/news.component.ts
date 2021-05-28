@@ -21,48 +21,7 @@ export class NewsComponent implements OnInit {
   config = new News; 
   listActive = [];
   tableData; 
-  data = [
-    {
-      "stt": 1,
-      "NewsId": 1,
-      "Title": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
-      "CreatedOn": "08/05/2021",
-      "create_person": "Nguyễn Tuấn Anh",
-      "URLLink": "https://moet.gov.vn/Pages/ho...",
-    },
-    {
-      "stt": 2,
-      "NewsId": 2,
-      "Title": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
-      "CreatedOn": "08/05/2021",
-      "create_person": "Nguyễn Tuấn Anh",
-      "URLLink": "https://moet.gov.vn/Pages/ho...",
-    },
-    {
-      "stt": 3,
-      "NewsId": 3,
-      "Title": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
-      "CreatedOn": "08/05/2021",
-      "URLLink": "https://moet.gov.vn/Pages/ho...",
-      "create_person": "Nguyễn Tuấn Anh"
-    },
-    {
-      "stt": 4,
-      "NewsId": 4,
-      "Title": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
-      "CreatedOn": "08/05/2021",
-      "create_person": "Nguyễn Tuấn Anh",
-      "URLLink": "https://moet.gov.vn/Pages/ho...",
-    },
-    {
-      "stt": 5,
-      "NewsId": 5,
-      "Title": "Tiết Chào cờ toàn trường ngày 10/05/2021 sẽ tổ chức theo lớp",
-      "CreatedOn": "08/05/2021",
-      "create_person": "Nguyễn Tuấn Anh",
-      "URLLink": "https://moet.gov.vn/Pages/ho...",
-    }
-  ];
+  data = [];
 
 
 
@@ -75,6 +34,9 @@ export class NewsComponent implements OnInit {
   getListNews(){
     this.newsService.getListnews(1, 50).subscribe(res => {
        this.data = res;
+       this.data.forEach((x, index) => {
+          x.stt = index + 1;
+       });
     })
   }
 

@@ -20,40 +20,7 @@ export class MemberDetailComponent implements OnInit {
   listActive = [];
   tableData;
   dataModel = {};
-  data = [
-    {
-      "StudentId": 1,
-      "LastName": "Trần Quang Minh",
-      "DOB": "2021-15-04",
-      "Gender": "Nam",
-      "ClassName": "6A1",
-      "Code": "BG1234567",
-      "ParentPhone": "123456789",
-      "Address": "Tòa N03-T7, Khu Ngoại giao đoàn, P. Xuân Tảo, Q. Bắc Từ Liêm, Hà Nội",
-    },
-    {
-      "StudentId": 2,
-      "LastName": "Trần Quang Anh",
-      "DOB": "2021-15-04",
-      "Gender": "Nam",
-      "ClassName": "6A1",
-      "Code": "BG1234567",
-      "ParentPhone": "123456789",
-      "Address": "Tòa N03-T7, Khu Ngoại giao đoàn, P. Xuân Tảo, Q. Bắc Từ Liêm, Hà Nội",
-    },
-    {
-      "StudentId": 3,
-      "LastName": "Trần Quang Vinh",
-      "DOB": "2021-15-04",
-      "Gender": "Nam",
-      "ClassName": "6A1",
-      "Code": "BG1234567",
-      "ParentPhone": "123456789",
-      "Address": "Tòa N03-T7, Khu Ngoại giao đoàn, P. Xuân Tảo, Q. Bắc Từ Liêm, Hà Nội",
-    },
-
-
-  ];
+  data = [];
   file: File;
   arrayBuffer;
   dataImport: any[];
@@ -79,6 +46,9 @@ export class MemberDetailComponent implements OnInit {
   getListStudentOfClass() {
     this.memberService.getListStudentClass(this.classId).subscribe(res => {
       this.data = res;
+      this.data.forEach((x, index) => {
+         x.stt = index + 1;
+      });
     })
   }
   incomingfile(event) {
@@ -118,6 +88,7 @@ export class MemberDetailComponent implements OnInit {
         height: '750px',
         data: ev.item
       }).afterClosed().subscribe(result => {
+        this.getListStudentOfClass();
       });
     }
     if (ev.type === 'upload') {

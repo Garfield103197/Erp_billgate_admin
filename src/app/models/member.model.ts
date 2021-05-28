@@ -4,7 +4,7 @@ import { FilterModel } from "./base/filter.model";
 
 export class MemberModel {
 
-    
+
     public get collums(): Array<CollumsModel> {
         return [
 
@@ -62,6 +62,18 @@ export class MemberModel {
                 name: '',
                 width: 200,
                 type: 'setting',
+                data: [
+                    {
+                        type: 'edit',
+                        text: 'Sửa',
+                        class: 'btn-edit'
+                    },
+                    // {
+                    //   type: 'delete',
+                    //   text:'Xoá',
+                    //   class: 'btn-delete'  
+                    // }
+                ]
             },
 
         ];
@@ -69,15 +81,15 @@ export class MemberModel {
     public get create(): Array<CreateModel> {
         return [
             {
-                id: 'LastName',
+                id: 'StudentLastName',
                 label: 'Họ và tên',
                 name: 'LastName',
                 type: 'text'
             },
             {
-                id: 'ParentPhone',
+                id: 'Phone',
                 label: 'SĐT phụ huynh',
-                name: 'ParentPhone',
+                name: 'Phone',
                 type: 'text'
             },
             {
@@ -87,19 +99,19 @@ export class MemberModel {
                 type: 'date',
             },
             {
-                id: 'GenderString',
+                id: 'StudentGender',
                 label: 'Giới tính',
-                name: 'GenderString',
+                name: 'StudentGender',
                 type: 'selected',
                 data: [
                     {
-                      value: 1,
-                      name: "Nam"  
+                        value: 1,
+                        name: "Nam"
                     },
                     {
                         value: 2,
-                        name: "Nữ"  
-                      }
+                        name: "Nữ"
+                    }
                 ]
             },
             {
@@ -108,16 +120,16 @@ export class MemberModel {
                 name: 'ClassId',
                 type: 'disableSelected',
                 data: []
-            },            {
+            }, {
                 id: 'Code',
                 label: 'Mã học sinh',
                 name: 'Code',
                 type: 'text'
             },
             {
-                id: 'LocationAddress',
+                id: 'StudentLocationAddress',
                 label: 'Địa chỉ',
-                name: 'LocationAddress',
+                name: 'StudentLocationAddress',
                 type: 'textarea'
             }
 
@@ -143,6 +155,63 @@ export class MemberModel {
                 type: 'upload',
                 icon: 'assets/svg/icon-upload.svg',
             }
+        ];
+    }
+    public get detail(): Array<CreateModel> {
+        return [
+            {
+                id: 'LastName',
+                label: 'Họ và tên',
+                name: 'LastName',
+                type: 'text'
+            },
+            {
+                id: 'ParentPhone',
+                label: 'SĐT phụ huynh',
+                name: 'ParentPhone',
+                type: 'text'
+            },
+            {
+                id: 'DOB',
+                label: 'Ngày sinh',
+                name: 'DOB',
+                type: 'date',
+            },
+            {
+                id: 'StudentGender',
+                label: 'Giới tính',
+                name: 'StudentGender',
+                type: 'selected',
+                data: [
+                    {
+                        value: 1,
+                        name: "Nam"
+                    },
+                    {
+                        value: 2,
+                        name: "Nữ"
+                    }
+                ]
+            },
+            {
+                id: 'ClassId',
+                label: 'Lớp',
+                name: 'ClassId',
+                type: 'disableSelected',
+                data: []
+            }, {
+                id: 'Code',
+                label: 'Mã học sinh',
+                name: 'Code',
+                type: 'text'
+            },
+            {
+                id: 'LocationAddress',
+                label: 'Địa chỉ',
+                name: 'LocationAddress',
+                type: 'textarea'
+            }
+
         ];
     }
 }

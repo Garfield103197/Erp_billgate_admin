@@ -23,7 +23,7 @@ export const scheduleRoute: Routes = [
                 component: ScheduleGroupDetailComponent,
             },
             {
-                path: 'schedule-list/class/:classId',
+                path: 'schedule-list/gradeId/:gradeId/class/:classId',
                 component: ScheduleListComponent,
             },
             {

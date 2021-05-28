@@ -9,9 +9,9 @@
     border: none;
     background: none;
     outline: none;
-    text-align: center;
+    // text-align: center;
     height: 25px;
-    width: 75%;
+    width: 100%;
     margin: 5px;
   }
   .active-input{
@@ -65,7 +65,9 @@ p{
 .listSubject{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 60%;
+  margin: auto;
+  // align-items: center;
 }
 .table {
   tbody > tr > td{
@@ -74,5 +76,9 @@ p{
 }
 .select-date{
   border: 1px solid !important;
-  width: 200px;
+  width: 200px !important;
+}
+.title{
+  font-weight: bold;
+  font-size: 26px;
 }

@@ -1,4 +1,5 @@
 import { CollumsModel } from "./base/collums.model";
+import { CreateModel } from "./base/create.model";
 
 export class DocumentModel {
 
@@ -34,6 +35,13 @@ export class DocumentModel {
                 name: '',
                 width: 200,
                 type: 'setting',
+                data: [
+                    {
+                      type: 'delete',
+                      text:'Xoá',
+                      class: 'btn-delete'  
+                    }
+                ]
             },
         ];
     }
@@ -42,9 +50,25 @@ export class DocumentModel {
             {
                 class: 'btn-create',
                 text: '+  Thêm',
-                type: 'uploadFile',
+                type: 'create',
                 icon: ''
             },
+        ];
+    }
+    public get create(): Array<CreateModel> {
+        return [
+            {
+                id: 'Title',
+                label: 'Tên tài liệu',
+                name: 'Title',
+                type: 'text'
+            },
+            {
+                id: 'file',
+                label: 'File',
+                name: 'file',
+                type: 'upload'
+            }
         ];
     }
 }

@@ -10,6 +10,7 @@ export class TableComponent implements OnInit, OnChanges {
     @Input() data: any;
     @Input() tableData: any;
     @Input() listActive?: any;
+    @Input() btnTableHandel?: any;
     @Output() callback = new EventEmitter<any>();
     @ViewChild('file') clickFile: ElementRef;
     @ViewChild('fileUpload') uploadDoc: ElementRef;
@@ -48,7 +49,9 @@ export class TableComponent implements OnInit, OnChanges {
 
     ngOnInit() {
         this.totalPage = Math.ceil((this.data.length / this.pageSive));
-        this.onLoadDatePagitor();        
+        this.onLoadDatePagitor();     
+        console.log(this.tableData);
+           
     }
 
     nextPage = () => {

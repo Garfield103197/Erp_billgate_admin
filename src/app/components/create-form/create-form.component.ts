@@ -63,27 +63,7 @@ export class CreateFormComponent implements OnInit {
       btn: i
     });
   }
-  incomingfile(event) {
-       this.file = event.target.files[0];
-    // let fileReader = new FileReader();
-    // this.file = event.target.files[0];
-    // if(this.file){
-    //   fileReader.onload = (e) => {
-    //     this.arrayBuffer = fileReader.result;
-    //     var data = new Uint8Array(this.arrayBuffer);
-    //     var arr = new Array();
-    //     for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-    //     var bstr = arr.join("");
-    //     var workbook = XLSX.read(bstr, { type: "binary" });
-    //     var first_sheet_name = workbook.SheetNames[0];
-    //     var worksheet = workbook.Sheets[first_sheet_name];
-    //     this.dataImport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
-    //     this.model.listData = this.dataImport;
-    //   }
-    //   fileReader.readAsArrayBuffer(this.file);
-    // }
-    
-  }
+
 }
 
 

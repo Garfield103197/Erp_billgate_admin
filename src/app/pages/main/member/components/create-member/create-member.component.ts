@@ -51,6 +51,7 @@ export class CreateMemberComponent implements OnInit {
     
   }
   handleCallbackEvent(ev) {
+       ev.item.StudentGender = +ev.item.StudentGender;
       if(ev.btn.class === "btn-save"){
         this.loaderService.show();
         this.memberService.createStudent(ev.item).subscribe(res => {

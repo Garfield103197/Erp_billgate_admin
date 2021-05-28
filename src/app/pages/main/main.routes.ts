@@ -34,6 +34,11 @@ export const mainRoutes: Routes = [
           import('./document/document.module').then((m) => m.DocumentModule),
       },
       {
+        path: 'feedback',
+        loadChildren: () =>
+          import('./feedback/feedback.module').then((m) => m.FeedbackModule),
+      },
+      {
         path: '',
         redirectTo: 'member',
         pathMatch: 'full',

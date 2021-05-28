@@ -64,15 +64,8 @@
               {{ item[i.id] | date: "dd/MM/yyyy - hh:mm  a" }}
             </span>
             <span *ngIf="i.type === 'setting'">
-              <button (click)="onClickSetting(item, 'edit')" class="btn-edit">
-                Sửa
-              </button>
-              <button
-                (click)="onClickSetting(item, 'delete')"
-                class="btn-delete"
-              >
-                Xóa
-              </button>
+              
+              <button *ngFor="let btn of i.data" [class]="btn.class" (click)="onClickSetting(item, btn.type)" >{{btn?.text}}</button>
             </span>
           </td>
         </tr>

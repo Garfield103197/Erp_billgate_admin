@@ -7,6 +7,8 @@ import { ExportFileExcelService } from 'src/app/services/export-file-excel.servi
 import { ActivatedRoute } from '@angular/router';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { FormatDateService } from 'src/app/services/format-date.service';
+import Swal from 'sweetalert2';
+import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 @Component({
   selector: 'app-schedule-list',
   templateUrl: './schedule-list.component.html',
@@ -19,11 +21,11 @@ export class ScheduleListComponent implements OnInit {
     private exportService: ExportFileExcelService,
     private router: ActivatedRoute,
     private scheduleService: ScheduleService,
-    private formatDate: FormatDateService
+    private formatDate: FormatDateService,
+    private schoolGradeLevel: SchoolGradeLevelService
   ) { }
   fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   fileExtension = '.xlsx';
-  checkActiveInput = false;
   arrayBuffer: any;
   file: File;
   dataImport: any = [];
@@ -32,11 +34,15 @@ export class ScheduleListComponent implements OnInit {
   classId: number;
   today; string;
   model = {};
+  detailClass: any;
+  modelEdit: any = [];
+  listSubject: any[];
   ngOnInit(): void {
     window.onbeforeunload = function () {
       return 'Are you sure you want to leave?';
     };
     this.classId = +this.router.snapshot.params.classId;
+    const gradeId = +this.router.snapshot.params.gradeId;
     this.today = this.formatDate.formatDate(new Date(), 'YYYY-MM-DD');
     this.dataSchedule.forEach(x => {
       x.ListSubjects = x.ListSubjects.map(x => {
@@ -48,10 +54,15 @@ export class ScheduleListComponent implements OnInit {
           TeacherName: x.TeacherName,
           checkTeacher: false,
           checkSubject: false,
+          checkSelectSubject: false,
         }
       })
-    }) 
+    });
+    this.schoolGradeLevel.getClassOfGrade(gradeId).subscribe(res => {
+         this.detailClass = res.find(x => x.ClassId === this.classId);
+    })
     this.getTimeTable();
+    this.getListSubject();
   }
 
   getTimeTable(){
@@ -59,9 +70,6 @@ export class ScheduleListComponent implements OnInit {
       this.dataSchedule = res;
       console.log(res);
     })
-  }
-  onChange(value, item) {
-    item.SubjectName = value;
   }
   incomingfile(event, item) {
     let fileReader = new FileReader();
@@ -138,20 +146,54 @@ export class ScheduleListComponent implements OnInit {
       StartDate: item.date,
       LessonList: this.dataSchedule
     }
-   
-  }
-  buttonSave(){
     this.scheduleService.uploadTimeTableLesson(this.model).subscribe(res => {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Upload thời khoá biểu thành công!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+  }
+  getListSubject(){
+    this.scheduleService.getListSubject().subscribe(res => {
+      this.listSubject = res;
+    });
+  }
+  onChange(item){
+    item.checkSelectSubject = true;
+  }
+  buttonSaveChange(){
+    this.modelEdit.length = 0;
+    this.dataSchedule.forEach(x => {
+      x.ListSubjects.forEach(i => {
+        if(i.checkTeacher === true || i.checkSubject === true || i.checkSelectSubject === true)
+          this.modelEdit.push(i);
+      });
+    });
+    console.log(this.modelEdit);
+    this.scheduleService.editMultiTimeTable(this.modelEdit).subscribe(res => {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Cập nhật thời khoá biểu thành công!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+       this.modelEdit.forEach(x => {
+        x.checkTeacher = false,
+        x.checkSubject = false,
+        x.checkSelectSubject = false
+       });
     })
   }
   upload() {
     return this.dialog.open(ImportScheduleComponent, {
       width: '800px',
-      height: '500px',
+      height: '400px',
       disableClose: true
     }).afterClosed().subscribe(result => {
-      console.log(result);
-      
       if(result){
         this.incomingfile(result.file, result.item);
       }

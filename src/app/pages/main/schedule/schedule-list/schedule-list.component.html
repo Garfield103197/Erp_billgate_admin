@@ -1,10 +1,10 @@
 <div class="member-home">
-  <!-- <h4>Lớp 10A1</h4>
-  <p>Giáo viên chủ nhiệm: Nguyễn văn A</p>
+  <div class="title">LỚP: {{detailClass?.Name}}</div>
+  <!-- <p>Giáo viên chủ nhiệm: Nguyễn văn A</p>
   <p>Sĩ số: 35</p> -->
   <div class="btn-group">
     <div class="list-button">
-      <button class="btn-schedule" (click)="buttonSave()">
+      <button class="btn-schedule" (click)="buttonSaveChange()">
         <img src="assets/svg/icon-save.svg" alt="" srcset="" />Lưu
       </button>
       <button class="btn-schedule" (click)="upload()">
@@ -40,16 +40,16 @@
             <div class="listSubject" *ngIf="
                 item.SubjectName !== 'Chào cờ'
               ">
-              <Select class="selected" [(ngModel)]="item.SubjectName" ngDefaultControl>
-                <option *ngFor="let subject of listSubject" [value]="subject.SubjectName">
-                  {{ subject.SubjectName }}
+              <Select class="selected" (change)="onChange(item)" [(ngModel)]="item.SubjectId" ngDefaultControl>
+                <option style="text-align: center;" *ngFor="let subject of listSubject" [value]="subject.SubjectId">
+                  {{ subject.Name }}
                 </option>
               </Select>
               <input [readonly]="!item.checkTeacher" [ngClass]="item.checkTeacher ? 'active-input' : ''" type="text"
-                (click)="item.checkTeacher = true" (keyup.enter)="item.checkTeacher = false"
+                (click)="item.checkTeacher = true"
                 [(ngModel)]="item.TeacherName">
               <input [readonly]="!item.checkSubject" [ngClass]="item.checkSubject ? 'active-input' : ''" type="text"
-                (click)="item.checkSubject = true" (keyup.enter)="item.checkSubject = false"
+                (click)="item.checkSubject = true"
                 [(ngModel)]="item.RoomName">
             </div>
           </td>

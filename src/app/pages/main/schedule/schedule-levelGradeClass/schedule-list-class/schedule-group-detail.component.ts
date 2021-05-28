@@ -26,6 +26,6 @@ export class ScheduleGroupDetailComponent implements OnInit {
     })
   }
   callback(ev){
-     this.router.navigateByUrl(`/main/schedule/schedule-list/class/${ev.ClassId}`)
+     this.router.navigateByUrl(`/main/schedule/schedule-list/gradeId/${this.gradeId}/class/${ev.ClassId}`)
   }
 }

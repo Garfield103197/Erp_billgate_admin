@@ -41,6 +41,17 @@ export class Notification{
                 name: '',
                 width: 200,
                 type: 'setting',
+                data: [{
+                    type: 'edit',
+                    text: 'Sửa',
+                    class: 'btn-edit'
+                },
+                {
+                    type: 'delete',
+                    text: 'Xoá',
+                    class: 'btn-delete'
+                }
+                ]
             },
         ];
     }

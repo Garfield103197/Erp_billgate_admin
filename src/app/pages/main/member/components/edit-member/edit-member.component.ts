@@ -34,8 +34,18 @@ export class EditMemberComponent implements OnInit {
   ];
   listCreate = [];
   ngOnInit(): void {
-    this.listCreate = this.conFig.create;
+    this.listCreate = this.conFig.detail;
     this.dataModel = this.data;
+    const model = {
+      ClassName: this.data.ClassName,
+      ClassId: this.data.ClassId
+    }
+    this.dataModel = model;    
+    this.listCreate[4].data = [{
+      value: this.data.ClassId,
+      name: this.data.ClassName,
+    }]
+    
   }
   handleCallbackEvent(ev) {
     

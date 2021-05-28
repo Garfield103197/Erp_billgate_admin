@@ -5,11 +5,12 @@ import { BaseCardModule } from 'src/app/components/card/base-card/base-card.comp
 import { TableBaseModule } from 'src/app/components/table/table.component';
 import { feedbackRoute } from './feedback.routes';
 import { FeedbackComponent } from './feedback.component';
+import { FeedbackListTableComponent } from './feedback-list-table/feedback-list-table.component';
 
 
 
 @NgModule({
-  declarations: [FeedbackComponent],
+  declarations: [FeedbackComponent, FeedbackListTableComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(feedbackRoute),

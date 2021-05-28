@@ -9,15 +9,17 @@ import { DocumentGroupTableComponent } from './document-group-table/document-gro
 import { DocumentGradeComponent } from './document-levelGradeClass/document-list-grade/document-grade.component';
 import { DocumentGroupComponent } from './document-levelGradeClass/document-list-level/document-group.component';
 import { DocumentGroupDetailComponent } from './document-levelGradeClass/document-list-class/document-group-detail.component';
+import { CreateDocumentComponent } from './create-document/create-document.component';
+import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
 
 
 
 @NgModule({
-  declarations: [DocumentComponent, DocumentGroupComponent, DocumentGroupDetailComponent, DocumentGroupTableComponent, DocumentGradeComponent],
+  declarations: [DocumentComponent, DocumentGroupComponent, DocumentGroupDetailComponent, DocumentGroupTableComponent, DocumentGradeComponent, CreateDocumentComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(documentRoute),
-    BaseCardModule,
+    CreateFormModule,
     BaseCardModule,
     TableBaseModule
   ],
