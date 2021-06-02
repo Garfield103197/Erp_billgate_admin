@@ -1,0 +1,138 @@
+.header {
+  .title {
+    align-items: center;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  .select {
+    display: flex;
+
+    align-items: center;
+    padding: 20px;
+    .list-button {
+      text-align: center;
+      //   margin: auto;
+      margin-left: 40px;
+      .btn-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .list-button {
+          display: flex;
+          align-items: center;
+          .btn-schedule {
+            width: 175px;
+            height: 45px;
+            color: white;
+            background-color: #8ea76b;
+            border: none;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            img {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+    .select-box {
+      .line {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 45px;
+        align-items: center;
+        .selected {
+          width: 200px;
+          height: 30px;
+          border: 1px solid #50a0fc;
+          border-radius: 5px;
+          outline: none;
+        }
+      }
+    }
+    .delete {
+      .btn-delete {
+        width: 100px;
+        height: 30px;
+        color: #ff4242;
+        outline: none;
+        border-radius: 5px;
+        background-color: #ffffff;
+        border: 1px solid #ff4242;
+        text-align: center;
+      }
+    }
+  }
+}
+.table-gradebook {
+  width: auto !important;
+  text-align: center;
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+  }
+  input[type="text"] {
+    outline: none;
+    padding: 5px;
+    margin: 0 5px 5px 5px;
+  }
+  thead > tr > th {
+    // width: 100px;
+    background: #708ac5;
+    color: #ffffff;
+    height: 55px;
+  }
+
+  tbody > tr > td {
+    // width: 100px;
+    height: 35px;
+    border-bottom: 1px solid #707070;
+    border-left: 1px solid #707070;
+    padding: 5px 15px;
+  }
+  tbody > tr > td:last-child {
+    border-right: 1px solid #707070;
+    width: 50px;
+  }
+  tbody > tr > td:first-child {
+    border-left: 1px solid #707070;
+  }
+}
+.table-scroll {
+  overflow: auto;
+}
+.score-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.div-paginator {
+    width: 100%;
+  .paginator {
+    display: flex;
+    align-items: center;
+    .current-page {
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 70px;
+      height: 40px;
+      border: 1px solid #d8d8d8;
+      border-radius: 5px;
+      button {
+        background: none;
+        outline: none;
+        border: none;
+        img {
+          width: 10px;
+        }
+      }
+    }
+  }
+}

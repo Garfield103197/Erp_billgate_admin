@@ -36,19 +36,15 @@ export class EditMemberComponent implements OnInit {
   ngOnInit(): void {
     this.listCreate = this.conFig.detail;
     this.dataModel = this.data;
-    const model = {
-      ClassName: this.data.ClassName,
-      ClassId: this.data.ClassId
-    }
-    this.dataModel = model;    
-    this.listCreate[4].data = [{
+    this.listCreate[6].data = [{
       value: this.data.ClassId,
       name: this.data.ClassName,
     }]
     
   }
   handleCallbackEvent(ev) {
-    
+     console.log(ev);
+     
     if (ev.btn.class === "btn-save") {
       this.loaderService.show();
       this.memberService.editStudent(ev.item.StudentId, ev.item).subscribe(res => {

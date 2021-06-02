@@ -39,6 +39,11 @@ export const mainRoutes: Routes = [
           import('./feedback/feedback.module').then((m) => m.FeedbackModule),
       },
       {
+        path: 'gradebook',
+        loadChildren: () =>
+          import('./gradebook/gradebook.module').then((m) => m.GradeBookModule),
+      },
+      {
         path: '',
         redirectTo: 'member',
         pathMatch: 'full',

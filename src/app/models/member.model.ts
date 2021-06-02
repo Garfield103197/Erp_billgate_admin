@@ -24,7 +24,7 @@ export class MemberModel {
                 id: 'DOB',
                 name: 'Ngày sinh',
                 width: 100,
-                type: 'date',
+                type: 'DOB',
             },
 
             {
@@ -68,11 +68,11 @@ export class MemberModel {
                         text: 'Sửa',
                         class: 'btn-edit'
                     },
-                    // {
-                    //   type: 'delete',
-                    //   text:'Xoá',
-                    //   class: 'btn-delete'  
-                    // }
+                    {
+                      type: 'delete',
+                      text:'Xoá',
+                      class: 'btn-delete'  
+                    }
                 ]
             },
 
@@ -82,7 +82,19 @@ export class MemberModel {
         return [
             {
                 id: 'StudentLastName',
-                label: 'Họ và tên',
+                label: 'Họ và tên học sinh',
+                name: 'StudentLastName',
+                type: 'text'
+            },
+            {
+                id: 'StudentPhone',
+                label: 'SĐT học sinh',
+                name: 'StudentPhone',
+                type: 'text'
+            },
+            {
+                id: 'LastName',
+                label: 'Họ và tên phụ huynh',
                 name: 'LastName',
                 type: 'text'
             },
@@ -161,8 +173,20 @@ export class MemberModel {
         return [
             {
                 id: 'LastName',
-                label: 'Họ và tên',
+                label: 'Họ và tên học sinh',
                 name: 'LastName',
+                type: 'text'
+            },
+            {
+                id: 'Phone',
+                label: 'SĐT học sinh',
+                name: 'Phone',
+                type: 'text'
+            },
+            {
+                id: 'ParentName',
+                label: 'Họ và tên phụ huynh',
+                name: 'ParentName',
                 type: 'text'
             },
             {

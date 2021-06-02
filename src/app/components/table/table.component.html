@@ -63,6 +63,9 @@
             <span *ngIf="i.type === 'date'" (click)="handleRouteLink(item)">
               {{ item[i.id] | date: "dd/MM/yyyy - hh:mm  a" }}
             </span>
+            <span *ngIf="i.type === 'DOB'" (click)="handleRouteLink(item)">
+              {{ item[i.id] | date: "dd/MM/yyyy" }}
+            </span>
             <span *ngIf="i.type === 'setting'">
               
               <button *ngFor="let btn of i.data" [class]="btn.class" (click)="onClickSetting(item, btn.type)" >{{btn?.text}}</button>

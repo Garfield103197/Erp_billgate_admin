@@ -44,7 +44,7 @@ export class CreateMemberComponent implements OnInit {
       ClassId: this.data.ClassId
     }
     this.dataModel = model;    
-    this.listCreate[4].data = [{
+    this.listCreate[6].data = [{
       value: this.data.ClassId,
       name: this.data.Name,
     }]

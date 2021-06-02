@@ -51,6 +51,11 @@ export class MainLayoutComponent implements OnInit {
         name: 'Góp ý',
         linkURL: 'feedback',
       },
+      {
+        icon: 'assets/svg/icon-student-report.svg',
+        name: 'Sổ điểm',
+        linkURL: 'gradebook',
+      },
     ],
   };
   constructor() { }

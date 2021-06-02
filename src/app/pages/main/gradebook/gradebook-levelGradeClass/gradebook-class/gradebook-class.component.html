@@ -1,0 +1,14 @@
+<div>
+    <div class="header">
+      LỚP
+      <button class="btn-create create">+ Thêm Lớp</button>
+    </div>
+    <br />
+    <app-base-card
+      [dataCard]="data"
+      [showIcon]="true"
+      (callback)="routerTo($event)"
+    >
+    </app-base-card>
+  </div>
+  

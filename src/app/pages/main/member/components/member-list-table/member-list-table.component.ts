@@ -45,7 +45,7 @@ export class MemberDetailComponent implements OnInit {
   }
   getListStudentOfClass() {
     this.memberService.getListStudentClass(this.classId).subscribe(res => {
-      this.data = res;
+      this.data = res.reverse();
       this.data.forEach((x, index) => {
          x.stt = index + 1;
       });

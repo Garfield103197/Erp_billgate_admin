@@ -1,0 +1,99 @@
+<div class="container-fluid">
+  <div class="header">
+    <div class="title">LỚP: {{ className }}</div>
+    <br />
+    <div class="shadow select">
+      <div class="select-box">
+        <div class="line">
+          <label for="">Niên khoá</label>
+          <select class="selected" >
+            <option value="">2020 - 2021</option>
+            <option value="">2021 - 2022</option>
+          </select>
+        </div>
+        <div class="line">
+          <label for="">Kỳ học</label>
+          <select class="selected" >
+            <option value="">Kỳ 1</option>
+            <option value="">Kỳ 2</option>
+          </select>
+        </div>
+        <div class="line">
+          <label for="">Môn học</label>
+          <Select class="selected" ngDefaultControl>
+            <option
+              *ngFor="let subject of listSubject"
+              [value]="subject.SubjectId"
+            >
+              {{ subject.Name }}
+            </option>
+          </Select>
+        </div>
+      </div>
+      <div class="list-button">
+        <div class="btn-group">
+          <div class="list-button">
+            <button class="btn-schedule" (click)="clickSave()">
+              <img src="assets/svg/icon-save.svg"  alt="" srcset="" />Lưu
+            </button>
+            <button class="btn-schedule">
+              <img src="assets/svg/icon-upload.svg" />Nhập
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="delete">
+          <button class="btn-delete" (click)="delete()">Xoá</button>
+      </div>
+    </div>
+    <br>
+    <div class="div-paginator">
+      <div class="paginator">
+        <div class="current-page">
+          <button (click)="backPage()">
+            <img src="assets/svg/icon-left.svg" />
+          </button>
+          <span>{{ currentPage }}</span>
+          <button (click)="nextPage()">
+            <img src="assets/svg/icon-right.svg" />
+          </button>
+        </div>
+        <span>/ {{ totalPage }}</span>
+      </div>
+    </div>
+    <br>
+    <div class="table-scroll">
+        <table class="table-gradebook">
+          <thead>
+            <tr>
+              <th><input type="checkbox" ></th>
+              <th class="w-50">STT</th>
+              <th>Họ và tên</th>
+              <th>Ngày sinh</th>
+              <th *ngFor="let item of listTest">
+                  <div class="score-name">
+                      <input type="checkbox" (change)="item.check = $event.target.checked"  >
+                      <input type="text">
+                  </div>
+              </th>
+              <th><button (click)="onClick()">+</button></th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr *ngFor="let item of data">
+                 <td><input type="checkbox" ></td>
+                 <td>{{item.stt}}</td>
+                 <td>{{item.LastName}}</td>
+                 <td>{{item.DOB | date: "dd/MM/yyyy"}}</td>
+                 <td *ngFor="let i of listTest">
+                    <div class="score-name">
+                        <input type="text" [(ngModel)]="i.value" >
+                    </div>
+                 </td>
+                 <td></td>
+             </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

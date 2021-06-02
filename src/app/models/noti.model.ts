@@ -2,7 +2,7 @@ import { CollumsModel } from "./base/collums.model";
 import { CreateModel } from "./base/create.model";
 import { FilterModel } from "./base/filter.model";
 
-export class Notification{
+export class Notification {
 
     public get collums(): Array<CollumsModel> {
         return [
@@ -19,7 +19,7 @@ export class Notification{
                 type: 'text',
             },
             {
-                id: 'Content',
+                id: 'Title',
                 name: 'Thông báo',
                 width: 300,
                 type: 'text',
@@ -70,7 +70,7 @@ export class Notification{
                 type: 'text',
             },
             {
-                id: 'content',
+                id: 'Content',
                 name: 'Thông báo',
                 width: 300,
                 type: 'text',
@@ -86,6 +86,18 @@ export class Notification{
                 name: '',
                 width: 200,
                 type: 'setting',
+                data: [
+                    // {
+                    //     type: 'edit',
+                    //     text: 'Sửa',
+                    //     class: 'btn-edit'
+                    // },
+                    {
+                        type: 'delete',
+                        text: 'Xoá',
+                        class: 'btn-delete'
+                    }
+                ]
             },
         ];
     }

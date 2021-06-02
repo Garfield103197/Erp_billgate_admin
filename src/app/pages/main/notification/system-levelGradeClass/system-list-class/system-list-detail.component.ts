@@ -15,15 +15,16 @@ export class SystemListDetailComponent implements OnInit {
     private schoolGradeLevel: SchoolGradeLevelService,
   ) { }
   data = [];
+  gradeId;
   ngOnInit(): void {
-    const gradeId = this.activeRouter.snapshot.params.gradeId;
-    this.schoolGradeLevel.getClassOfGrade(gradeId).subscribe(res => {
+    this.gradeId = +this.activeRouter.snapshot.params.gradeId;
+    this.schoolGradeLevel.getClassOfGrade(this.gradeId).subscribe(res => {
       this.data = res;
     })
 
   }
   callback(ev){
-      this.router.navigateByUrl(`/main/notification/system-notification/class/${ev.ClassId}`)
+      this.router.navigateByUrl(`/main/notification/system-notification/grade/${this.gradeId}/class/${ev.ClassId}`)
   }
 
 }
