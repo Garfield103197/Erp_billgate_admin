@@ -24,7 +24,7 @@ export const documentRoute: Routes = [
                 component: DocumentGroupDetailComponent,
             },
             {
-                path: 'list-document/class/:classId',
+                path: 'list-document/grade/:gradeId/class/:classId',
                 component: DocumentGroupTableComponent,
 
             },

@@ -39,12 +39,19 @@ export class EditMemberComponent implements OnInit {
     this.listCreate[6].data = [{
       value: this.data.ClassId,
       name: this.data.ClassName,
+    }];
+    this.listCreate[5].data = [{
+      value: 1,
+      name: "Nam",
+    },
+    {
+      value: 2,
+      name: "Nữ",
     }]
     
   }
   handleCallbackEvent(ev) {
-     console.log(ev);
-     
+    ev.item.StudentGender = +ev.item.StudentGender;
     if (ev.btn.class === "btn-save") {
       this.loaderService.show();
       this.memberService.editStudent(ev.item.StudentId, ev.item).subscribe(res => {

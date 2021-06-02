@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MemberService } from 'src/app/services/member.service';
 import Swal from 'sweetalert2';
 import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
+import { FormatDateService } from 'src/app/services/format-date.service';
 @Component({
   selector: 'app-member-list-table',
   templateUrl: './member-list-table.component.html',
@@ -30,7 +31,8 @@ export class MemberDetailComponent implements OnInit {
     private dialog: MatDialog,
     private activeRouter: ActivatedRoute,
     private memberService: MemberService,
-    private schoolGradeLevel: SchoolGradeLevelService
+    private schoolGradeLevel: SchoolGradeLevelService,
+    private formatDate: FormatDateService
   ) { }
   classDetail;
   ngOnInit(): void {
@@ -47,6 +49,13 @@ export class MemberDetailComponent implements OnInit {
     this.memberService.getListStudentClass(this.classId).subscribe(res => {
       this.data = res.reverse();
       this.data.forEach((x, index) => {
+        if(x.GenderString === 'Nữ'){
+          x.StudentGender = 2
+        }
+        else{
+          x.StudentGender = 1
+        }
+         x.DOB = this.formatDate.formatDate(x.DOB, 'YYYY-MM-DD');
          x.stt = index + 1;
       });
     })
@@ -71,8 +80,6 @@ export class MemberDetailComponent implements OnInit {
   }
 
   handleTableCallback(ev) {
-    console.log(ev);
-
     if (ev.type === 'create') {
       return this.dialog.open(CreateMemberComponent, {
         width: '500px',

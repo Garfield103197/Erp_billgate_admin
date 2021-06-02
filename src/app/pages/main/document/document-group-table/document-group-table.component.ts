@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BaseUploadComponent, S3FileService } from '@consult-indochina/common';
 import { DocumentModel } from 'src/app/models/document.model';
 import { DocumentService } from 'src/app/services/document.service';
+import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 import Swal from 'sweetalert2';
 import { CreateDocumentComponent } from '../create-document/create-document.component';
 
@@ -13,31 +14,41 @@ import { CreateDocumentComponent } from '../create-document/create-document.comp
   styleUrls: ['./document-group-table.component.scss']
 })
 export class DocumentGroupTableComponent extends BaseUploadComponent implements OnInit {
-  config = new DocumentModel;
-  listActive = [];
-  tableData;
-  data = [];
-
   constructor(
     public s3Service: S3FileService,
     private documentService: DocumentService,
     private router: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private classLevelService: SchoolGradeLevelService
   ) {
     super(s3Service)
   }
-  linkPreSignedURL;
+  config = new DocumentModel;
+  listActive = [];
+  tableData;
+  data = [];
+  className;
   classId: any;
+  gradeId: any;
   ngOnInit(): void {
     this.classId = +this.router.snapshot.params.classId;
+    this.gradeId = +this.router.snapshot.params.gradeId;
     this.tableData = this.config.collums;
     this.listActive = this.config.btnActice;
     this.getHomework();
+    this.getDetailClass();
+
   }
+  getDetailClass(){
+    this.classLevelService.getClassOfGrade(this.gradeId).subscribe(res => {
+      this.className = res.find(x => x.ClassId === this.classId).Name;
+    })
+  }
+
 
   getHomework() {
     this.documentService.getHomeWorkOfClass(this.classId, '').subscribe(res => {
-      this.data = res;
+      this.data = res.reverse();
       this.data.forEach((x, index) => {
         x.stt = index + 1;
       });
@@ -45,8 +56,6 @@ export class DocumentGroupTableComponent extends BaseUploadComponent implements 
   }
 
   handleTableCallback(ev) {
-    console.log(ev);
-
     if (ev.type === 'create') {
       return this.dialog.open(CreateDocumentComponent, {
         width: '800px',
@@ -58,16 +67,14 @@ export class DocumentGroupTableComponent extends BaseUploadComponent implements 
           }, err => {
             console.log(err);
           }, () => {
-            console.log('complete');
             const model = {
               Title: result.item.Title,
               ClassId: this.classId,
               MediaURLList: this.fileLinkList
             }
-            console.log(model);
             this.documentService.uploadHomeWork(model).subscribe(res => {
+              this.getHomework();
             });
-            this.getHomework();
           });
         }
       })

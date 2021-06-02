@@ -34,8 +34,6 @@ export class CreateDocumentComponent implements OnInit {
       this.listCreate = this.conFig.create;
   }
   handleCallbackEvent(ev) {
-    console.log(ev);
-    
     if(ev.btn.class === 'btn-save'){
       if(ev.file) this.dialoRef.close(ev);       
     }

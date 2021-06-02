@@ -206,16 +206,7 @@ export class MemberModel {
                 label: 'Giới tính',
                 name: 'StudentGender',
                 type: 'selected',
-                data: [
-                    {
-                        value: 1,
-                        name: "Nam"
-                    },
-                    {
-                        value: 2,
-                        name: "Nữ"
-                    }
-                ]
+                data: []
             },
             {
                 id: 'ClassId',

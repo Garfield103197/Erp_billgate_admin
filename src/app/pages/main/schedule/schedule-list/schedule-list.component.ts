@@ -37,6 +37,8 @@ export class ScheduleListComponent implements OnInit {
   detailClass: any;
   modelEdit: any = [];
   listSubject: any[];
+  currentSemester: any[];
+  schoolYear = new Date().getFullYear();
   ngOnInit(): void {
     window.onbeforeunload = function () {
       return 'Are you sure you want to leave?';
@@ -63,12 +65,26 @@ export class ScheduleListComponent implements OnInit {
     })
     this.getTimeTable();
     this.getListSubject();
+    this.getSemester();
+  }
+  getSemester(){
+    this.scheduleService.getListSemester().subscribe(res => {
+       
+       res.forEach(x => {
+         x.year =  new Date(x.StartDate).getFullYear();
+         x.startTime = new Date(x.StartDate).getTime();
+         x.endTime = new Date(x.EndDate).getTime();
+         x.start = this.formatDate.formatDate(x.StartDate, 'DD/MM/YYYY');
+         x.end = this.formatDate.formatDate(x.EndDate, 'DD/MM/YYYY');
+       })
+       this.currentSemester = res.filter(x => x.year === this.schoolYear);
+       console.log(this.currentSemester);
+    })
   }
 
   getTimeTable(){
     this.scheduleService.getScheduleOfClass(this.classId, this.today).subscribe(res => {
       this.dataSchedule = res;
-      console.log(res);
     })
   }
   incomingfile(event, item) {
@@ -146,15 +162,41 @@ export class ScheduleListComponent implements OnInit {
       StartDate: item.date,
       LessonList: this.dataSchedule
     }
-    this.scheduleService.uploadTimeTableLesson(this.model).subscribe(res => {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Upload thời khoá biểu thành công!',
-        showConfirmButton: false,
-        timer: 1500
+    const date = new Date(item.date).getTime();
+    if( date >= this.currentSemester[0].startTime && date <=  this.currentSemester[0].endTime || date >= this.currentSemester[1].startTime && date <=  this.currentSemester[1].endTime){
+      console.log(this.currentSemester[0].startTime , date, this.currentSemester[0].endTime);
+      
+      this.scheduleService.uploadTimeTableLesson(this.model).subscribe(res => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Upload thời khoá biểu thành công!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
-    })
+    }
+    else{
+      this.getTimeTable();
+      Swal.fire({
+        title: 'Vui lòng chọn lại ngày áp dụng!',
+        text: `
+             Học kì 1 từ ${this.currentSemester[0].start} => ${this.currentSemester[0].end}
+             &&
+             Học kì 2 từ ${this.currentSemester[1].start} => ${this.currentSemester[1].end}
+        `,
+        
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Huỷ'
+      }).then((result) => {
+        this.getTimeTable();
+      })
+    }
+   
   }
   getListSubject(){
     this.scheduleService.getListSubject().subscribe(res => {
@@ -164,15 +206,17 @@ export class ScheduleListComponent implements OnInit {
   onChange(item){
     item.checkSelectSubject = true;
   }
+
   buttonSaveChange(){
     this.modelEdit.length = 0;
     this.dataSchedule.forEach(x => {
-      x.ListSubjects.forEach(i => {
-        if(i.checkTeacher === true || i.checkSubject === true || i.checkSelectSubject === true)
-          this.modelEdit.push(i);
-      });
+      if(x.ListSubjects !== null){
+        x.ListSubjects.forEach(i => {
+          if(i.checkTeacher === true || i.checkSubject === true || i.checkSelectSubject === true)
+            this.modelEdit.push(i);
+        });
+      }
     });
-    console.log(this.modelEdit);
     this.scheduleService.editMultiTimeTable(this.modelEdit).subscribe(res => {
       Swal.fire({
         position: 'center',

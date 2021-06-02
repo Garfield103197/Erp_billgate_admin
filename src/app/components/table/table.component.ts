@@ -50,8 +50,6 @@ export class TableComponent implements OnInit, OnChanges {
     ngOnInit() {
         this.totalPage = Math.ceil((this.data.length / this.pageSive));
         this.onLoadDatePagitor();     
-        console.log(this.tableData);
-           
     }
 
     nextPage = () => {

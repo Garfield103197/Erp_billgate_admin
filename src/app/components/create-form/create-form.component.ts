@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, HostListener, Input, NgModule, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, NgModule, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { throwIfEmpty } from 'rxjs/operators';
 import * as XLSX from 'xlsx';
@@ -10,7 +10,7 @@ import * as XLSX from 'xlsx';
   templateUrl: './create-form.component.html',
   styleUrls: ['./create-form.component.scss']
 })
-export class CreateFormComponent implements OnInit {
+export class CreateFormComponent implements OnInit, OnChanges {
   // @HostListener('window:beforeunload', ['$event'])
   // doSomething($event) {
   //    $event.returnValue='Your data will be lost!';
@@ -32,12 +32,13 @@ export class CreateFormComponent implements OnInit {
   dataImport;
   constructor(
   ) { }
-
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void {
     this.model = this.dataModel || {};
-    console.log(this.model);
-    
     this.fileImport = this.checkFile || {};
+    
+  }
+  ngOnInit() {
+    
   }
   fileDownload(url) {
     document.location.href = url;

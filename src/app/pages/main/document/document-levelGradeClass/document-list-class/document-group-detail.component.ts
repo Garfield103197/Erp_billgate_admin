@@ -15,13 +15,14 @@ export class DocumentGroupDetailComponent implements OnInit {
     private activeRouter: ActivatedRoute
   ) { }
   data = [];
+  gradeId: number;
   ngOnInit(): void {
-    const gradeId = this.activeRouter.snapshot.params.gradeId;
-    this.schoolGradeLevel.getClassOfGrade(gradeId).subscribe(res => {
+    this.gradeId = +this.activeRouter.snapshot.params.gradeId;
+    this.schoolGradeLevel.getClassOfGrade(this.gradeId).subscribe(res => {
       this.data = res;
   })
   }
   callback(ev){
-     this.router.navigateByUrl(`/main/document/list-document/class/${ev.ClassId}`)
+     this.router.navigateByUrl(`/main/document/list-document/grade/${this.gradeId}/class/${ev.ClassId}`)
   }
 }

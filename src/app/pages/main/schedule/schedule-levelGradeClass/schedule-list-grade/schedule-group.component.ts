@@ -23,7 +23,6 @@ export class ScheduleGroupComponent implements OnInit {
 
     }
     callback(ev){
-       console.log(ev);
        this.router.navigateByUrl(`/main/schedule/class/${ev.GradeId}`);
     }
 

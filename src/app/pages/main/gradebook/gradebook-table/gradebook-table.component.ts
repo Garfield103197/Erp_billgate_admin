@@ -89,7 +89,6 @@ export class GradebookTableComponent implements OnInit {
 
   }
   clickSave() {
-    console.log(this.listTest);
     this.listTest.forEach((x, index) => {
       x.index = index
     });
@@ -104,8 +103,6 @@ export class GradebookTableComponent implements OnInit {
         return this.listTest;
       }
     });
-    console.log(this.listTest);
-
   }
   onClick() {
     const model = {
@@ -124,11 +121,6 @@ export class GradebookTableComponent implements OnInit {
     this.scheduleService.getListSubject().subscribe(res => {
       this.listSubject = res;
     });
-  }
-  getPagination() {
-    const a = Math.floor(this.listStudent.length / 5);
-    console.log(a);
-
   }
   getListStudentOfClass() {
     this.memberService.getListStudentClass(this.classId).subscribe(res => {

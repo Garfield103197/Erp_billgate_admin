@@ -22,7 +22,6 @@ export class ScheduleGroupDetailComponent implements OnInit {
     this.gradeId = this.activeRouter.snapshot.params.gradeId;
     this.schoolGradeLevel.getClassOfGrade(this.gradeId).subscribe(res => {
       this.listClass = res;
-      console.log(res);
     })
   }
   callback(ev){

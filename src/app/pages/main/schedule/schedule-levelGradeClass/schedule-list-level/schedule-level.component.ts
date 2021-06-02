@@ -17,8 +17,6 @@ export class ScheduleLevelComponent implements OnInit {
   ngOnInit(): void {
     this.schoolGradeLevel.getListLevel().subscribe(res => {
         this.data = res;
-        console.log(res);
-        
     })
   }
   callback(ev){

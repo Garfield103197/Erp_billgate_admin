@@ -41,7 +41,8 @@ export class CreateMemberComponent implements OnInit {
     this.listCreate = this.conFig.create;
     const model = {
       ClassName: this.data.Name,
-      ClassId: this.data.ClassId
+      ClassId: this.data.ClassId,
+      StudentGender: 1
     }
     this.dataModel = model;    
     this.listCreate[6].data = [{

@@ -11,6 +11,7 @@ export class ScheduleService {
 
   getScheduleOfClass(classId, startDate){
     return this.http.get(`api/TimeTableLesson?ClassId=${classId}&StartDate=${startDate}`).pipe(map((res: any) => res.Payload));
+
   }
   uploadTimeTableLesson(data){
     return this.http.post('api/TimeTableLesson/upload', data).pipe(map((res: any) => res.Payload));
@@ -23,5 +24,9 @@ export class ScheduleService {
   }
   editMultiTimeTable(data){
     return this.http.put('api/TimeTableLesson/bulkPut', data).pipe(map((res: any) => res.Payload));
+  }
+  getListSemester(){
+    return this.http.get('api/Semester').pipe(map((res: any) => res.Payload));
+
   }
 }
