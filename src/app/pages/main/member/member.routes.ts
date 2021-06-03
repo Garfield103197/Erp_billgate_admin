@@ -5,6 +5,7 @@ import { MemberHomeGroupComponent } from "./components/member-levelGradeClass/me
 import { MemberHomeComponent } from "./components/member-levelGradeClass/member-list-level/member-home.component";
 
 import { MemberComponent } from './member.component'
+import { SchoolGroupMemberComponent } from "./components/member-levelGradeClass/school-group-member/school-group-member.component";
 
 export const memberRoute: Routes = [
     {
@@ -26,6 +27,10 @@ export const memberRoute: Routes = [
             {
                 path: 'member-home/list-class/:gradeId',
                 component: MemberHomeClassComponent
+            },
+            {
+                path: 'member-home/school-group-member',
+                component: SchoolGroupMemberComponent
             },
             {
                 path: '',

@@ -13,12 +13,14 @@ import { CreateMemberComponent } from './components/create-member/create-member.
 import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
 import { EditMemberComponent } from './components/edit-member/edit-member.component';
 import { LoaderModule } from 'src/app/utils/loader/loader.component';
+import { SchoolGroupMemberComponent } from './components/member-levelGradeClass/school-group-member/school-group-member.component';
+import { ClassCreateComponent } from './components/member-levelGradeClass/class-create/class-create.component';
 
 
 
 
 @NgModule({
-    declarations: [MemberComponent, MemberHomeComponent, MemberDetailComponent, MemberHomeGroupComponent, MemberHomeClassComponent, CreateMemberComponent, EditMemberComponent],
+    declarations: [MemberComponent, MemberHomeComponent, MemberDetailComponent, MemberHomeGroupComponent, MemberHomeClassComponent, CreateMemberComponent, EditMemberComponent, SchoolGroupMemberComponent, ClassCreateComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(memberRoute),

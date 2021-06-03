@@ -1,3 +1,4 @@
+<app-loader></app-loader>
 <div class="member-home">
   <div class="title">LỚP: {{detailClass?.Name}}</div>
   <!-- <p>Giáo viên chủ nhiệm: Nguyễn văn A</p>
@@ -10,14 +11,14 @@
       <button class="btn-schedule" (click)="upload()">
         <img src="assets/svg/icon-upload.svg" />Nhập
       </button>
-      <button (click)="exportExcel(dataExport, 'Thời khoá biểu')" class="btn-schedule">
+      <!-- <button (click)="exportExcel(dataExport, 'Thời khoá biểu')" class="btn-schedule">
         <img src="assets/svg/icon-output.svg" />Xuất
-      </button>
-      <input class="select-date" type="date" [(ngModel)]="today" (change)="getTimeTable()">
+      </button> -->
+      <p>Ngày áp dụng: </p> <input class="select-date" type="date" [(ngModel)]="today" (change)="getTimeTable()">
     </div>
-    <div>
+    <!-- <div>
       <button class="btn-create">+ Thêm</button>
-    </div>
+    </div> -->
   </div>
   <div class="table">
     <table class="data-table">

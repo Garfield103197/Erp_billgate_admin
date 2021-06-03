@@ -54,6 +54,9 @@
             <span *ngIf="i.type === 'number'" (click)="handleRouteLink(item)">{{
               item[i.id] | number
             }}</span>
+            <span *ngIf="i.type === 'boolean'" [class]="item.Type === 1 ? 'false' : 'true'"  (click)="handleRouteLink(item)">{{
+              item[i.id]
+            }}</span>
             <span *ngIf="i.type === 'text'" (click)="handleRouteLink(item)">{{
               item[i.id]
             }}</span>

@@ -33,6 +33,6 @@
                 </div>{{i.StudentCount}}
             </li>
         </ul>
-        <img *ngIf="showIcon" class="delete" src="assets/svg/icon-delete.svg" alt="" srcset="">
+        <img *ngIf="showIcon" class="delete" (click)="handleDeleteCallBack(i)" src="assets/svg/icon-delete.svg" alt="" srcset="">
     </div>
 </div>

@@ -11,6 +11,7 @@ import { DocumentGroupComponent } from './document-levelGradeClass/document-list
 import { DocumentGroupDetailComponent } from './document-levelGradeClass/document-list-class/document-group-detail.component';
 import { CreateDocumentComponent } from './create-document/create-document.component';
 import { CreateFormModule } from 'src/app/components/create-form/create-form.component';
+import { LoaderModule } from 'src/app/utils/loader/loader.component';
 
 
 
@@ -20,6 +21,7 @@ import { CreateFormModule } from 'src/app/components/create-form/create-form.com
     CommonModule,
     RouterModule.forChild(documentRoute),
     CreateFormModule,
+    LoaderModule,
     BaseCardModule,
     TableBaseModule
   ],

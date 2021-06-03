@@ -69,7 +69,6 @@ export class ListMenuComponent implements OnInit {
       this.name = res.find(x => x.SchoolLevelId === this.schoolLevelId).Name;
     })
     this.getMenuOfLevel();
-
   }
 
   getMenuOfLevel() {
@@ -140,7 +139,7 @@ export class ListMenuComponent implements OnInit {
   handleData(data, item) {
     const index = data.findIndex(x => x['Món'] === "Món phụ");
     if (index !== -1) {
-      this.listMenuMain = data.splice(0, index).map(x => {
+      const listMenuMain = data.splice(0, index).map(x => {
         return {
           Type: 1,
           DayValue1: x['Thứ hai'] || null,
@@ -151,7 +150,7 @@ export class ListMenuComponent implements OnInit {
           DayValue6: x['Thứ bảy'] || null,
         }
       });
-      this.listMenuSub = data.map(x => {
+      const listMenuSub = data.map(x => {
         return {
           Type: 2,
           DayValue1: x['Thứ hai'] || null,
@@ -165,9 +164,10 @@ export class ListMenuComponent implements OnInit {
       let model = {
         "SchoolLevelId": this.schoolLevelId,
         "StartDate": item.date,
-        "DishMenuList": this.listMenuMain.concat(this.listMenuSub)
+        "DishMenuList": listMenuMain.concat(listMenuSub)
       }
       this.menuService.uploadDishMenu(model).subscribe(res => {
+        this.getMenuOfLevel();
         Swal.fire({
           position: 'center',
           icon: 'success',

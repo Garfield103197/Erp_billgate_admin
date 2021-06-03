@@ -1,0 +1,39 @@
+.feedback-detail {
+  .title {
+    font-size: 26px;
+    font-weight: bold;
+  }
+  .content {
+    &-detail {
+      display: flex;
+      min-height: 30px;
+      margin-bottom: 10px;
+      label {
+        font-size: 22px;
+        font-weight: bold;
+        width: 130px;
+      }
+      span {
+        margin-top: 3px;
+        font-size: 20px;
+      }
+    }
+    &-detail:nth-child(2) {
+      span {
+        width: 50vw;
+        text-align: justify;
+      }
+    }
+    &-detail:last-child{
+        textarea {
+          width: 50vw;
+          outline: none;
+          padding: 5px 10px;
+        }
+      }
+  }
+}
+.group-table{
+    text-align: center;
+    margin-top: 20px;
+}

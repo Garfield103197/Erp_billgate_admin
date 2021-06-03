@@ -9,6 +9,7 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { FormatDateService } from 'src/app/services/format-date.service';
 import Swal from 'sweetalert2';
 import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
+import { LoaderService } from 'src/app/services/loader.service';
 @Component({
   selector: 'app-schedule-list',
   templateUrl: './schedule-list.component.html',
@@ -22,7 +23,8 @@ export class ScheduleListComponent implements OnInit {
     private router: ActivatedRoute,
     private scheduleService: ScheduleService,
     private formatDate: FormatDateService,
-    private schoolGradeLevel: SchoolGradeLevelService
+    private schoolGradeLevel: SchoolGradeLevelService,
+    private loaderService: LoaderService
   ) { }
   fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   fileExtension = '.xlsx';
@@ -61,28 +63,27 @@ export class ScheduleListComponent implements OnInit {
       })
     });
     this.schoolGradeLevel.getClassOfGrade(gradeId).subscribe(res => {
-         this.detailClass = res.find(x => x.ClassId === this.classId);
+      this.detailClass = res.find(x => x.ClassId === this.classId);
     })
     this.getTimeTable();
     this.getListSubject();
     this.getSemester();
   }
-  getSemester(){
+  getSemester() {
     this.scheduleService.getListSemester().subscribe(res => {
-       
-       res.forEach(x => {
-         x.year =  new Date(x.StartDate).getFullYear();
-         x.startTime = new Date(x.StartDate).getTime();
-         x.endTime = new Date(x.EndDate).getTime();
-         x.start = this.formatDate.formatDate(x.StartDate, 'DD/MM/YYYY');
-         x.end = this.formatDate.formatDate(x.EndDate, 'DD/MM/YYYY');
-       })
-       this.currentSemester = res.filter(x => x.year === this.schoolYear);
-       console.log(this.currentSemester);
+      res.forEach(x => {
+        x.year = new Date(x.StartDate).getFullYear();
+        x.startTime = new Date(x.StartDate).getTime();
+        x.endTime = new Date(x.EndDate).getTime();
+        x.start = this.formatDate.formatDate(x.StartDate, 'DD/MM/YYYY');
+        x.end = this.formatDate.formatDate(x.EndDate, 'DD/MM/YYYY');
+      })
+      this.currentSemester = res.filter(x => x.year === this.schoolYear);
+      console.log(this.currentSemester);
     })
   }
 
-  getTimeTable(){
+  getTimeTable() {
     this.scheduleService.getScheduleOfClass(this.classId, this.today).subscribe(res => {
       this.dataSchedule = res;
     })
@@ -102,15 +103,31 @@ export class ScheduleListComponent implements OnInit {
         var worksheet = workbook.Sheets[first_sheet_name];
         this.dataImport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
         this.dataExport = XLSX.utils.sheet_to_json(worksheet, { raw: true });
-        this.handleData(this.dataImport, item);
+        console.log(this.dataImport);
+        const check = this.dataImport.findIndex(x => x['Tiết'] === 1);
+        if (check < 0) {
+          Swal.fire({
+            title: 'Upload file không đúng, vui lòng chọn lại file tương ứng!',
+            icon: 'warning',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ok',
+          }).then((result) => {
+
+          })
+        }
+        else {
+          this.handleData(this.dataImport, item);
+        }
       }
       fileReader.readAsArrayBuffer(this.file);
     }
 
   }
-  handleData(data, item){
+  handleData(data, item) {
     this.dataExport = data;
-    this.dataSchedule = data.map(x => {
+    let dataSchedule = data.map(x => {
       return {
         "LessonId": x['Tiết'],
         "ListSubjects": [
@@ -160,13 +177,13 @@ export class ScheduleListComponent implements OnInit {
     this.model = {
       ClassId: this.classId,
       StartDate: item.date,
-      LessonList: this.dataSchedule
+      LessonList: dataSchedule
     }
     const date = new Date(item.date).getTime();
-    if( date >= this.currentSemester[0].startTime && date <=  this.currentSemester[0].endTime || date >= this.currentSemester[1].startTime && date <=  this.currentSemester[1].endTime){
-      console.log(this.currentSemester[0].startTime , date, this.currentSemester[0].endTime);
-      
+    if (date >= this.currentSemester[0].startTime && date <= this.currentSemester[0].endTime || date >= this.currentSemester[1].startTime && date <= this.currentSemester[1].endTime) {
+      this.loaderService.show();
       this.scheduleService.uploadTimeTableLesson(this.model).subscribe(res => {
+        this.loaderService.hide();
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -174,9 +191,14 @@ export class ScheduleListComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
+        this.getTimeTable();
+      }, () => {
+        this.loaderService.hide();
+      }, () => {
+        this.loaderService.hide();
       })
     }
-    else{
+    else {
       this.getTimeTable();
       Swal.fire({
         title: 'Vui lòng chọn lại ngày áp dụng!',
@@ -185,39 +207,39 @@ export class ScheduleListComponent implements OnInit {
              &&
              Học kì 2 từ ${this.currentSemester[1].start} => ${this.currentSemester[1].end}
         `,
-        
+
         icon: 'warning',
-        showCancelButton: true,
+        showCancelButton: false,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Ok',
-        cancelButtonText: 'Huỷ'
       }).then((result) => {
-        this.getTimeTable();
       })
     }
-   
+
   }
-  getListSubject(){
+  getListSubject() {
     this.scheduleService.getListSubject().subscribe(res => {
       this.listSubject = res;
     });
   }
-  onChange(item){
+  onChange(item) {
     item.checkSelectSubject = true;
   }
 
-  buttonSaveChange(){
+  buttonSaveChange() {
+    this.loaderService.show();
     this.modelEdit.length = 0;
     this.dataSchedule.forEach(x => {
-      if(x.ListSubjects !== null){
+      if (x.ListSubjects !== null) {
         x.ListSubjects.forEach(i => {
-          if(i.checkTeacher === true || i.checkSubject === true || i.checkSelectSubject === true)
+          if (i.checkTeacher === true || i.checkSubject === true || i.checkSelectSubject === true)
             this.modelEdit.push(i);
         });
       }
     });
     this.scheduleService.editMultiTimeTable(this.modelEdit).subscribe(res => {
+      this.loaderService.hide();
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -225,11 +247,15 @@ export class ScheduleListComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
-       this.modelEdit.forEach(x => {
+      this.modelEdit.forEach(x => {
         x.checkTeacher = false,
-        x.checkSubject = false,
-        x.checkSelectSubject = false
-       });
+          x.checkSubject = false,
+          x.checkSelectSubject = false
+      });
+    }, () => {
+      this.loaderService.hide();
+    }, () => {
+      this.loaderService.hide();
     })
   }
   upload() {
@@ -238,7 +264,7 @@ export class ScheduleListComponent implements OnInit {
       height: '400px',
       disableClose: true
     }).afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.incomingfile(result.file, result.item);
       }
     });

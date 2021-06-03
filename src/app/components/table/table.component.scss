@@ -83,7 +83,7 @@
     border: 1px solid #FF4242;
     cursor: pointer;
 }
-.btn-save, .btn-upload {
+.btn-save, .btn-upload, .btn-noti {
     width: 175px;
     height: 45px;
     color: white;
@@ -98,3 +98,19 @@
       margin-right: 10px;
     }
   }
+.false{
+    height: 30px;
+    padding: 0 10px;
+    color: #FF4242;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #FF4242;
+}
+.true{
+    height: 30px;
+    padding: 0 10px;
+    color: #02E600;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #02E600;
+}

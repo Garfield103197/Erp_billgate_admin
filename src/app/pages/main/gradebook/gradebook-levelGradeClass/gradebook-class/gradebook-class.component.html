@@ -1,12 +1,11 @@
 <div>
     <div class="header">
       LỚP
-      <button class="btn-create create">+ Thêm Lớp</button>
     </div>
     <br />
     <app-base-card
       [dataCard]="data"
-      [showIcon]="true"
+      [showIcon]="false"
       (callback)="routerTo($event)"
     >
     </app-base-card>

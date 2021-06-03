@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BaseUploadComponent, S3FileService } from '@consult-indochina/common';
 import { DocumentModel } from 'src/app/models/document.model';
 import { DocumentService } from 'src/app/services/document.service';
+import { LoaderService } from 'src/app/services/loader.service';
 import { SchoolGradeLevelService } from 'src/app/services/school-grade-level.service';
 import Swal from 'sweetalert2';
 import { CreateDocumentComponent } from '../create-document/create-document.component';
@@ -19,7 +20,8 @@ export class DocumentGroupTableComponent extends BaseUploadComponent implements 
     private documentService: DocumentService,
     private router: ActivatedRoute,
     private dialog: MatDialog,
-    private classLevelService: SchoolGradeLevelService
+    private classLevelService: SchoolGradeLevelService,
+    private loaderService: LoaderService
   ) {
     super(s3Service)
   }
@@ -39,7 +41,7 @@ export class DocumentGroupTableComponent extends BaseUploadComponent implements 
     this.getDetailClass();
 
   }
-  getDetailClass(){
+  getDetailClass() {
     this.classLevelService.getClassOfGrade(this.gradeId).subscribe(res => {
       this.className = res.find(x => x.ClassId === this.classId).Name;
     })
@@ -62,10 +64,12 @@ export class DocumentGroupTableComponent extends BaseUploadComponent implements 
         height: '500px'
       }).afterClosed().subscribe(result => {
         if (result) {
+          this.loaderService.show();
           this.multipleUpload(result.file.target.files).subscribe((fileLink) => {
             console.log(fileLink, this.fileLinkList);
           }, err => {
             console.log(err);
+            this.loaderService.hide();
           }, () => {
             const model = {
               Title: result.item.Title,
@@ -73,6 +77,20 @@ export class DocumentGroupTableComponent extends BaseUploadComponent implements 
               MediaURLList: this.fileLinkList
             }
             this.documentService.uploadHomeWork(model).subscribe(res => {
+             
+              this.loaderService.hide();
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Tải lên file thành công!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }, (err) => {
+              console.log(err);
+              this.loaderService.hide();
+            }, () => {
+              this.loaderService.hide();
               this.getHomework();
             });
           });

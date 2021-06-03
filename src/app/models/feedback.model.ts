@@ -13,14 +13,20 @@ export class Feedback {
             },
             {
                 id: 'Title',
-                name: 'Tiêu đề',
-                width: 300,
+                name: 'Tiêu đề góp ý',
+                width: 400,
                 type: 'text',
             },
             {
-                id: 'Description',
-                name: 'Nội dung',
-                width: 300,
+                id: 'CreatedOn',
+                name: 'Tạo lúc',
+                width: 200,
+                type: 'date',
+            },
+            {
+                id: 'ClassName',
+                name: 'Lớp',
+                width: 50,
                 type: 'text',
             },
             {
@@ -29,12 +35,30 @@ export class Feedback {
                 width: 200,
                 type: 'text',
             },
-            // {
-            //     id: '',
-            //     name: '',
-            //     width: 200,
-            //     type: 'setting',
-            // },
+            {
+                id: 'StatusString',
+                name: 'Trạng thái',
+                width: 200,
+                type: 'boolean',
+            },
+            {
+                id: '',
+                name: '',
+                width: 200,
+                type: 'setting',
+                data: [
+                    {
+                        type: 'detail',
+                        text: 'Chi tiết',
+                        class: 'btn-edit'
+                    },
+                    {
+                        type: 'delete',
+                        text: 'Xoá',
+                        class: 'btn-delete'
+                    }
+                ]
+            },
         ];
     }
 

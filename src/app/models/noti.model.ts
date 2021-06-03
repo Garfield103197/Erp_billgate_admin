@@ -110,7 +110,7 @@ export class Notification {
                 icon: ''
             },
             {
-                class: 'btn-save',
+                class: 'btn-noti',
                 text: 'Thông báo hệ thống',
                 type: 'noti',
                 icon: 'assets/svg/icon-noti-system.svg'

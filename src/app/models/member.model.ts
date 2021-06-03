@@ -229,4 +229,14 @@ export class MemberModel {
 
         ];
     }
+    public get createClass(): Array<CreateModel> {
+        return [
+            {
+                id: 'ClassName',
+                label: 'Tên Lớp',
+                name: 'ClassName',
+                type: 'text'
+            },
+        ];
+    }
 }

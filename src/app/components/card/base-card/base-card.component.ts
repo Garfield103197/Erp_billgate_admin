@@ -11,12 +11,15 @@ export class BaseCardComponent implements OnInit, OnChanges {
     @Input() dataCard: any;
     @Input() showIcon: any;
     @Output() callback = new EventEmitter();
+    @Output() callbackDelete= new EventEmitter();
     showIconButton = false;
     constructor() { }
     ngOnChanges(changes: SimpleChanges): void {
         this.showIconButton = this.showIcon
     }
-    
+    handleDeleteCallBack(i){
+        this.callbackDelete.emit(i);
+    }
     ngOnInit(): void { 
         this.showIconButton = false;
     }
