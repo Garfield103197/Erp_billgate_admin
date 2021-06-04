@@ -30,10 +30,16 @@ export class SchoolGroupMemberComponent implements OnInit {
     this.getListLevel();
   }
   routerTo(ev) {
-    this.router.navigateByUrl(`/main/member/member-home/list-grade/${ev.SchoolLevelId}`)
+    if(ev.Name === 'Giáo viên'){
+      this.router.navigateByUrl("/main/member/member-home/school-group-member/teacher");
+    }
+    if(ev.Name === 'Admin'){
+      this.router.navigateByUrl("/main/member/member-home/school-group-member/admin");
+    }
   }
   routerSchoolLevel(ev) {
-    this.router.navigateByUrl("/main/member/member-home/school-group-member");
+   
+   
   }
   getListLevel() {
     this.levelService.getListLevel().subscribe(res => {

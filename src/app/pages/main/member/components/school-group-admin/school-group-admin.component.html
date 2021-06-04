@@ -1,0 +1,17 @@
+<div class="teacher">
+    <div class="title">
+      Admin
+      <select name="" id="">
+        <option *ngFor="let item of [1, 2, 3, 4, 5, 6]" value="">{{item}}</option>
+      </select>
+    </div>
+  
+    <br />
+    <app-table
+      [data]="data"
+      [tableData]="tableData"
+      [listActive]="listActive"
+      (callback)="handleTableCallback($event)"
+    ></app-table>
+  </div>
+  

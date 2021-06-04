@@ -11,6 +11,7 @@ export class TableComponent implements OnInit, OnChanges {
     @Input() tableData: any;
     @Input() listActive?: any;
     @Input() btnTableHandel?: any;
+    @Input() listFilter?: any;
     @Output() callback = new EventEmitter<any>();
     @ViewChild('file') clickFile: ElementRef;
     @ViewChild('fileUpload') uploadDoc: ElementRef;

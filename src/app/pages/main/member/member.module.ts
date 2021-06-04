@@ -15,12 +15,15 @@ import { EditMemberComponent } from './components/edit-member/edit-member.compon
 import { LoaderModule } from 'src/app/utils/loader/loader.component';
 import { SchoolGroupMemberComponent } from './components/member-levelGradeClass/school-group-member/school-group-member.component';
 import { ClassCreateComponent } from './components/member-levelGradeClass/class-create/class-create.component';
+import { TeacherComponent } from './components/teacher/teacher.component';
+import { SchoolGroupAdminComponent } from './components/school-group-admin/school-group-admin.component';
+import { CreateTeacherComponent } from './components/teacher/create-teacher/create-teacher.component';
 
 
 
 
 @NgModule({
-    declarations: [MemberComponent, MemberHomeComponent, MemberDetailComponent, MemberHomeGroupComponent, MemberHomeClassComponent, CreateMemberComponent, EditMemberComponent, SchoolGroupMemberComponent, ClassCreateComponent],
+    declarations: [MemberComponent, MemberHomeComponent, MemberDetailComponent, MemberHomeGroupComponent, MemberHomeClassComponent, CreateMemberComponent, EditMemberComponent, SchoolGroupMemberComponent, ClassCreateComponent, TeacherComponent, SchoolGroupAdminComponent, CreateTeacherComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(memberRoute),

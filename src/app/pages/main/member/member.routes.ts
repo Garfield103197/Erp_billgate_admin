@@ -6,6 +6,8 @@ import { MemberHomeComponent } from "./components/member-levelGradeClass/member-
 
 import { MemberComponent } from './member.component'
 import { SchoolGroupMemberComponent } from "./components/member-levelGradeClass/school-group-member/school-group-member.component";
+import { TeacherComponent } from "./components/teacher/teacher.component";
+import { SchoolGroupAdminComponent } from "./components/school-group-admin/school-group-admin.component";
 
 export const memberRoute: Routes = [
     {
@@ -31,6 +33,14 @@ export const memberRoute: Routes = [
             {
                 path: 'member-home/school-group-member',
                 component: SchoolGroupMemberComponent
+            },
+            {
+                path: 'member-home/school-group-member/teacher',
+                component: TeacherComponent
+            },
+            {
+                path: 'member-home/school-group-member/admin',
+                component: SchoolGroupAdminComponent
             },
             {
                 path: '',

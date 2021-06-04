@@ -1,3 +1,4 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MemberModel } from 'src/app/models/member.model';
@@ -36,11 +37,11 @@ export class EditMemberComponent implements OnInit {
   ngOnInit(): void {
     this.listCreate = this.conFig.detail;
     this.dataModel = this.data;
-    this.listCreate[6].data = [{
+    this.listCreate[5].data = [{
       value: this.data.ClassId,
       name: this.data.ClassName,
     }];
-    this.listCreate[5].data = [{
+    this.listCreate[4].data = [{
       value: 1,
       name: "Nam",
     },
@@ -51,7 +52,10 @@ export class EditMemberComponent implements OnInit {
     
   }
   handleCallbackEvent(ev) {
+    console.log(ev);
+    
     ev.item.StudentGender = +ev.item.StudentGender;
+    ev.item.ParentLastname = ev.item.ParentName;
     if (ev.btn.class === "btn-save") {
       this.loaderService.show();
       this.memberService.editStudent(ev.item.StudentId, ev.item).subscribe(res => {

@@ -156,12 +156,6 @@ export class MemberModel {
                 icon: ''
             },
             {
-                class: 'btn-save',
-                text: 'Lưu',
-                type: 'save',
-                icon: 'assets/svg/icon-save.svg'
-            },
-            {
                 class: 'btn-upload',
                 text: 'Nhập',
                 type: 'upload',
@@ -187,12 +181,6 @@ export class MemberModel {
                 id: 'ParentName',
                 label: 'Họ và tên phụ huynh',
                 name: 'ParentName',
-                type: 'text'
-            },
-            {
-                id: 'ParentPhone',
-                label: 'SĐT phụ huynh',
-                name: 'ParentPhone',
                 type: 'text'
             },
             {
@@ -239,4 +227,128 @@ export class MemberModel {
             },
         ];
     }
+    public get collumsTeacher(): Array<CollumsModel> {
+        return [
+            {
+                id: 'stt',
+                name: 'STT',
+                width: 50,
+                type: 'text',
+            },
+            {
+                id: 'FullName',
+                name: 'Họ và tên',
+                width: 150,
+                type: 'text',
+            },
+
+            {
+                id: 'DOB',
+                name: 'Ngày sinh',
+                width: 100,
+                type: 'DOB',
+            },
+            {
+                id: 'GenderString',
+                name: 'Giới tính',
+                width: 50,
+                type: 'text',
+            },
+            {
+                id: 'ClassName',
+                name: 'Lớp',
+                width: 50,
+                type: 'text',
+            },
+            {
+                id: 'TeacherPhone',
+                name: 'SĐT Giáo viên',
+                width: 150,
+                type: 'text',
+            },
+            {
+                id: 'Address',
+                name: 'Địa chỉ',
+                width: 300,
+                type: 'text',
+            },
+            {
+                id: '',
+                name: '',
+                width: 200,
+                type: 'setting',
+                data: [
+                    {
+                        type: 'edit',
+                        text: 'Sửa',
+                        class: 'btn-edit'
+                    },
+                    {
+                      type: 'delete',
+                      text:'Xoá',
+                      class: 'btn-delete'  
+                    }
+                ]
+            },
+
+        ];
+    }
+    public get createTeacher(): Array<CreateModel> {
+        return [
+            {
+                id: 'FullName',
+                label: 'Họ và tên',
+                name: 'FullName',
+                type: 'text'
+            },
+            {
+                id: 'DOB',
+                label: 'Ngày sinh',
+                name: 'DOB',
+                type: 'date'
+            },
+            {
+                id: 'Gender',
+                label: 'Giới tính',
+                name: 'Gender',
+                type: 'selected',
+                data: []
+            },
+            {
+                id: 'Grade',
+                label: 'Khối',
+                name: 'Grade',
+                type: 'selected',
+                data: []
+            },
+            {
+                id: 'CLassId',
+                label: 'Lớp',
+                name: 'ClassId',
+                type: 'selected',
+                data: []
+            },
+            {
+                id: 'TeacherPhone',
+                label: 'SĐT giáo viên',
+                name: 'TeacherPhone',
+                type: 'text',
+            },
+            {
+                id: 'TeacherCode',
+                label: 'Mã giáo viên',
+                name: 'TeacherCode',
+                type: 'text',
+            },
+            {
+                id: 'Address',
+                label: 'Địa chỉ',
+                name: 'Address',
+                type: 'textarea',
+            },
+
+
+        ];
+    }
+    
 }
